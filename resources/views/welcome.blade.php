@@ -55,7 +55,7 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="index.html" class="active">Home<br></a></li>
+                    <li><a href="{{ route('/') }}" class="active">Home<br></a></li>
                     <li class="dropdown"><a href="#"><span>Tentang</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
@@ -70,11 +70,11 @@
                       <li><a href="#">Berita dan Media</a></li>
                     </ul>
                   </li> -->
-                            <li><a href="sambutan.kepala.sekolah.html">Sambutan Kepala Sekolah</a></li>
-                            <li><a href="guru.html">Guru</a></li>
-                            <li><a href="fasilitas.html">Fasilitas</a></li>
-                            <li><a href="visi.misi.html">Visi dan Misi</a></li>
-                            <li><a href="ekstrakulikuler.html">Ekstrakulikuler</a></li>
+                            <li><a href="{{ route('kepala-sekolah') }}">Sambutan Kepala Sekolah</a></li>
+                            <li><a href="{{ route('guru') }}">Guru</a></li>
+                            <li><a href="{{ route('fasilitas') }}">Fasilitas</a></li>
+                            <li><a href="{{ route('visi-misi') }}">Visi dan Misi</a></li>
+                            <li><a href="{{ route('ekstrakulikuler') }}">Ekstrakulikuler</a></li>
                             <!-- <li><a href="#">Berita dan Media</a></li> -->
                         </ul>
                     </li>
@@ -82,7 +82,7 @@
                     <li><a href="#">Pendaftaran</a></li>
                     <li><a href="#gallery">Akademik</a></li>
                     <li><a href="#achievement">Prestasi</a></li>
-                    <li><a href="karya.html">Karya, Atletik & Activities</a></li>
+                    <li><a href="{{ route('karya') }}">Karya, Atletik & Activities</a></li>
                     <li><a href="https://wa.me/6287840199095" target="_blank">Hubungi Kami</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

@@ -7,8 +7,8 @@
     <title>UPTD SPF SDN Nangkaan Kec. Bondowoso | Menumbuhkan Potensi, Mewujudkan Mimpi</title>
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{ asset('assets/img') }}/favicon.png" rel="icon">
+    <link href="{{ asset('assets/img') }}/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -18,19 +18,19 @@
 
     
     <!-- vendor files -->
-    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor') }}/animate.css/animate.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor') }}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor') }}/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="{{ asset('vendor') }}/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor') }}/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor') }}/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
     <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
     <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
 
 
     <!-- style css -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('css') }}/landingpage.css">
 </head>
 <body>
     <!-- floating wa -->
@@ -45,7 +45,7 @@
       <div class="container-fluid container-xl position-relative d-flex align-items-center">
   
         <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <img src="assets/img/logo.png" alt="">
+          <img src="{{ asset('assets/img') }}/logo.png" alt="">
           <!-- Uncomment the line below if you also wish to use an text logo -->
           <!-- <h1 class="sitename">TheEvent</h1>  -->
         </a>
@@ -91,7 +91,7 @@
    <!-- end header section -->
      <!-- end header section -->
     <main class="main">
-      <div class="page-title" data-aos="fade" style="background-image: url(assets/img/page-title-bg.webp );">
+      <div class="page-title" data-aos="fade" style="background-image: url({{ asset('assets/img') }}/page-title-bg.webp );">
         <div class="container position-relative">
           <h1>Sambutan Kepala Sekolah</h1>
           <!-- <p>Bakat dan minat siswa kami berkembang melalui berbagai kegiatan kreatif dan olahraga.</p> -->
@@ -130,7 +130,7 @@
   
               </div>
   
-              <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style="background-image: url(assets/img/landingpage/dosen.jpg);">&nbsp;</div>
+              <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style="background-image: url({{ asset('assets/img') }}/landingpage/dosen.jpg);">&nbsp;</div>
           </div>
   
           </div>
@@ -285,16 +285,16 @@
       </footer>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <!-- <script src="assets/vendor/swiper/swiper-bundle.min.js"></script> -->
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="{{ asset('vendor') }}/purecounter/purecounter_vanilla.js"></script>
+  <script src="{{ asset('vendor') }}/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('vendor') }}/glightbox/js/glightbox.min.js"></script>
+  <script src="{{ asset('vendor') }}/isotope-layout/isotope.pkgd.min.js"></script>
+  {{-- <!-- <script src="{{ asset('vendor') }}/swiper/swiper-bundle.min.js"></script> --> --}}
+  <script src="{{ asset('vendor') }}/waypoints/noframework.waypoints.js"></script>
+  <script src="{{ asset('vendor') }}/php-email-form/validate.js"></script>
   
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="{{ asset('js') }}/landingpage.js"></script>
 
   <!-- vendor js -->
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

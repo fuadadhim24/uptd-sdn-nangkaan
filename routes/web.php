@@ -3,9 +3,13 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('welcome');})->name('/');
+Route::get('/ekstrakulikuler', function () {return view('ekstrakulikuler');})->name('ekstrakulikuler');
+Route::get('/fasilitas', function () {return view('fasilitas');})->name('fasilitas');
+Route::get('/guru', function () {return view('guru');})->name('guru');
+Route::get('/karya-dan-aktivitas', function () {return view('karya');})->name('karya');
+Route::get('/kepala-sekolah', function () {return view('sambutan-kepala-sekolah');})->name('kepala-sekolah');
+Route::get('/visi-misi', function () {return view('visi-misi');})->name('visi-misi');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
