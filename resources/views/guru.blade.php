@@ -49,14 +49,14 @@
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
             <a href="index.html" class="logo d-flex align-items-center me-auto">
-                <img src="{{ asset('assets') }}/img/logo.png" alt="">
+                <img src="{{ asset('img') }}/logo.png" alt="">
                 <!-- Uncomment the line below if you also wish to use an text logo -->
                 <!-- <h1 class="sitename">TheEvent</h1>  -->
             </a>
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="index.html">Home<br></a></li>
+                    <li><a href="{{ route('/') }}">Home<br></a></li>
                     <li class="dropdown"><a href="#" class="active"><span>Tentang</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
@@ -71,29 +71,51 @@
                       <li><a href="#">Berita dan Media</a></li>
                     </ul>
                   </li> -->
-                            <li><a href="sambutan.kepala.sekolah.html">Sambutan Kepala Sekolah</a></li>
-                            <li><a href="guru.html">Guru</a></li>
-                            <li><a href="fasilitas.html">Fasilitas</a></li>
-                            <li><a href="visi.misi.html">Visi dan Misi</a></li>
-                            <li><a href="ekstrakulikuler.html">Ekstrakulikuler</a></li>
+                            <li><a href="{{ route('kepala-sekolah') }}">Sambutan Kepala Sekolah</a></li>
+                            <li><a href="{{ route('guru') }}">Guru</a></li>
+                            <li><a href="{{ route('fasilitas') }}">Fasilitas</a></li>
+                            <li><a href="{{ route('visi-misi') }}">Visi dan Misi</a></li>
+                            <li><a href="{{ route('ekstrakulikuler') }}">Ekstrakulikuler</a></li>
                             <!-- <li><a href="#">Berita dan Media</a></li> -->
                         </ul>
                     </li>
                     <!-- <li><a href="#tentang">Tentang</a></li> -->
-                    <li><a href="#">Pendaftaran</a></li>
+                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
                     <li><a href="#gallery">Akademik</a></li>
                     <li><a href="#achievement">Prestasi</a></li>
-                    <li><a href="karya.html">Karya, Atletik & Activities</a></li>
+                    <li><a href="{{ route('karya') }}">Karya, Atletik & Activities</a></li>
+                    <li><a href="{{ route('survey') }}">Survey</a></li>
                     <li><a href="https://wa.me/6287840199095" target="_blank">Hubungi Kami</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="cta-btn d-none d-sm-block" href="#">Sign In</a>
+            <a class="cta-btn d-none d-sm-block" href="{{ route('login') }}">Sign In</a>
 
         </div>
     </header>
     <!-- end header section -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="ppdbModal" tabindex="-1" aria-labelledby="ppdbModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ppdbModalLabel">Poster Pendaftaran PPDB</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="path/to/your/poster.jpg" class="img-fluid" alt="Poster PPDB">
+                    <!-- Ganti `path/to/your/poster.jpg` dengan URL gambar poster yang sesuai -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary"><a href="http://wa.me/6287840199095"
+                            target="_blank">Hubungi Kami</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- end header section -->
     <main class="main">
         <div class="page-title" data-aos="fade"

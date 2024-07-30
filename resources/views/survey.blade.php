@@ -56,7 +56,7 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="{{ route('/') }}">Home<br></a></li>
-                    <li class="dropdown"><a href="#" class="active"><span>Tentang</span> <i
+                    <li class="dropdown"><a href="#"><span>Tentang</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <!-- <li><a href="#">Sekolah</a></li>  -->
@@ -83,7 +83,7 @@
                     <li><a href="#gallery">Akademik</a></li>
                     <li><a href="#achievement">Prestasi</a></li>
                     <li><a href="{{ route('karya') }}">Karya, Atletik & Activities</a></li>
-                    <li><a href="{{ route('survey') }}">Survey</a></li>
+                    <li><a href="{{ route('survey') }}" class="active">Survey</a></li>
                     <li><a href="https://wa.me/6287840199095" target="_blank">Hubungi Kami</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -117,81 +117,137 @@
         <div class="page-title" data-aos="fade"
             style="background-image: url({{ asset('img') }}/page-title-bg.webp );">
             <div class="container position-relative">
-                <h1>Ekstrakulikuler</h1>
+                <h1>Daftar Survey</h1>
                 <!-- <p>Bakat dan minat siswa kami berkembang melalui berbagai kegiatan kreatif dan olahraga.</p> -->
-                <p class="mt-2">UPTD SPF SDN Nangkaan Kec. Bondowoso</p>
+                <p class="mt-2">Selamat datang di halaman daftar survey kami. UPTD SPF SDN Nangkaan Kec. Bondowoso
+                </p>
 
             </div>
         </div><!-- End Page Title -->
         <!-- Buy Tickets Section -->
-        <section id="ekstrakulikuler" class="ekstrakulikuler section light-background mt-4">
+        <section id="ekstrakulikuler" class="ekstrakulikuler section light-background" style="margin-top: 50px">
 
 
 
             <div class="container">
 
+                <!-- Survey Pengguna Tiktok -->
                 <div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h3>Pramuka</h3>
+                        <h3>Survey Pengguna Tiktok</h3>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4><sup>x</sup>4<span> Pertemuan / bulan</span></h4>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <ul>
-                            <li><i class="bi bi-check"></i> <span>Menumbuhkan keterampilan hidup dan
-                                    kepemimpinan</span></li>
-                            <li><i class="bi bi-check"></i> <span>Mengenal dan menghargai alam</span></li>
-                            <li><i class="bi bi-check"></i> <span>Melatih kerjasama dan tanggung jawab</span></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="text-center"><a href="#" class="buy-btn">Tertarik</a></div>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-                <div class="row gy-4 pricing-item featured mt-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h3>Voli</h3>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4><sup>x</sup>6<span> Pertemuan / bulan</span></h4>
+                        <h4>4<sup>hari</sup><span> 2/32 Responden</span></h4>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
                         <ul>
-                            <li><i class="bi bi-check"></i> <span>Meningkatkan kekuatan dan ketangkasan fisik</span>
-                            </li>
-                            <li><i class="bi bi-check"></i> <span>Belajar teknik dasar permainan voli</span></li>
-                            <li><i class="bi bi-check"></i> <span>Memperkuat kerja sama tim dan strategi
-                                    permainan</span></li>
+                            <li><span>Kriteria Responden:</span></li>
+                            <li><i class="bi bi-check"></i> <span>Pengguna aktif TikTok</span></li>
+                            <li><i class="bi bi-check"></i> <span>Berusia 18-35 tahun</span></li>
+                            <li><i class="bi bi-check"></i> <span>Berbasis di kota besar</span></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="text-center"><a href="#" class="buy-btn">Tertarik</a></div>
+                        <div class="text-center">
+                            <a href="#" class="buy-btn" data-bs-toggle="modal"
+                                data-bs-target="#surveyModal">Jadi Kontributor</a>
+                        </div>
+                    </div>
+                </div><!-- End Pricing Item -->
+                <!-- Modal HTML -->
+                <div class="modal fade" id="surveyModal" tabindex="-1" aria-labelledby="surveyModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="surveyModalLabel">Bergabung sebagai Kontributor</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="surveyForm">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Nama Lengkap</label>
+                                        <input type="text" class="form-control" id="name"
+                                            placeholder="Masukkan nama Anda" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Tutup</button>
+                                <a href="{{ route('survey-1') }}" id="submitButton" class="btn btn-primary">Mulai</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Survey Konsumsi Media Sosial -->
+                <div class="row gy-4 pricing-item mt-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                        <h3>Survey Konsumsi Media Sosial</h3>
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                        <h4>7<sup>hari</sup><span> 5/50 Responden</span></h4>
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                        <ul>
+                            <li><span>Kriteria Responden:</span></li>
+                            <li><i class="bi bi-check"></i> <span>Pengguna media sosial aktif</span></li>
+                            <li><i class="bi bi-check"></i> <span>Berusia 16-45 tahun</span></li>
+                            <li><i class="bi bi-check"></i> <span>Beragam lokasi geografis</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                        <div class="text-center"><a href="#" class="buy-btn">Jadi Kontributor</a></div>
                     </div>
                 </div><!-- End Pricing Item -->
 
+                <!-- Survey Kebiasaan Berbelanja Online -->
                 <div class="row gy-4 pricing-item mt-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h3>Badminton</h3>
+                        <h3>Survey Kebiasaan Berbelanja Online</h3>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4><sup>x</sup>6<span> pertemuan / bulan</span></h4>
+                        <h4>5<sup>hari</sup><span> 10/50 Responden</span></h4>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
                         <ul>
-                            <li><i class="bi bi-check"></i> <span>Memperbaiki koordinasi tangan dan mata</span></li>
-                            <li><i class="bi bi-check"></i> <span>Menumbuhkan kecepatan dan ketangkasan</span></li>
-                            <li><i class="bi bi-check"></i> <span>Belajar teknik dasar dan strategi permainan
-                                    badminton</span></li>
+                            <li><span>Kriteria Responden:</span></li>
+                            <li><i class="bi bi-check"></i> <span>Pemilik akun belanja online aktif</span></li>
+                            <li><i class="bi bi-check"></i> <span>Berusia 20-40 tahun</span></li>
+                            <li><i class="bi bi-check"></i> <span>Berbasis di daerah urban</span></li>
                         </ul>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="text-center"><a href="#" class="buy-btn">Tertarik</a></div>
+                        <div class="text-center"><a href="#" class="buy-btn">Jadi Kontributor</a></div>
+                    </div>
+                </div><!-- End Pricing Item -->
+
+                <!-- Survey Kesehatan Mental -->
+                <div class="row gy-4 pricing-item mt-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                        <h3>Survey Kesehatan Mental</h3>
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                        <h4>6<sup>hari</sup><span> 3/30 Responden</span></h4>
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                        <ul>
+                            <li><span>Kriteria Responden:</span></li>
+                            <li><i class="bi bi-check"></i> <span>Individu yang mengalami stres atau kecemasan</span>
+                            </li>
+                            <li><i class="bi bi-check"></i> <span>Berusia 18-50 tahun</span></li>
+                            <li><i class="bi bi-check"></i> <span>Berbasis di berbagai daerah</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                        <div class="text-center"><a href="#" class="buy-btn">Jadi Kontributor</a></div>
                     </div>
                 </div><!-- End Pricing Item -->
 
             </div>
+
 
         </section><!-- /Buy Tickets Section -->
     </main>
