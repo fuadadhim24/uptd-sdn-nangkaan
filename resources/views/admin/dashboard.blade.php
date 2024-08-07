@@ -91,24 +91,6 @@
 
                         </li>
 
-                        {{-- <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
-                                <i class="bi bi-file-earmark-medical-fill"></i>
-                                <span>Daftar Pertanyaan</span>
-                            </a>
-
-
-                        </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
-                                <i class="bi bi-pen-fill"></i>
-                                <span>Pilihan Jawaban</span>
-                            </a>
-
-
-                        </li> --}}
-
                         <li class="sidebar-item  ">
                             <a href="{{ route('admin.surveys.result') }}" class='sidebar-link'>
                                 <i class="bi bi-collection-fill"></i>
@@ -117,8 +99,6 @@
 
 
                         </li>
-
-
 
                         <li class="sidebar-title">Manajemen Website</li>
 
@@ -141,27 +121,9 @@
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
+                            <a href="{{ route('admin.kalender-akademik') }}" class='sidebar-link'>
                                 <i class="bi bi-calendar2-date-fill"></i>
                                 <span>Kalender Akademik</span>
-                            </a>
-
-
-                        </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
-                                <i class="bi bi-puzzle"></i>
-                                <span>Kurikulum</span>
-                            </a>
-
-
-                        </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="{{ route('admin.fasilitas') }}" class='sidebar-link'>
-                                <i class="bi bi-grid-1x2-fill"></i>
-                                <span>Fasilitas</span>
                             </a>
 
 
@@ -176,22 +138,26 @@
                             <ul class="submenu ">
 
                                 <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Daftar Guru</a>
+                                    <a href="{{ route('admin.kurikulum') }}" class="submenu-link">Kurikulum</a>
+
+                                </li>
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.guru') }}" class="submenu-link">Daftar Guru</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Fasilitas</a>
+                                    <a href="{{ route('admin.fasilitas') }}" class="submenu-link">Fasilitas</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Ekstrakulikuler</a>
+                                    <a href="{{ route('admin.ekstrakulikuler') }}" class="submenu-link">Ekstrakulikuler</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Sambutan Kepala
+                                    <a href="{{ route('admin.sambutan') }}" class="submenu-link">Sambutan Kepala
                                         Sekolah</a>
 
                                 </li>

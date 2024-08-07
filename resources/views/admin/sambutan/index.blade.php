@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PPDB - UPTD SPF SDN Nangkaan Admin Survey</title>
+    <title>Sambutan - UPTD SPF SDN Nangkaan Admin</title>
 
 
 
@@ -69,7 +69,7 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item ">
                             <a href="{{ route('dashboard') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
@@ -109,7 +109,7 @@
 
                         </li>
 
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item  ">
                             <a href="{{ route('admin.ppdb') }}" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                                 <span>Informasi PPDB</span>
@@ -127,7 +127,7 @@
 
                         </li>
 
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item active  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>
                                 <span>Tentang</span>
@@ -154,7 +154,7 @@
 
                                 </li>
 
-                                <li class="submenu-item  ">
+                                <li class="submenu-item active  ">
                                     <a href="{{ route('admin.sambutan') }}" class="submenu-link">Sambutan Kepala
                                         Sekolah</a>
 
@@ -197,14 +197,17 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Update PPDB</h3>
-                            <p class="text-subtitle text-muted">Pertanyaan yang Sering Diajukan.</p>
+                            <h3>Update Sambutan Kepala Sekolah</h3>
+                            <p class="text-subtitle text-muted">Informasi sambutan kepala sekolah pada laman landing
+                                page
+                                website.</p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">PPDB</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Sambutan Kepala Sekolah
+                                    </li>
                                 </ol>
                             </nav>
                         </div>
@@ -215,7 +218,8 @@
                         <div class="col-12 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
-                                        <img src="{{ asset('assets') }}\img\admin\ppdb\ppdb.jpg" alt="Avatar" class="img-fluid">
+                                    <img src="{{ asset('assets') }}\img\admin\ppdb\ppdb.jpg" alt="Avatar"
+                                        class="img-fluid">
                                 </div>
                             </div>
                         </div>
@@ -224,7 +228,13 @@
                                 <div class="card-body">
                                     <form action="#" method="get">
                                         <div class="form-group">
-                                            <label for="foto" class="form-label">Poster PPDB</label>
+                                            <label for="deskripsi" class="form-label">Sambutan</label>
+                                            <textarea type="text" name="deskripsi" id="foto" class="form-control"
+                                                placeholder="Cth: Selamat datang...."></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="foto" class="form-label">Poster Sambutan Kepala
+                                                Sekolah</label>
                                             <input type="file" name="foto" id="foto" class="form-control"
                                                 value="John Doe">
                                         </div>

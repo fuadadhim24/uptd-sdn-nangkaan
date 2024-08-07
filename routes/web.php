@@ -19,6 +19,12 @@ Route::get('/faq', function () {return view('admin.faq.index');})->middleware(['
 Route::get('/fasilitas', function () {return view('admin.fasilitas.index');})->middleware(['auth', 'verified'])->name('admin.fasilitas');
 Route::get('/informasi-ppdb', function () {return view('admin.ppdb.index');})->middleware(['auth', 'verified'])->name('admin.ppdb');
 Route::get('/hasil-survey', function () {return view('admin.surveys.results.index');})->middleware(['auth', 'verified'])->name('admin.surveys.result');
+Route::get('/kalender-akademik', function () {return view('admin.kalender-akademik.index');})->middleware(['auth', 'verified'])->name('admin.kalender-akademik');
+Route::get('/kurikulum', function () {return view('admin.kurikulum.index');})->middleware(['auth', 'verified'])->name('admin.kurikulum');
+Route::get('/sambutan-kepala-sekolah', function () {return view('admin.sambutan.index');})->middleware(['auth', 'verified'])->name('admin.sambutan');
+Route::get('/daftar-guru', function () {return view('admin.guru.index');})->middleware(['auth', 'verified'])->name('admin.guru');
+Route::get('/fasilitas', function () {return view('admin.fasilitas.index');})->middleware(['auth', 'verified'])->name('admin.fasilitas');
+Route::get('/ekstrakulikuler', function () {return view('admin.ekstrakulikuler.index');})->middleware(['auth', 'verified'])->name('admin.ekstrakulikuler');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

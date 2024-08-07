@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PPDB - UPTD SPF SDN Nangkaan Admin Survey</title>
+    <title>Kalender Akademik - UPTD SPF SDN Nangkaan Admin</title>
 
 
 
@@ -69,7 +69,7 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item ">
                             <a href="{{ route('dashboard') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
@@ -109,7 +109,7 @@
 
                         </li>
 
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item  ">
                             <a href="{{ route('admin.ppdb') }}" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                                 <span>Informasi PPDB</span>
@@ -118,7 +118,7 @@
 
                         </li>
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item active ">
                             <a href="{{ route('admin.kalender-akademik') }}" class='sidebar-link'>
                                 <i class="bi bi-calendar2-date-fill"></i>
                                 <span>Kalender Akademik</span>
@@ -197,14 +197,14 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Update PPDB</h3>
-                            <p class="text-subtitle text-muted">Pertanyaan yang Sering Diajukan.</p>
+                            <h3>Update Kalender Akademik</h3>
+                            <p class="text-subtitle text-muted">Informasi kalender akademik pada laman landing page website.</p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">PPDB</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Kalender Akademik</li>
                                 </ol>
                             </nav>
                         </div>
@@ -215,7 +215,8 @@
                         <div class="col-12 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
-                                        <img src="{{ asset('assets') }}\img\admin\ppdb\ppdb.jpg" alt="Avatar" class="img-fluid">
+                                    <img src="{{ asset('assets') }}\img\admin\ppdb\ppdb.jpg" alt="Avatar"
+                                        class="img-fluid">
                                 </div>
                             </div>
                         </div>
@@ -224,7 +225,7 @@
                                 <div class="card-body">
                                     <form action="#" method="get">
                                         <div class="form-group">
-                                            <label for="foto" class="form-label">Poster PPDB</label>
+                                            <label for="foto" class="form-label">Poster Kalender Akademik</label>
                                             <input type="file" name="foto" id="foto" class="form-control"
                                                 value="John Doe">
                                         </div>

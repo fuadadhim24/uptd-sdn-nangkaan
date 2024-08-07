@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fasilitas - UPTD SPF SDN Nangkaan Admin Survey</title>
+    <title>Fasilitas - UPTD SPF SDN Nangkaan Admin</title>
 
 
 
@@ -86,7 +86,7 @@
 
                         <li class="sidebar-title">Survey &amp; Responden</li>
 
-                        <li class="sidebar-item ">
+                        <li class="sidebar-item  ">
                             <a href="{{ route('admin.surveys') }}" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Daftar Survey</span>
@@ -95,7 +95,7 @@
 
                         </li>
 
-                        <li class="sidebar-item ">
+                        <li class="sidebar-item  ">
                             <a href="{{ route('admin.surveys.result') }}" class='sidebar-link'>
                                 <i class="bi bi-collection-fill"></i>
                                 <span>Hasil Survey</span>
@@ -104,11 +104,9 @@
 
                         </li>
 
-
-
                         <li class="sidebar-title">Manajemen Website</li>
 
-                        <li class="sidebar-item ">
+                        <li class="sidebar-item  ">
                             <a href="{{ route('admin.faq') }}" class='sidebar-link'>
                                 <i class="bi bi-hexagon-fill"></i>
                                 <span>FAQ</span>
@@ -118,7 +116,7 @@
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
+                            <a href="{{ route('admin.ppdb') }}" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                                 <span>Informasi PPDB</span>
                             </a>
@@ -127,7 +125,7 @@
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
+                            <a href="{{ route('admin.kalender-akademik') }}" class='sidebar-link'>
                                 <i class="bi bi-calendar2-date-fill"></i>
                                 <span>Kalender Akademik</span>
                             </a>
@@ -135,25 +133,7 @@
 
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
-                                <i class="bi bi-puzzle"></i>
-                                <span>Kurikulum</span>
-                            </a>
-
-
-                        </li>
-
-                        <li class="sidebar-item active ">
-                            <a href="form-layout.html" class='sidebar-link'>
-                                <i class="bi bi-grid-1x2-fill"></i>
-                                <span>Fasilitas</span>
-                            </a>
-
-
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item active has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>
                                 <span>Tentang</span>
@@ -162,22 +142,26 @@
                             <ul class="submenu ">
 
                                 <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Daftar Guru</a>
+                                    <a href="{{ route('admin.kurikulum') }}" class="submenu-link">Kurikulum</a>
+
+                                </li>
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.guru') }}" class="submenu-link">Daftar Guru</a>
+
+                                </li>
+
+                                <li class="submenu-item active ">
+                                    <a href="{{ route('admin.fasilitas') }}" class="submenu-link">Fasilitas</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Fasilitas</a>
+                                    <a href="{{ route('admin.ekstrakulikuler') }}" class="submenu-link">Ekstrakulikuler</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Ekstrakulikuler</a>
-
-                                </li>
-
-                                <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Sambutan Kepala
+                                    <a href="{{ route('admin.sambutan') }}" class="submenu-link">Sambutan Kepala
                                         Sekolah</a>
 
                                 </li>
@@ -220,7 +204,7 @@
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
                             <h3>Fasilitas</h3>
-                            <p class="text-subtitle text-muted">Pertanyaan yang Sering Diajukan.</p>
+                            <p class="text-subtitle text-muted">Manajemen informasi tenaga kependidikan.</p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -237,7 +221,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">
-                                Minimal jQuery Datatable
+                                Tabel Fasilitas
                             </h5>
                         </div>
                         <div class="card-body">
