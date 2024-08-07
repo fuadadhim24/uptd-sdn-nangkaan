@@ -80,8 +80,8 @@
                     </li>
                     <!-- <li><a href="#tentang">Tentang</a></li> -->
                     <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
-                    <li><a href="#gallery">Akademik</a></li>
-                    <li><a href="#achievement">Prestasi</a></li>
+                    <li><a href="{{ route('/') }}">Akademik</a></li>
+                    <li><a href="{{ route('/') }}">Prestasi</a></li>
                     <li><a href="{{ route('karya') }}">Karya, Atletik & Activities</a></li>
                     <li><a href="{{ route('survey') }}" class="active">Survey</a></li>
                     <li><a href="https://wa.me/6287840199095" target="_blank">Hubungi Kami</a></li>
@@ -137,7 +137,7 @@
                         <h3>Survey Pengguna Tiktok</h3>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4>4<sup>hari</sup><span> 2/32 Responden</span></h4>
+                        <h4>4<sup>hari</sup><span> 32 Responden</span></h4>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
                         <ul>
@@ -176,7 +176,8 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary"
                                     data-bs-dismiss="modal">Tutup</button>
-                                <a href="{{ route('survey-1') }}" id="submitButton" class="btn btn-primary">Mulai</a>
+                                <a href="{{ route('survey-1') }}" id="submitButton"
+                                    class="btn btn-primary">Mulai</a>
                             </div>
                         </div>
                     </div>
@@ -188,7 +189,7 @@
                         <h3>Survey Konsumsi Media Sosial</h3>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4>7<sup>hari</sup><span> 5/50 Responden</span></h4>
+                        <h4>7<sup>hari</sup><span> 50 Responden</span></h4>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
                         <ul>
@@ -209,7 +210,7 @@
                         <h3>Survey Kebiasaan Berbelanja Online</h3>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4>5<sup>hari</sup><span> 10/50 Responden</span></h4>
+                        <h4>5<sup>hari</sup><span> 10 Responden</span></h4>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
                         <ul>
@@ -230,7 +231,7 @@
                         <h3>Survey Kesehatan Mental</h3>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4>6<sup>hari</sup><span> 3/30 Responden</span></h4>
+                        <h4>6<sup>hari</sup><span> 30 Responden</span></h4>
                     </div>
                     <div class="col-lg-3 d-flex align-items-center justify-content-center">
                         <ul>

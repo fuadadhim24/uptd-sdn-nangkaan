@@ -156,7 +156,8 @@
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="{{ route('admin.ekstrakulikuler') }}" class="submenu-link">Ekstrakulikuler</a>
+                                    <a href="{{ route('admin.ekstrakulikuler') }}"
+                                        class="submenu-link">Ekstrakulikuler</a>
 
                                 </li>
 
@@ -480,6 +481,54 @@
                 </section>
                 <!-- Minimal jQuery Datatable end -->
 
+                <!-- Button to trigger modal -->
+                <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
+                    data-bs-target="#lowonganModal">
+                    Tambah Fasilitas
+                </button>
+
+                {{-- modal --}}
+                <!-- Modal -->
+                <div class="modal fade" id="lowonganModal" tabindex="-1" aria-labelledby="lowonganModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form class="form form-vertical" id="lowonganForm" method="post" action="#"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="lowonganModalLabel">Tambah Survey Baru</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="nama">Nama Survey</label>
+                                                    <input type="text" id="nama" class="form-control"
+                                                        name="nama" placeholder="Nama lowonngan">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="nama">Deskripsi</label>
+                                                    <textarea type="text" id="deskripsi" class="form-control" name="deskripsi" placeholder="..."></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 

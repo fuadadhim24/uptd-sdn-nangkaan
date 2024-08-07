@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - UPTD SPF SDN Nangkaan Admin Survey</title>
+    <title>Daftar Pertanyaan - UPTD SPF SDN Nangkaan Admin</title>
 
 
 
@@ -106,7 +106,7 @@
 
                         <li class="sidebar-title">Manajemen Website</li>
 
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item  ">
                             <a href="{{ route('admin.faq') }}" class='sidebar-link'>
                                 <i class="bi bi-hexagon-fill"></i>
                                 <span>FAQ</span>
@@ -133,7 +133,7 @@
 
                         </li>
 
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item active has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>
                                 <span>Tentang</span>
@@ -150,7 +150,7 @@
 
                                 </li>
 
-                                <li class="submenu-item  ">
+                                <li class="submenu-item active ">
                                     <a href="{{ route('admin.fasilitas') }}" class="submenu-link">Fasilitas</a>
 
                                 </li>
@@ -204,14 +204,14 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>FAQ</h3>
-                            <p class="text-subtitle text-muted">Pertanyaan yang Sering Diajukan.</p>
+                            <h3>Daftar Pertanyaan</h3>
+                            <p class="text-subtitle text-muted">Manajemen informasi tenaga kependidikan.</p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">FAQ</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Daftar Pertanyaan</li>
                                 </ol>
                             </nav>
                         </div>
@@ -222,7 +222,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">
-                                Tabel FAQ
+                                Tabel Daftar Pertanyaan
                             </h5>
                         </div>
                         <div class="card-body">
@@ -484,7 +484,7 @@
                 <!-- Button to trigger modal -->
                 <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#lowonganModal">
-                    Tambah FAQ
+                    Tambah Daftar Pertanyaan
                 </button>
 
                 {{-- modal --}}
@@ -497,7 +497,7 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="lowonganModalLabel">Tambah Survey Baru</h5>
+                                    <h5 class="modal-title" id="lowonganModalLabel">Tambah Pertanyaan Baru</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -506,7 +506,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="nama">Nama Survey</label>
+                                                    <label for="nama">Nama Pertanyaan</label>
                                                     <input type="text" id="nama" class="form-control"
                                                         name="nama" placeholder="Nama lowonngan">
                                                 </div>
@@ -529,7 +529,6 @@
                         </div>
                     </div>
                 </div>
-
 
             </div>
 

@@ -114,7 +114,7 @@
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
+                            <a href="{{ route('admin.ppdb') }}" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                                 <span>Informasi PPDB</span>
                             </a>
@@ -123,27 +123,9 @@
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
+                            <a href="{{ route('admin.kalender-akademik') }}" class='sidebar-link'>
                                 <i class="bi bi-calendar2-date-fill"></i>
                                 <span>Kalender Akademik</span>
-                            </a>
-
-
-                        </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
-                                <i class="bi bi-puzzle"></i>
-                                <span>Kurikulum</span>
-                            </a>
-
-
-                        </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
-                                <i class="bi bi-grid-1x2-fill"></i>
-                                <span>Fasilitas</span>
                             </a>
 
 
@@ -158,22 +140,27 @@
                             <ul class="submenu ">
 
                                 <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Daftar Guru</a>
+                                    <a href="{{ route('admin.kurikulum') }}" class="submenu-link">Kurikulum</a>
+
+                                </li>
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.guru') }}" class="submenu-link">Daftar Guru</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Fasilitas</a>
+                                    <a href="{{ route('admin.fasilitas') }}" class="submenu-link">Fasilitas</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Ekstrakulikuler</a>
+                                    <a href="{{ route('admin.ekstrakulikuler') }}"
+                                        class="submenu-link">Ekstrakulikuler</a>
 
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="form-validation-parsley.html" class="submenu-link">Sambutan Kepala
+                                    <a href="{{ route('admin.sambutan') }}" class="submenu-link">Sambutan Kepala
                                         Sekolah</a>
 
                                 </li>
@@ -222,7 +209,7 @@
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Hasil Survey</li>
                                 </ol>
                             </nav>
@@ -236,10 +223,12 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <h4 class="card-title">Kepuasan Siswa Terhadap Fasilitas dan Layanan Sekolah</h4>
+                                        <h4 class="card-title">Kepuasan Siswa Terhadap Fasilitas dan Layanan Sekolah
+                                        </h4>
                                         <p class="card-text">
-                                            19/10/2024  <span class="badge bg-success">Aktif</span><br>
-                                            Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet roll. Toffee
+                                            19/10/2024 <span class="badge bg-success">Aktif</span><br>
+                                            Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
+                                            roll. Toffee
                                             sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.
                                         </p>
                                     </div>
@@ -256,8 +245,9 @@
                                     <div class="card-body">
                                         <h4 class="card-title">Respon orang tua terhadap hasil kegiatan Outbound</h4>
                                         <p class="card-text">
-                                            19/10/2024  <span class="badge bg-danger">Tidak Aktif</span><br>
-                                            Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet roll. Toffee
+                                            19/10/2024 <span class="badge bg-danger">Tidak Aktif</span><br>
+                                            Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
+                                            roll. Toffee
                                             sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.
                                         </p>
                                     </div>
@@ -275,7 +265,8 @@
                                         <h4 class="card-title">Respon guru terhadap hasil kegiatan Outbound</h4>
                                         <p class="card-text">
                                             19/10/2024 <span class="badge bg-success">Aktif</span><br>
-                                            Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet roll. Toffee
+                                            Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
+                                            roll. Toffee
                                             sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.
                                         </p>
                                     </div>

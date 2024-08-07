@@ -80,8 +80,8 @@
                     </li>
                     <!-- <li><a href="#tentang">Tentang</a></li> -->
                     <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
-                    <li><a href="#gallery">Akademik</a></li>
-                    <li><a href="#achievement">Prestasi</a></li>
+                    <li><a href="{{ route('/') }}">Akademik</a></li>
+                    <li><a href="{{ route('/') }}">Prestasi</a></li>
                     <li><a href="{{ route('karya') }}" class="active">Karya, Atletik & Activities</a></li>
                     <li><a href="{{ route('survey') }}">Survey</a></li>
                     <li><a href="https://wa.me/6287840199095" target="_blank">Hubungi Kami</a></li>
