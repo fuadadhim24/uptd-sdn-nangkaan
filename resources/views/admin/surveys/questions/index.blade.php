@@ -86,7 +86,7 @@
 
                         <li class="sidebar-title">Survey &amp; Responden</li>
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item active  ">
                             <a href="{{ route('admin.surveys') }}" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Daftar Survey</span>
@@ -133,7 +133,7 @@
 
                         </li>
 
-                        <li class="sidebar-item active has-sub">
+                        <li class="sidebar-item has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>
                                 <span>Tentang</span>
@@ -150,7 +150,7 @@
 
                                 </li>
 
-                                <li class="submenu-item active ">
+                                <li class="submenu-item ">
                                     <a href="{{ route('admin.fasilitas') }}" class="submenu-link">Fasilitas</a>
 
                                 </li>

@@ -284,9 +284,8 @@
                                             aria-expanded="false" aria-controls="collapseExample2">
                                             Deskripsi
                                         </button>
-                                        <button class="btn btn-primary" type="button">
-                                            Daftar Pertanyaan
-                                        </button>
+                                        <a class="btn btn-primary" href="{{ route('admin.question') }}">
+                                            Daftar Pertanyaan</a>
                                     </p>
                                     <div class="collapse" id="collapseExample2">
                                         19/10/2024<br>

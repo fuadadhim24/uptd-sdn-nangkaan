@@ -226,16 +226,18 @@
                                         <h4 class="card-title">Kepuasan Siswa Terhadap Fasilitas dan Layanan Sekolah
                                         </h4>
                                         <p class="card-text">
-                                            19/10/2024 <span class="badge bg-success">Aktif</span><br>
+                                            
                                             Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
                                             roll. Toffee
-                                            sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.
+                                            sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.<br>
+                                            19/10/2024 <span class="badge bg-success mt-4">Aktif</span>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between">
                                     <span>120 Responden</span>
-                                    <button class="btn btn-light-primary">Selengkapnya</button>
+                                    <a class="btn btn-outline-primary"
+                                        href="{{ route('admin.surveys.result.detail') }}">Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
@@ -245,16 +247,18 @@
                                     <div class="card-body">
                                         <h4 class="card-title">Respon orang tua terhadap hasil kegiatan Outbound</h4>
                                         <p class="card-text">
-                                            19/10/2024 <span class="badge bg-danger">Tidak Aktif</span><br>
+                                            
                                             Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
                                             roll. Toffee
-                                            sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.
+                                            sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.<br>
+                                            19/10/2024 <span class="badge bg-danger mt-4">Tidak Aktif</span>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between">
                                     <span>30 Responden</span>
-                                    <button class="btn btn-light-primary">Selengkapnya</button>
+                                    <a class="btn btn-outline-primary"
+                                        href="{{ route('admin.surveys.result.detail') }}">Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
@@ -264,16 +268,18 @@
                                     <div class="card-body">
                                         <h4 class="card-title">Respon guru terhadap hasil kegiatan Outbound</h4>
                                         <p class="card-text">
-                                            19/10/2024 <span class="badge bg-success">Aktif</span><br>
+                                            
                                             Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
                                             roll. Toffee
-                                            sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.
+                                            sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.<br>
+                                            19/10/2024 <span class="badge bg-success mt-4">Aktif</span>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between">
                                     <span>300 Responden</span>
-                                    <button class="btn btn-light-primary">Selengkapnya</button>
+                                    <a class="btn btn-outline-primary"
+                                        href="{{ route('admin.surveys.result.detail') }}">Selengkapnya</a>
                                 </div>
                             </div>
                         </div>

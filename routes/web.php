@@ -17,6 +17,8 @@ Route::get('/admin-dashboard', function () {return view('admin.dashboard');})->m
 Route::get('/admin-daftar-survey', function () {return view('admin.surveys.index');})->middleware(['auth', 'verified'])->name('admin.surveys');
 Route::get('/admin-daftar-survey/pertanyaan', function () {return view('admin.surveys.questions.index');})->middleware(['auth', 'verified'])->name('admin.question');
 Route::get('/admin-hasil-survey', function () {return view('admin.surveys.results.index');})->middleware(['auth', 'verified'])->name('admin.surveys.result');
+Route::get('/admin-hasil-survey/detail', function () {return view('admin.surveys.results.detail.index');})->middleware(['auth', 'verified'])->name('admin.surveys.result.detail');
+
 Route::get('/admin-faq', function () {return view('admin.faq.index');})->middleware(['auth', 'verified'])->name('admin.faq');
 Route::get('/admin-fasilitas', function () {return view('admin.fasilitas.index');})->middleware(['auth', 'verified'])->name('admin.fasilitas');
 Route::get('/admin-informasi-ppdb', function () {return view('admin.ppdb.index');})->middleware(['auth', 'verified'])->name('admin.ppdb');
