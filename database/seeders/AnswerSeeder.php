@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,28 +12,69 @@ class AnswerSeeder extends Seeder
      */
     public function run(): void
     {
+        // Sample data for Checkbox type
         DB::table('answers')->insert([
-            // Answers for "Seberapa puas Anda dengan layanan kami?" (survey_id 1, question_id 1)
-            ['question_id' => 1, 'answer_text' => 'Sangat Puas', 'created_at' => now(), 'updated_at' => now()],
-            ['question_id' => 1, 'answer_text' => 'Puas', 'created_at' => now(), 'updated_at' => now()],
-            ['question_id' => 1, 'answer_text' => 'Cukup Puas', 'created_at' => now(), 'updated_at' => now()],
-            ['question_id' => 1, 'answer_text' => 'Tidak Puas', 'created_at' => now(), 'updated_at' => now()],
-            
-            // Answers for "Apakah Anda akan merekomendasikan layanan kami kepada orang lain?" (survey_id 1, question_id 2)
-            ['question_id' => 2, 'answer_text' => 'Ya', 'created_at' => now(), 'updated_at' => now()],
-            ['question_id' => 2, 'answer_text' => 'Tidak', 'created_at' => now(), 'updated_at' => now()],
-            
-            // Answers for "Bagaimana penilaian Anda terhadap kualitas produk kami?" (survey_id 2, question_id 3)
-            ['question_id' => 3, 'answer_text' => 'Sangat Baik', 'created_at' => now(), 'updated_at' => now()],
-            ['question_id' => 3, 'answer_text' => 'Baik', 'created_at' => now(), 'updated_at' => now()],
-            ['question_id' => 3, 'answer_text' => 'Cukup Baik', 'created_at' => now(), 'updated_at' => now()],
-            ['question_id' => 3, 'answer_text' => 'Buruk', 'created_at' => now(), 'updated_at' => now()],
-            
-            // Answers for "Apa fitur yang paling Anda sukai dari produk kami?" (survey_id 2, question_id 4)
-            ['question_id' => 4, 'answer_text' => 'Desain', 'created_at' => now(), 'updated_at' => now()],
-            ['question_id' => 4, 'answer_text' => 'Kinerja', 'created_at' => now(), 'updated_at' => now()],
-            ['question_id' => 4, 'answer_text' => 'Daya Tahan', 'created_at' => now(), 'updated_at' => now()],
-            ['question_id' => 4, 'answer_text' => 'Fitur Tambahan', 'created_at' => now(), 'updated_at' => now()]
+            'question_id' => 1,
+            'answer_type' => 'checkbox',
+            'options' => json_encode(['Option A', 'Option B', 'Option C']),
+            'answer_text' => null,
+            'file_path' => null,
+            'min_value' => null,
+            'max_value' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Sample data for Radio Button type
+        DB::table('answers')->insert([
+            'question_id' => 2,
+            'answer_type' => 'radio',
+            'options' => json_encode(['Choice 1', 'Choice 2', 'Choice 3']),
+            'answer_text' => null,
+            'file_path' => null,
+            'min_value' => null,
+            'max_value' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Sample data for Text Input type
+        DB::table('answers')->insert([
+            'question_id' => 3,
+            'answer_type' => 'text',
+            'options' => null,
+            'answer_text' => 'Sample text answer',
+            'file_path' => null,
+            'min_value' => null,
+            'max_value' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Sample data for Range Input type
+        DB::table('answers')->insert([
+            'question_id' => 4,
+            'answer_type' => 'range',
+            'options' => null,
+            'answer_text' => null,
+            'file_path' => null,
+            'min_value' => 1,
+            'max_value' => 10,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Sample data for File Input type
+        DB::table('answers')->insert([
+            'question_id' => 5,
+            'answer_type' => 'file',
+            'options' => null,
+            'answer_text' => null,
+            'file_path' => 'files/sample-file.jpg',
+            'min_value' => null,
+            'max_value' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }

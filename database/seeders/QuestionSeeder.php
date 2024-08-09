@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -27,13 +26,19 @@ class QuestionSeeder extends Seeder
                 'updated_at' => now()
             ],
             [
-                'survey_id' => 2,
+                'survey_id' => 1,
                 'question_text' => 'Bagaimana penilaian Anda terhadap kualitas produk kami?',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'survey_id' => 2,
+                'survey_id' => 1,
+                'question_text' => 'Apa fitur yang paling Anda sukai dari produk kami?',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'survey_id' => 1,
                 'question_text' => 'Apa fitur yang paling Anda sukai dari produk kami?',
                 'created_at' => now(),
                 'updated_at' => now()

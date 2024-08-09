@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,14 +12,14 @@ class ResponseSeeder extends Seeder
      */
     public function run(): void
     {
+        $respondentId = DB::table('respondents')->first()->id;
+
         DB::table('responses')->insert([
-            // Responses for respondent 1
-            ['respondent_id' => 1, 'answer_id' => 1, 'created_at' => now(), 'updated_at' => now()], // John Doe - "Sangat Puas"
-            ['respondent_id' => 1, 'answer_id' => 5, 'created_at' => now(), 'updated_at' => now()], // John Doe - "Ya"
-            
-            // Responses for respondent 2
-            ['respondent_id' => 2, 'answer_id' => 2, 'created_at' => now(), 'updated_at' => now()], // Jane Smith - "Puas"
-            ['respondent_id' => 2, 'answer_id' => 6, 'created_at' => now(), 'updated_at' => now()] // Jane Smith - "Tidak"
+            ['respondent_id' => $respondentId, 'answer_id' => 1, 'created_at' => now(), 'updated_at' => now()],
+            ['respondent_id' => $respondentId, 'answer_id' => 2, 'created_at' => now(), 'updated_at' => now()],
+            ['respondent_id' => $respondentId, 'answer_id' => 3, 'created_at' => now(), 'updated_at' => now()],
+            ['respondent_id' => $respondentId, 'answer_id' => 4, 'created_at' => now(), 'updated_at' => now()],
+            ['respondent_id' => $respondentId, 'answer_id' => 5, 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }
