@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Facilities;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class FacilitiesController extends Controller
 {
     public function index()
     {
         $facilities = Facilities::all();
-        return view('facilities.index', compact('facilities'));
+        return view('admin.fasilitas.index', compact('facilities'));
     }
 
     public function create()
@@ -23,10 +25,24 @@ class FacilitiesController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Validate image file types
         ]);
 
-        Facilities::create($request->all());
-        return redirect()->route('facilities.index')->with('success', 'Facility created successfully.');
+        $facility = new Facilities();
+        $facility->name = $request->name;
+        $facility->description = $request->description;
+
+        if ($request->hasFile('photo')) {
+            // Handle the file upload
+            $file = $request->file('photo');
+            $filename = Str::random(10) . '.' . $file->getClientOriginalExtension();
+            Storage::disk('public')->put('/facilities/' . $filename, file_get_contents($file));
+            $facility->photo = $filename;
+        }
+
+        $facility->save();
+
+        return redirect()->route('admin.fasilitas')->with('success', 'Facility created successfully.');
     }
 
     public function show(Facilities $facility)
@@ -44,15 +60,38 @@ class FacilitiesController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Validate image file types
         ]);
 
-        $facility->update($request->all());
-        return redirect()->route('facilities.index')->with('success', 'Facility updated successfully.');
+        $facility->name = $request->input('name');
+        $facility->description = $request->input('description');
+
+        if ($request->hasFile('photo')) {
+            // Delete the old photo if it exists
+            if ($facility->photo) {
+                Storage::disk('public')->delete('/facilities/' . $facility->photo);
+            }
+
+            // Handle the new file upload
+            $file = $request->file('photo');
+            $filename = Str::random(10) . '.' . $file->getClientOriginalExtension();
+            Storage::disk('public')->put('/facilities/' . $filename, file_get_contents($file));
+            $facility->photo = $filename;
+        }
+
+        $facility->save();
+
+        return redirect()->route('admin.fasilitas')->with('success', 'Facility updated successfully.');
     }
 
     public function destroy(Facilities $facility)
     {
+        // Delete the photo if it exists
+        if ($facility->photo) {
+            Storage::disk('public')->delete('/facilities/' . $facility->photo);
+        }
+
         $facility->delete();
-        return redirect()->route('facilities.index')->with('success', 'Facility deleted successfully.');
+        return redirect()->route('admin.fasilitas')->with('success', 'Facility deleted successfully.');
     }
 }

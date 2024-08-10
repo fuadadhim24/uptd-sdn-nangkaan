@@ -204,14 +204,14 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Fasilitas</h3>
-                            <p class="text-subtitle text-muted">Manajemen informasi tenaga kependidikan.</p>
+                            <h3>Daftar Fasilitas</h3>
+                            <p class="text-subtitle text-muted">Manajemen informasi fasilitas.</p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Fasilitas</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Daftar Fasilitas</li>
                                 </ol>
                             </nav>
                         </div>
@@ -221,303 +221,188 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">
-                                Tabel Fasilitas
-                            </h5>
+                            <h5 class="card-title">Tabel Daftar Fasilitas</h5>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive datatable-minimal">
                                 <table class="table" id="table2">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>City</th>
-                                            <th>Status</th>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Deskripsi</th>
+                                            <th>Foto</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Graiden</td>
-                                            <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                            <td>076 4820 8838</td>
-                                            <td>Offenburg</td>
-                                            <td>
-                                                <span class="badge bg-danger">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dale</td>
-                                            <td>fringilla.euismod.enim@quam.ca</td>
-                                            <td>0500 527693</td>
-                                            <td>New Quay</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nathaniel</td>
-                                            <td>mi.Duis@diam.edu</td>
-                                            <td>(012165) 76278</td>
-                                            <td>Grumo Appula</td>
-                                            <td>
-                                                <span class="badge bg-danger">Tidak Aktif</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Darius</td>
-                                            <td>velit@nec.com</td>
-                                            <td>0309 690 7871</td>
-                                            <td>Ways</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Oleg</td>
-                                            <td>rhoncus.id@Aliquamauctorvelit.net</td>
-                                            <td>0500 441046</td>
-                                            <td>Rossignol</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kermit</td>
-                                            <td>diam.Sed.diam@anteVivamusnon.org</td>
-                                            <td>(01653) 27844</td>
-                                            <td>Patna</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jermaine</td>
-                                            <td>sodales@nuncsit.org</td>
-                                            <td>0800 528324</td>
-                                            <td>Mold</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ferdinand</td>
-                                            <td>gravida.molestie@tinciduntadipiscing.org</td>
-                                            <td>(016977) 4107</td>
-                                            <td>Marlborough</td>
-                                            <td>
-                                                <span class="badge bg-danger">Tidak Aktif</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kuame</td>
-                                            <td>Quisque.purus@mauris.org</td>
-                                            <td>(0151) 561 8896</td>
-                                            <td>Tresigallo</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Deacon</td>
-                                            <td>Duis.a.mi@sociisnatoquepenatibus.com</td>
-                                            <td>07740 599321</td>
-                                            <td>Karapınar</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Channing</td>
-                                            <td>tempor.bibendum.Donec@ornarelectusante.ca</td>
-                                            <td>0845 46 49</td>
-                                            <td>Warrnambool</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Aladdin</td>
-                                            <td>sem.ut@pellentesqueafacilisis.ca</td>
-                                            <td>0800 1111</td>
-                                            <td>Bothey</td>
-                                            <td>
-                                                <span class="badge bg-danger">Tidak Aktif</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cruz</td>
-                                            <td>non@quisturpisvitae.ca</td>
-                                            <td>07624 944915</td>
-                                            <td>Shikarpur</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Keegan</td>
-                                            <td>molestie.dapibus@condimentumDonecat.edu</td>
-                                            <td>0800 200103</td>
-                                            <td>Assen</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ray</td>
-                                            <td>placerat.eget@sagittislobortis.edu</td>
-                                            <td>(0112) 896 6829</td>
-                                            <td>Hofors</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maxwell</td>
-                                            <td>diam@dapibus.org</td>
-                                            <td>0334 836 4028</td>
-                                            <td>Thane</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Carter</td>
-                                            <td>urna.justo.faucibus@orci.com</td>
-                                            <td>07079 826350</td>
-                                            <td>Biez</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Stone</td>
-                                            <td>velit.Aliquam.nisl@sitametrisus.com</td>
-                                            <td>0800 1111</td>
-                                            <td>Olivar</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Berk</td>
-                                            <td>fringilla.porttitor.vulputate@taciti.edu</td>
-                                            <td>(0101) 043 2822</td>
-                                            <td>Sanquhar</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Philip</td>
-                                            <td>turpis@euenimEtiam.org</td>
-                                            <td>0500 571108</td>
-                                            <td>Okara</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kibo</td>
-                                            <td>feugiat@urnajustofaucibus.co.uk</td>
-                                            <td>07624 682306</td>
-                                            <td>La Cisterna</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bruno</td>
-                                            <td>elit.Etiam.laoreet@luctuslobortisClass.edu</td>
-                                            <td>07624 869434</td>
-                                            <td>Rocca d"Arce</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Leonard</td>
-                                            <td>blandit.enim.consequat@mollislectuspede.net</td>
-                                            <td>0800 1111</td>
-                                            <td>Lobbes</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hamilton</td>
-                                            <td>mauris@diam.org</td>
-                                            <td>0800 256 8788</td>
-                                            <td>Sanzeno</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Harding</td>
-                                            <td>Lorem.ipsum.dolor@etnetuset.com</td>
-                                            <td>0800 1111</td>
-                                            <td>Obaix</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Emmanuel</td>
-                                            <td>eget.lacus.Mauris@feugiatSednec.org</td>
-                                            <td>(016977) 8208</td>
-                                            <td>Saint-Remy-Geest</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
+                                        @forelse($facilities as $index => $facility)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $facility->name }}</td>
+                                                <td>{{ $facility->description }}</td>
+                                                <td>
+                                                    @if ($facility->photo)
+                                                        <!-- Button trigger modal -->
+                                                        <button type="button" class="btn btn-outline-success btn-sm"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#photoModal{{ $facility->id }}">
+                                                            View Photo
+                                                        </button>
+
+                                                        <!-- Photo Modal -->
+                                                        <div class="modal fade" id="photoModal{{ $facility->id }}"
+                                                            tabindex="-1"
+                                                            aria-labelledby="photoModalLabel{{ $facility->id }}"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="photoModalLabel{{ $facility->id }}">
+                                                                            Facility Photo
+                                                                        </h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <img src="{{ asset('storage/facilities/' . $facility->photo) }}"
+                                                                            alt="Facility Photo" class="img-fluid">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @else
+                                                        No Photo
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <!-- Edit and Delete Buttons -->
+                                                    <button type="button" class="btn btn-warning btn-sm"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#editFacilityModal-{{ $facility->id }}">
+                                                        Edit
+                                                    </button>
+                                                    <form action="{{ route('facilities.destroy', $facility->id) }}"
+                                                        method="POST" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus fasilitas ini?')">
+                                                            Delete
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+
+                                            <!-- Edit Facility Modal -->
+                                            <div class="modal fade" id="editFacilityModal-{{ $facility->id }}"
+                                                tabindex="-1"
+                                                aria-labelledby="editFacilityModalLabel-{{ $facility->id }}"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <form method="POST"
+                                                            action="{{ route('facilities.update', $facility->id) }}"
+                                                            enctype="multipart/form-data">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"
+                                                                    id="editFacilityModalLabel-{{ $facility->id }}">
+                                                                    Edit
+                                                                    Facility</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <label for="name">Nama</label>
+                                                                    <input type="text" id="name"
+                                                                        class="form-control" name="name"
+                                                                        value="{{ $facility->name }}" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="description">Deskripsi</label>
+                                                                    <textarea id="description" class="form-control" name="description" required>{{ $facility->description }}</textarea>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="photo">Foto</label>
+                                                                    <input type="file" id="photo"
+                                                                        class="form-control" name="photo">
+                                                                    @if ($facility->photo)
+                                                                        <p class="mt-2">Current photo: <img
+                                                                                src="{{ asset('storage/facilities/' . $facility->photo) }}"
+                                                                                alt="Facility Photo"
+                                                                                style="max-width: 100px;"></p>
+                                                                    @endif
+                                                                    <p class="mt-2 text-muted">Allowed file types:
+                                                                        JPEG, PNG, JPG, GIF.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Batal</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Simpan</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @empty
+                                            <tr>
+                                                <td colspan="5" class="text-center">Tidak ada data fasilitas
+                                                    tersedia</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-
                 </section>
                 <!-- Minimal jQuery Datatable end -->
 
                 <!-- Button to trigger modal -->
                 <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
-                    data-bs-target="#lowonganModal">
+                    data-bs-target="#addFacilityModal">
                     Tambah Fasilitas
                 </button>
 
-                {{-- modal --}}
-                <!-- Modal -->
-                <div class="modal fade" id="lowonganModal" tabindex="-1" aria-labelledby="lowonganModalLabel"
+                <!-- Add Facility Modal -->
+                <div class="modal fade" id="addFacilityModal" tabindex="-1" aria-labelledby="addFacilityModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form class="form form-vertical" id="lowonganForm" method="post" action="#"
+                            <form method="POST" action="{{ route('facilities.store') }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="lowonganModalLabel">Tambah Survey Baru</h5>
+                                    <h5 class="modal-title">Tambah Fasilitas Baru</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="form-body">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="nama">Nama Survey</label>
-                                                    <input type="text" id="nama" class="form-control"
-                                                        name="nama" placeholder="Nama lowonngan">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="nama">Deskripsi</label>
-                                                    <textarea type="text" id="deskripsi" class="form-control" name="deskripsi" placeholder="..."></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="name">Nama</label>
+                                        <input type="text" id="name" class="form-control" name="name"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Deskripsi</label>
+                                        <textarea id="description" class="form-control" name="description" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="photo">Foto</label>
+                                        <input type="file" id="photo" class="form-control" name="photo">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -529,8 +414,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
 
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
