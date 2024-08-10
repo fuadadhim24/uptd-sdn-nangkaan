@@ -4,55 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Models\PrincipalWelcomeMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PrincipalWelcomeMessageController extends Controller
 {
     public function index()
     {
-        $messages = PrincipalWelcomeMessage::all();
-        return view('principal_welcome_messages.index', compact('messages'));
-    }
-
-    public function create()
-    {
-        return view('principal_welcome_messages.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'message' => 'required|string',
-            'photo_path' => 'nullable|string',
-        ]);
-
-        PrincipalWelcomeMessage::create($request->all());
-        return redirect()->route('principal_welcome_messages.index')->with('success', 'Principal Welcome Message created successfully.');
-    }
-
-    public function show(PrincipalWelcomeMessage $principalWelcomeMessage)
-    {
-        return view('principal_welcome_messages.show', compact('principalWelcomeMessage'));
-    }
-
-    public function edit(PrincipalWelcomeMessage $principalWelcomeMessage)
-    {
-        return view('principal_welcome_messages.edit', compact('principalWelcomeMessage'));
+        $message = PrincipalWelcomeMessage::latest()->first(); 
+        return view('admin.sambutan.index', compact('message'));
     }
 
     public function update(Request $request, PrincipalWelcomeMessage $principalWelcomeMessage)
     {
         $request->validate([
             'message' => 'required|string',
-            'photo_path' => 'nullable|string',
+            'photo_path' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        $principalWelcomeMessage->update($request->all());
-        return redirect()->route('principal_welcome_messages.index')->with('success', 'Principal Welcome Message updated successfully.');
-    }
+        $data = $request->only(['message']);
 
-    public function destroy(PrincipalWelcomeMessage $principalWelcomeMessage)
-    {
-        $principalWelcomeMessage->delete();
-        return redirect()->route('principal_welcome_messages.index')->with('success', 'Principal Welcome Message deleted successfully.');
+        if ($request->hasFile('photo_path')) {
+            if ($principalWelcomeMessage->photo_path) {
+                Storage::disk('public')->delete('principal_welcome_messages/' . $principalWelcomeMessage->photo_path);
+            }
+
+            $file = $request->file('photo_path');
+            $filename = Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('principal_welcome_messages', $filename, 'public');
+            $data['photo_path'] = $filename;
+        }
+
+        $principalWelcomeMessage->update($data);
+        return redirect()->route('admin.sambutan')->with('success', 'Principal Welcome Message updated successfully.');
     }
 }

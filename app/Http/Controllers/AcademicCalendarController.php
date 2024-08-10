@@ -4,55 +4,40 @@ namespace App\Http\Controllers;
 
 use App\Models\AcademicCalendar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class AcademicCalendarController extends Controller
 {
     public function index()
     {
-        $calendars = AcademicCalendar::all();
-        return view('academic_calendars.index', compact('calendars'));
-    }
-
-    public function create()
-    {
-        return view('academic_calendars.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'file_path' => 'required|string',
-        ]);
-
-        AcademicCalendar::create($request->all());
-        return redirect()->route('academic_calendars.index')->with('success', 'Academic Calendar created successfully.');
-    }
-
-    public function show(AcademicCalendar $academicCalendar)
-    {
-        return view('academic_calendars.show', compact('academicCalendar'));
-    }
-
-    public function edit(AcademicCalendar $academicCalendar)
-    {
-        return view('academic_calendars.edit', compact('academicCalendar'));
+        $academicCalendar = AcademicCalendar::latest()->first();
+        return view('admin.kalender-akademik.index', compact('academicCalendar'));
     }
 
     public function update(Request $request, AcademicCalendar $academicCalendar)
     {
+        // Validate the request
         $request->validate([
             'title' => 'required|string|max:255',
-            'file_path' => 'required|string',
+            'file_path' => 'nullable|image|mimes:jpeg,png,jpg,gif', 
         ]);
 
-        $academicCalendar->update($request->all());
-        return redirect()->route('academic_calendars.index')->with('success', 'Academic Calendar updated successfully.');
-    }
+        $data = $request->only(['title']);
 
-    public function destroy(AcademicCalendar $academicCalendar)
-    {
-        $academicCalendar->delete();
-        return redirect()->route('academic_calendars.index')->with('success', 'Academic Calendar deleted successfully.');
+        if ($request->hasFile('file_path')) {
+            if ($academicCalendar->file_path) {
+                Storage::disk('public')->delete('academic_calendars/' . $academicCalendar->file_path);
+            }
+
+            $file = $request->file('file_path');
+            $filename = Str::random(10) . '.' . $file->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('academic_calendars', $file, $filename);
+            $data['file_path'] = $filename;
+        }
+
+        $academicCalendar->update($data);
+
+        return redirect()->route('admin.kalender-akademik')->with('success', 'Academic Calendar updated successfully.');
     }
 }

@@ -16,11 +16,7 @@ class AcademicCalendarsTableSeeder extends Seeder
             [
                 'title' => 'Academic Calendar 2024',
                 'file_path' => 'files/academic_calendar_2024.pdf',
-            ],
-            [
-                'title' => 'Academic Calendar 2025',
-                'file_path' => 'files/academic_calendar_2025.pdf',
-            ],
+            ]
         ]);
     }
 }

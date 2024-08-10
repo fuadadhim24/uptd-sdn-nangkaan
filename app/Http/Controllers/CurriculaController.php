@@ -4,55 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Models\Curricula;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CurriculaController extends Controller
 {
     public function index()
     {
-        $curricula = Curricula::all();
-        return view('curricula.index', compact('curricula'));
-    }
-
-    public function create()
-    {
-        return view('curricula.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'file_path' => 'required|string',
-        ]);
-
-        Curricula::create($request->all());
-        return redirect()->route('curricula.index')->with('success', 'Curricula created successfully.');
-    }
-
-    public function show(Curricula $curriculum)
-    {
-        return view('curricula.show', compact('curriculum'));
-    }
-
-    public function edit(Curricula $curriculum)
-    {
-        return view('curricula.edit', compact('curriculum'));
+        $curriculum = Curricula::latest()->first();
+        return view('admin.kurikulum.index', compact('curriculum'));
     }
 
     public function update(Request $request, Curricula $curriculum)
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'file_path' => 'required|string',
+            'file_path' => 'nullable|file|mimes:pdf', 
         ]);
 
-        $curriculum->update($request->all());
-        return redirect()->route('curricula.index')->with('success', 'Curricula updated successfully.');
-    }
+        $data = $request->only(['title']);
 
-    public function destroy(Curricula $curriculum)
-    {
-        $curriculum->delete();
-        return redirect()->route('curricula.index')->with('success', 'Curricula deleted successfully.');
+        if ($request->hasFile('file_path')) {
+            if ($curriculum->file_path) {
+                Storage::disk('public')->delete('curricula/' . $curriculum->file_path);
+            }
+
+            $file = $request->file('file_path');
+            $filename = Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('curricula', $filename, 'public');
+            $data['file_path'] = $filename;
+        }
+
+        $curriculum->update($data);
+        return redirect()->route('admin.kurikulum')->with('success', 'Curricula updated successfully.');
     }
 }

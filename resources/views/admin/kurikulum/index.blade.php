@@ -150,7 +150,8 @@
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="{{ route('admin.ekstrakulikuler') }}" class="submenu-link">Ekstrakulikuler</a>
+                                    <a href="{{ route('admin.ekstrakulikuler') }}"
+                                        class="submenu-link">Ekstrakulikuler</a>
 
                                 </li>
 
@@ -198,8 +199,8 @@
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
                             <h3>Update Kurikulum</h3>
-                            <p class="text-subtitle text-muted">Informasi kurikulum pada laman landing page
-                                website.</p>
+                            <p class="text-subtitle text-muted">Informasi kurikulum pada laman landing page website.
+                            </p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -216,20 +217,41 @@
                         <div class="col-12 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <img src="{{ asset('assets') }}\img\admin\ppdb\ppdb.jpg" alt="Avatar"
-                                        class="img-fluid">
+                                    <!-- Display current file if available -->
+                                    @if ($curriculum->file_path)
+                                        <embed src="{{ asset('storage/curricula/' . $curriculum->file_path) }}" width="100%" height="500px" />
+                                    @else
+                                        <p>No file available</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-lg-8">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="#" method="get">
+                                    <form action="{{ route('curricula.update', $curriculum->id) }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+
                                         <div class="form-group">
-                                            <label for="foto" class="form-label">Poster Kurikulum</label>
-                                            <input type="file" name="foto" id="foto" class="form-control"
-                                                value="John Doe">
+                                            <label for="title" class="form-label">Title</label>
+                                            <input type="text" name="title" id="title" class="form-control"
+                                                value="{{ old('title', $curriculum->title) }}">
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="file_path" class="form-label">Upload PDF</label>
+                                            <input type="file" name="file_path" id="file_path"
+                                                class="form-control">
+                                            @if ($curriculum->file_path)
+                                                <p class="mt-2">Current file: <a
+                                                        href="{{ asset('storage/curricula/' . $curriculum->file_path) }}"
+                                                        target="_blank">{{ $curriculum->file_path }}</a></p>
+                                            @endif
+                                            <p class="mt-2 text-muted">Allowed file type: PDF.</p>
+                                        </div>
+
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Save Changes</button>
                                         </div>
@@ -239,8 +261,6 @@
                         </div>
                     </div>
                 </section>
-
-
             </div>
 
             <footer>
@@ -254,6 +274,8 @@
                 </div>
             </footer>
         </div>
+
+
     </div>
 
 

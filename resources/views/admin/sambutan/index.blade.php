@@ -150,7 +150,8 @@
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="{{ route('admin.ekstrakulikuler') }}" class="submenu-link">Ekstrakulikuler</a>
+                                    <a href="{{ route('admin.ekstrakulikuler') }}"
+                                        class="submenu-link">Ekstrakulikuler</a>
 
                                 </li>
 
@@ -198,9 +199,7 @@
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
                             <h3>Update Sambutan Kepala Sekolah</h3>
-                            <p class="text-subtitle text-muted">Informasi sambutan kepala sekolah pada laman landing
-                                page
-                                website.</p>
+                            <p class="text-subtitle text-muted">Update pesan sambutan kepala sekolah and foto.</p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -218,26 +217,41 @@
                         <div class="col-12 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <img src="{{ asset('assets') }}\img\admin\ppdb\ppdb.jpg" alt="Avatar"
-                                        class="img-fluid">
+                                    <!-- Display current image if available -->
+                                    @if ($message->photo_path)
+                                        <img src="{{ asset('storage/principal_welcome_messages/' . $message->photo_path) }}"
+                                            alt="Principal's Photo" class="img-fluid">
+                                    @else
+                                        <p>No photo available</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-lg-8">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="#" method="get">
+                                    <form action="{{ route('principal_welcome_messages.update', $message->id) }}"
+                                        method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+
                                         <div class="form-group">
-                                            <label for="deskripsi" class="form-label">Sambutan</label>
-                                            <textarea type="text" name="deskripsi" id="foto" class="form-control"
-                                                placeholder="Cth: Selamat datang...."></textarea>
+                                            <label for="message" class="form-label">Message</label>
+                                            <textarea name="message" id="message" class="form-control" rows="4">{{ old('message', $message->message) }}</textarea>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="foto" class="form-label">Poster Sambutan Kepala
-                                                Sekolah</label>
-                                            <input type="file" name="foto" id="foto" class="form-control"
-                                                value="John Doe">
+                                            <label for="photo_path" class="form-label">Upload Photo</label>
+                                            <input type="file" name="photo_path" id="photo_path"
+                                                class="form-control">
+                                            @if ($message->photo_path)
+                                                <p class="mt-2">Current file: <a
+                                                        href="{{ asset('storage/principal_welcome_messages/' . $message->photo_path) }}"
+                                                        target="_blank">{{ $message->photo_path }}</a></p>
+                                            @endif
+                                            <p class="mt-2 text-muted">Allowed file types: JPEG, PNG, JPG, GIF.</p>
                                         </div>
+
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Save Changes</button>
                                         </div>
@@ -247,8 +261,6 @@
                         </div>
                     </div>
                 </section>
-
-
             </div>
 
             <footer>

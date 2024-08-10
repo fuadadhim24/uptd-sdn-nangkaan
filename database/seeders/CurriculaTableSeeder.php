@@ -16,11 +16,7 @@ class CurriculaTableSeeder extends Seeder
             [
                 'title' => 'Curriculum 2024',
                 'file_path' => 'files/curriculum_2024.pdf',
-            ],
-            [
-                'title' => 'Curriculum 2025',
-                'file_path' => 'files/curriculum_2025.pdf',
-            ],
+            ]
         ]);
     }
 }

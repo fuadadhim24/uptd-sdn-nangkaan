@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\AcademicCalendarController;
+use App\Http\Controllers\CurriculaController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\PpdbInformationController;
+use App\Http\Controllers\PrincipalWelcomeMessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -28,10 +32,19 @@ Route::put('/admin-faq/{faq}', [FaqController::class, 'update'])->middleware(['a
 Route::delete('/admin-faq/{faq}', [FaqController::class, 'destroy'])->middleware(['auth', 'verified'])->name('faqs.destroy');
 
 Route::get('/admin-fasilitas', function () {return view('admin.fasilitas.index');})->middleware(['auth', 'verified'])->name('admin.fasilitas');
-Route::get('/admin-informasi-ppdb', function () {return view('admin.ppdb.index');})->middleware(['auth', 'verified'])->name('admin.ppdb');
-Route::get('/admin-kalender-akademik', function () {return view('admin.kalender-akademik.index');})->middleware(['auth', 'verified'])->name('admin.kalender-akademik');
-Route::get('/admin-kurikulum', function () {return view('admin.kurikulum.index');})->middleware(['auth', 'verified'])->name('admin.kurikulum');
-Route::get('/admin-sambutan-kepala-sekolah', function () {return view('admin.sambutan.index');})->middleware(['auth', 'verified'])->name('admin.sambutan');
+
+Route::get('/admin-informasi-ppdb', [PpdbInformationController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.ppdb');
+Route::put('/admin-informasi-ppdb/{ppdbInformation}', [PpdbInformationController::class, 'update'])->name('ppdb_informations.update');
+
+
+Route::get('/admin-kalender-akademik', [AcademicCalendarController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.kalender-akademik');
+Route::put('/admin-kalender-akademik/{academicCalendar}', [AcademicCalendarController::class, 'update'])->name('academic_calendars.update');
+
+Route::get('/admin-kurikulum', [CurriculaController::class,'index'])->middleware(['auth', 'verified'])->name('admin.kurikulum');
+Route::put('/admin-kurikulum/{curriculum}', [CurriculaController::class, 'update'])->name('curricula.update');
+
+Route::get('/admin-sambutan-kepala-sekolah', [PrincipalWelcomeMessageController::class,'index'])->middleware(['auth', 'verified'])->name('admin.sambutan');
+Route::put('/admin-sambutan-kepala-sekolah/{principalWelcomeMessage}', [PrincipalWelcomeMessageController::class, 'update'])->name('principal_welcome_messages.update');
 
 Route::get('/admin-daftar-guru', [TeacherController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.guru');
 Route::post('/admin-daftar-guru/store', [TeacherController::class, 'store'])->middleware(['auth', 'verified'])->name('teachers.store');

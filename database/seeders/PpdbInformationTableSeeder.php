@@ -16,11 +16,7 @@ class PpdbInformationTableSeeder extends Seeder
             [
                 'title' => 'PPDB Guidelines 2024',
                 'file_path' => 'files/ppdb_guidelines_2024.pdf',
-            ],
-            [
-                'title' => 'PPDB Application Form',
-                'file_path' => 'files/ppdb_application_form.pdf',
-            ],
+            ]
         ]);
     }
 }
