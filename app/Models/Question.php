@@ -8,11 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
+
     protected $table = 'questions';
 
     protected $fillable = [
         'survey_id',
         'question_text',
+        'question_type',  
+        'description',  
+        'range',   
+        'options'    
+    ];
+
+    protected $casts = [
+        'options' => 'array', 
     ];
 
     public function survey()

@@ -8,6 +8,8 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\PpdbInformationController;
 use App\Http\Controllers\PrincipalWelcomeMessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,11 +23,25 @@ Route::get('/visi-misi', function () {return view('visi-misi');})->name('visi-mi
 Route::get('/survey', function () {return view('survey');})->name('survey');
 Route::get('/survey-1', function () {return view('daftar-survey.index');})->name('survey-1');
 
+
+// admin
 Route::get('/admin-dashboard', function () {return view('admin.dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/admin-daftar-survey', function () {return view('admin.surveys.index');})->middleware(['auth', 'verified'])->name('admin.surveys');
-Route::get('/admin-daftar-survey/pertanyaan', function () {return view('admin.surveys.questions.index');})->middleware(['auth', 'verified'])->name('admin.question');
+
+Route::get('/admin-daftar-survey/{survey}/pertanyaan', [QuestionController::class,'index'])->middleware(['auth', 'verified'])->name('admin.question');
+Route::put('/admin-daftar-survey/pertanyaan/{question}', [QuestionController::class, 'update'])->middleware(['auth', 'verified'])->name('admin.questions.update');
+Route::delete('/admin-daftar-survey/pertanyaan/{question}', [QuestionController::class, 'destroy'])->middleware(['auth', 'verified'])->name('admin.questions.destroy');
+Route::post('/admin-daftar-survey/pertanyaan/store', [QuestionController::class, 'store'])->middleware(['auth', 'verified'])->name('admin.questions.store');
+
+
 Route::get('/admin-hasil-survey', function () {return view('admin.surveys.results.index');})->middleware(['auth', 'verified'])->name('admin.surveys.result');
 Route::get('/admin-hasil-survey/detail', function () {return view('admin.surveys.results.detail.index');})->middleware(['auth', 'verified'])->name('admin.surveys.result.detail');
+
+Route::get('/admin-daftar-survey', [SurveyController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.surveys');
+Route::post('/admin-surveys/store', [SurveyController::class, 'store'])->middleware(['auth', 'verified'])->name('admin.surveys.store');
+Route::get('/admin-surveys/{survey}/edit', [SurveyController::class, 'edit'])->middleware(['auth', 'verified'])->name('admin.surveys.edit');
+Route::put('/admin-surveys/{survey}/toggle-status', [SurveyController::class, 'toggleStatus'])->middleware(['auth', 'verified'])->name('admin.surveys.toggleStatus');
+Route::put('/admin-surveys/{survey}', [SurveyController::class, 'update'])->middleware(['auth', 'verified'])->name('admin.surveys.update');
+Route::delete('/admin-surveys/{survey}', [SurveyController::class, 'destroy'])->middleware(['auth', 'verified'])->name('admin.surveys.destroy');
 
 Route::get('/admin-faq', [FaqController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.faq');
 Route::post('/admin-faq/store', [FaqController::class, 'store'])->middleware(['auth', 'verified'])->name('faqs.store');

@@ -222,7 +222,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">
-                                Tabel Daftar Pertanyaan
+                                Tabel Daftar Pertanyaan untuk Survey: {{ $survey->title }}
                             </h5>
                         </div>
                         <div class="card-body">
@@ -230,250 +230,165 @@
                                 <table class="table" id="table2">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>City</th>
-                                            <th>Status</th>
+                                            <th>No</th>
+                                            <th>Pertanyaan</th>
+                                            <th>Jenis Pertanyaan</th>
+                                            <th>Opsi</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Graiden</td>
-                                            <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                            <td>076 4820 8838</td>
-                                            <td>Offenburg</td>
-                                            <td>
-                                                <span class="badge bg-danger">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dale</td>
-                                            <td>fringilla.euismod.enim@quam.ca</td>
-                                            <td>0500 527693</td>
-                                            <td>New Quay</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nathaniel</td>
-                                            <td>mi.Duis@diam.edu</td>
-                                            <td>(012165) 76278</td>
-                                            <td>Grumo Appula</td>
-                                            <td>
-                                                <span class="badge bg-danger">Tidak Aktif</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Darius</td>
-                                            <td>velit@nec.com</td>
-                                            <td>0309 690 7871</td>
-                                            <td>Ways</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Oleg</td>
-                                            <td>rhoncus.id@Aliquamauctorvelit.net</td>
-                                            <td>0500 441046</td>
-                                            <td>Rossignol</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kermit</td>
-                                            <td>diam.Sed.diam@anteVivamusnon.org</td>
-                                            <td>(01653) 27844</td>
-                                            <td>Patna</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jermaine</td>
-                                            <td>sodales@nuncsit.org</td>
-                                            <td>0800 528324</td>
-                                            <td>Mold</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ferdinand</td>
-                                            <td>gravida.molestie@tinciduntadipiscing.org</td>
-                                            <td>(016977) 4107</td>
-                                            <td>Marlborough</td>
-                                            <td>
-                                                <span class="badge bg-danger">Tidak Aktif</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kuame</td>
-                                            <td>Quisque.purus@mauris.org</td>
-                                            <td>(0151) 561 8896</td>
-                                            <td>Tresigallo</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Deacon</td>
-                                            <td>Duis.a.mi@sociisnatoquepenatibus.com</td>
-                                            <td>07740 599321</td>
-                                            <td>Karapınar</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Channing</td>
-                                            <td>tempor.bibendum.Donec@ornarelectusante.ca</td>
-                                            <td>0845 46 49</td>
-                                            <td>Warrnambool</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Aladdin</td>
-                                            <td>sem.ut@pellentesqueafacilisis.ca</td>
-                                            <td>0800 1111</td>
-                                            <td>Bothey</td>
-                                            <td>
-                                                <span class="badge bg-danger">Tidak Aktif</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cruz</td>
-                                            <td>non@quisturpisvitae.ca</td>
-                                            <td>07624 944915</td>
-                                            <td>Shikarpur</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Keegan</td>
-                                            <td>molestie.dapibus@condimentumDonecat.edu</td>
-                                            <td>0800 200103</td>
-                                            <td>Assen</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ray</td>
-                                            <td>placerat.eget@sagittislobortis.edu</td>
-                                            <td>(0112) 896 6829</td>
-                                            <td>Hofors</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maxwell</td>
-                                            <td>diam@dapibus.org</td>
-                                            <td>0334 836 4028</td>
-                                            <td>Thane</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Carter</td>
-                                            <td>urna.justo.faucibus@orci.com</td>
-                                            <td>07079 826350</td>
-                                            <td>Biez</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Stone</td>
-                                            <td>velit.Aliquam.nisl@sitametrisus.com</td>
-                                            <td>0800 1111</td>
-                                            <td>Olivar</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Berk</td>
-                                            <td>fringilla.porttitor.vulputate@taciti.edu</td>
-                                            <td>(0101) 043 2822</td>
-                                            <td>Sanquhar</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Philip</td>
-                                            <td>turpis@euenimEtiam.org</td>
-                                            <td>0500 571108</td>
-                                            <td>Okara</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kibo</td>
-                                            <td>feugiat@urnajustofaucibus.co.uk</td>
-                                            <td>07624 682306</td>
-                                            <td>La Cisterna</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bruno</td>
-                                            <td>elit.Etiam.laoreet@luctuslobortisClass.edu</td>
-                                            <td>07624 869434</td>
-                                            <td>Rocca d"Arce</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Leonard</td>
-                                            <td>blandit.enim.consequat@mollislectuspede.net</td>
-                                            <td>0800 1111</td>
-                                            <td>Lobbes</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hamilton</td>
-                                            <td>mauris@diam.org</td>
-                                            <td>0800 256 8788</td>
-                                            <td>Sanzeno</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Harding</td>
-                                            <td>Lorem.ipsum.dolor@etnetuset.com</td>
-                                            <td>0800 1111</td>
-                                            <td>Obaix</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Emmanuel</td>
-                                            <td>eget.lacus.Mauris@feugiatSednec.org</td>
-                                            <td>(016977) 8208</td>
-                                            <td>Saint-Remy-Geest</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
+                                        @forelse($questions as $index => $question)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $question->question_text }}</td>
+                                                <td>{{ ucfirst($question->question_type) }}</td>
+                                                <td>
+                                                    @if ($question->question_type === 'radio' || $question->question_type === 'checkbox')
+                                                        @php
+                                                            $options = is_array($question->options)
+                                                                ? $question->options
+                                                                : json_decode($question->options, true);
+                                                        @endphp
+                                                        @forelse ($options as $option)
+                                                            <span
+                                                                class="badge bg-secondary">{{ $option }}</span>
+                                                        @empty
+                                                            <span class="badge bg-secondary">No Options</span>
+                                                        @endforelse
+                                                    @elseif ($question->question_type === 'range')
+                                                        @php
+                                                            // Assuming the range is stored as "min-max"
+                                                            $range = $question->range;
+                                                            $rangeParts = explode('-', $range);
+                                                            $min = $rangeParts[0] ?? 'N/A';
+                                                            $max = $rangeParts[1] ?? 'N/A';
+                                                        @endphp
+                                                        <span class="badge bg-secondary">Min: 
+                                                            {{ $min }}</span>
+                                                        <span class="badge bg-secondary">Max:
+                                                            {{ $max }}</span>
+                                                    @else
+                                                        N/A
+                                                    @endif
+                                                </td>
+
+
+
+                                                <td>
+                                                    <!-- Edit Button -->
+                                                    {{-- <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#editModal{{ $question->id }}"
+                                                        onclick="populateEditModal({{ $question->id }})">
+                                                        Edit
+                                                    </button> --}}
+
+                                                    <!-- Delete Button -->
+                                                    <form
+                                                        action="{{ route('admin.questions.destroy', $question->id) }}"
+                                                        method="POST" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input type="hidden" name="survey_id"
+                                                            value="{{ $question->survey_id }}">
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus pertanyaan ini?')">
+                                                            Delete
+                                                        </button>
+                                                    </form>
+
+                                                    <!-- Edit Modal -->
+                                                    <div class="modal fade" id="editModal{{ $question->id }}"
+                                                        tabindex="-1"
+                                                        aria-labelledby="editModalLabel{{ $question->id }}"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <form method="POST"
+                                                                    action="{{ route('admin.questions.update', $question->id) }}">
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="editModalLabel{{ $question->id }}">
+                                                                            Edit Pertanyaan</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="form-group">
+                                                                            <input type="hidden" name="survey_id"
+                                                                                value="{{ $question->survey_id }}">
+                                                                            <label
+                                                                                for="questionText{{ $question->id }}">Teks
+                                                                                Pertanyaan</label>
+                                                                            <input type="text"
+                                                                                id="questionText{{ $question->id }}"
+                                                                                class="form-control"
+                                                                                name="question_text"
+                                                                                value="{{ $question->question_text }}"
+                                                                                placeholder="Masukkan teks pertanyaan"
+                                                                                required>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                for="questionType{{ $question->id }}">Jenis
+                                                                                Pertanyaan</label>
+                                                                            <select
+                                                                                id="questionType{{ $question->id }}"
+                                                                                class="form-select"
+                                                                                name="question_type"
+                                                                                onchange="populateEditModal({{ $question->id }})">
+                                                                                <option value="text_input"
+                                                                                    {{ $question->question_type == 'text_input' ? 'selected' : '' }}>
+                                                                                    Teks Input</option>
+                                                                                <option value="text_description"
+                                                                                    {{ $question->question_type == 'text_description' ? 'selected' : '' }}>
+                                                                                    Teks Deskripsi</option>
+                                                                                <option value="radio"
+                                                                                    {{ $question->question_type == 'radio' ? 'selected' : '' }}>
+                                                                                    Radio Button</option>
+                                                                                <option value="range"
+                                                                                    {{ $question->question_type == 'range' ? 'selected' : '' }}>
+                                                                                    Range Input</option>
+                                                                                <option value="checkbox"
+                                                                                    {{ $question->question_type == 'checkbox' ? 'selected' : '' }}>
+                                                                                    Checkbox</option>
+                                                                                <option value="file"
+                                                                                    {{ $question->question_type == 'file' ? 'selected' : '' }}>
+                                                                                    File Input</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <input type="hidden"
+                                                                            id="optionsData{{ $question->id }}"
+                                                                            value="{{ json_encode($question->options) }}">
+                                                                        <div
+                                                                            id="editOptionsContainer{{ $question->id }}">
+                                                                            <!-- Opsi dinamis akan dimuat di sini -->
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                            class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Batal</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">Simpan</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="5" class="text-center">Tidak ada data pertanyaan</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>
@@ -487,38 +402,34 @@
                     Tambah Daftar Pertanyaan
                 </button>
 
-                {{-- modal --}}
                 <!-- Modal -->
                 <div class="modal fade" id="lowonganModal" tabindex="-1" aria-labelledby="lowonganModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form class="form form-vertical" id="lowonganForm" method="post" action="#"
-                                enctype="multipart/form-data">
+                            <form class="form form-vertical" id="lowonganForm" method="post"
+                                action="{{ route('admin.questions.store') }}" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="survey_id" value="{{ $survey->id }}">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="lowonganModalLabel">Tambah Pertanyaan Baru</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="form-body">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="nama">Nama Pertanyaan</label>
-                                                    <input type="text" id="nama" class="form-control"
-                                                        name="nama" placeholder="Nama lowonngan">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="nama">Deskripsi</label>
-                                                    <textarea type="text" id="deskripsi" class="form-control" name="deskripsi" placeholder="..."></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="question_type">Jenis Pertanyaan</label>
+                                        <select id="question_type" name="question_type" class="form-select" required>
+                                            <option value="" disabled selected>Pilih jenis pertanyaan</option>
+                                            <option value="text_input">Teks Input</option>
+                                            <option value="text_description">Teks Deskripsi</option>
+                                            <option value="radio">Radio Button</option>
+                                            <option value="range">Range Input</option>
+                                            <option value="checkbox">Checkbox</option>
+                                            <option value="file">File Input</option>
+                                        </select>
                                     </div>
+                                    <div id="question_input_container"></div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
@@ -529,6 +440,7 @@
                         </div>
                     </div>
                 </div>
+
 
             </div>
 
@@ -557,6 +469,158 @@
     <script src="{{ asset('extensions') }}/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('extensions') }}/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
     <script src="{{ asset('js') }}/pages/datatables.js"></script>
+
+    <script>
+        document.getElementById('question_type').addEventListener('change', function() {
+            var type = this.value;
+            var container = document.getElementById('question_input_container');
+            container.innerHTML = ''; // Clear previous inputs
+
+            if (type === 'text_input') {
+                container.innerHTML = `
+                <div class="form-group">
+                    <label for="question_text">Teks Input</label>
+                    <input type="text" id="question_text" class="form-control" name="question_text" placeholder="Masukkan teks pertanyaan" required>
+                </div>
+            `;
+            } else if (type === 'text_description') {
+                container.innerHTML = `
+                <div class="form-group">
+                    <label for="question_text">Teks Input</label>
+                    <input type="text" id="question_text" class="form-control" name="question_text" placeholder="Masukkan teks pertanyaan" required>
+                </div>
+            `;
+            } else if (type === 'radio') {
+                container.innerHTML = `
+                <div class="form-group">
+                    <label for="question_text">Nama Pertanyaan</label>
+                    <input type="text" id="question_text" class="form-control" name="question_text" placeholder="Nama pertanyaan" required>
+                </div>
+                <div id="radio_options_container">
+                    <label>Opsi Radio Button</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" name="radio_options[]" placeholder="Opsi 1" required>
+                        <button type="button" class="btn btn-outline-secondary" onclick="addOption('radio')">Tambah Opsi</button>
+                    </div>
+                </div>
+            `;
+            } else if (type === 'range') {
+                container.innerHTML = `
+                <div class="form-group">
+                    <label for="question_text">Nama Pertanyaan</label>
+                    <input type="text" id="question_text" class="form-control" name="question_text" placeholder="Nama pertanyaan" required>
+                </div>
+                <div class="form-group">
+                    <label for="range_input">Range Input (misalnya: 1-10)</label>
+                    <input type="text" id="range_input" class="form-control" name="range_input" placeholder="Rentang nilai" required>
+                </div>
+            `;
+            } else if (type === 'checkbox') {
+                container.innerHTML = `
+                <div class="form-group">
+                    <label for="question_text">Nama Pertanyaan</label>
+                    <input type="text" id="question_text" class="form-control" name="question_text" placeholder="Nama pertanyaan" required>
+                </div>
+                <div id="checkbox_options_container">
+                    <label>Opsi Checkbox</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" name="checkbox_options[]" placeholder="Opsi 1" required>
+                        <button type="button" class="btn btn-outline-secondary" onclick="addOption('checkbox')">Tambah Opsi</button>
+                    </div>
+                </div>
+            `;
+            } else if (type === 'file') {
+                container.innerHTML = `
+                <div class="form-group">
+                    <label for="question_text">Nama Pertanyaan</label>
+                    <input type="text" id="question_text" class="form-control" name="question_text" placeholder="Nama pertanyaan" required>
+                </div>
+            `;
+            }
+        });
+
+        function addOption(type) {
+            var container = document.getElementById(type + '_options_container');
+            var inputGroup = document.createElement('div');
+            inputGroup.className = 'input-group mb-2';
+            inputGroup.innerHTML = `
+            <input type="text" class="form-control" name="${type}_options[]" placeholder="Opsi ${container.children.length + 1}" required>
+        `;
+            container.appendChild(inputGroup);
+        }
+    </script>
+    <script>
+        // Fungsi untuk memuat data ke modal edit
+        function populateEditModal(questionId) {
+            var questionType = document.getElementById('questionType' + questionId).value;
+            var optionsData = document.getElementById('optionsData' + questionId).value;
+            var container = document.getElementById('editOptionsContainer' + questionId);
+
+            // Bersihkan kontainer opsi lama
+            container.innerHTML = '';
+
+            if (questionType === 'radio' || questionType === 'checkbox') {
+                container.innerHTML = `
+                    <label>Opsi ${questionType === 'radio' ? 'Radio Button' : 'Checkbox'}</label>
+                `;
+
+                // Jika data opsi ada, parse JSON-nya
+                var options = JSON.parse(optionsData || '[]');
+
+                // Menambahkan opsi yang ada
+                options.forEach((option, index) => {
+                    container.innerHTML += `
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" name="${questionType}_options[]" value="${option}" placeholder="Opsi ${index + 1}" required>
+                        </div>
+                    `;
+                });
+
+                // Tambahkan tombol "Tambah Opsi" hanya sekali
+                if (!container.querySelector('.btn-outline-secondary')) {
+                    container.innerHTML += `
+                        <div class="input-group mb-2">
+                            <button type="button" class="btn btn-outline-secondary" onclick="addOptionEdit('${questionType}', '${questionId}')">Tambah Opsi</button>
+                        </div>
+                    `;
+                }
+
+            } else if (questionType === 'range') {
+                container.innerHTML = `
+                    <div class="form-group">
+                        <label for="rangeInput${questionId}">Range Input (misalnya: 1-10)</label>
+                        <input type="text" id="rangeInput${questionId}" class="form-control" name="range_input" placeholder="Rentang nilai" required>
+                    </div>
+                `;
+            }
+        }
+
+        function addOptionEdit(type, questionId) {
+            var container = document.getElementById('editOptionsContainer' + questionId);
+
+            // Tambahkan opsi baru
+            var inputGroup = document.createElement('div');
+            inputGroup.className = 'input-group mb-2';
+            inputGroup.innerHTML = `
+                <input type="text" class="form-control" name="${type}_options[]" placeholder="Opsi ${container.children.length}" required>
+            `;
+            container.insertBefore(inputGroup, container.lastElementChild); // Insert before the "Tambah Opsi" button
+
+            // Jika tombol "Tambah Opsi" tidak ada, tambahkan
+            if (!container.querySelector('.btn-outline-secondary')) {
+                var addButtonGroup = document.createElement('div');
+                addButtonGroup.className = 'input-group mb-2';
+                addButtonGroup.innerHTML = `
+                    <button type="button" class="btn btn-outline-secondary" onclick="addOptionEdit('${type}', '${questionId}')">Tambah Opsi</button>
+                `;
+                container.appendChild(addButtonGroup);
+            }
+        }
+    </script>
+
+
+
+
 
 </body>
 

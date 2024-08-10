@@ -228,7 +228,7 @@
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Collapse</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Daftar Survey</li>
                                 </ol>
                             </nav>
                         </div>
@@ -237,64 +237,116 @@
                 <!-- list groups simple & disabled start -->
                 <section id="basic-list-group">
                     <div class="row match-height">
-                        <div class="col-lg-6 col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Kepuasan Siswa Terhadap Fasilitas dan Layanan Sekolah</h4>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text row">
-                                        <span class="badge bg-light-success">Aktif</span>
-                                    </p>
-                                    <p>
-                                        <a class="btn btn-outline-danger" data-bs-toggle="collapse" role="button">
-                                            NonAktifkan
-                                        </a>
-                                        <button class="btn btn-outline-secondary" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseExample1"
-                                            aria-expanded="false" aria-controls="collapseExample1">
-                                            Deskripsi
-                                        </button>
-                                        <a class="btn btn-primary" href="{{ route('admin.question') }}">
-                                            Daftar Pertanyaan</a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample1">
-                                        19/10/2024<br>
-                                        Some placeholder content for the collapse component. This panel is hidden by
-                                        default but revealed when the user activates the relevant trigger.
+                        @forelse ($surveys as $survey)
+                            <div class="col-lg-6 col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">{{ $survey->title }}</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text row">
+                                            <span
+                                                class="badge bg-light-{{ $survey->is_active ? 'success' : 'danger' }}">
+                                                {{ $survey->is_active ? 'Aktif' : 'Tidak Aktif' }}
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <!-- Toggle Status Button -->
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <!-- Action Buttons -->
+                                            <div>
+                                                <!-- Toggle Status Button -->
+                                                <form action="{{ route('admin.surveys.toggleStatus', $survey) }}"
+                                                    method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit"
+                                                        class="btn btn-outline-{{ $survey->is_active ? 'danger' : 'success' }}">
+                                                        {{ $survey->is_active ? 'NonAktifkan' : 'Aktifkan' }}
+                                                    </button>
+                                                </form>
+
+                                                <!-- Description Button -->
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseExample{{ $survey->id }}"
+                                                    aria-expanded="false"
+                                                    aria-controls="collapseExample{{ $survey->id }}">
+                                                    Deskripsi
+                                                </button>
+
+                                                <!-- Edit Button -->
+                                                <button class="btn btn-outline-info" type="button"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#editSurveyModal{{ $survey->id }}">
+                                                    Edit
+                                                </button>
+
+                                                <!-- Questions Button -->
+                                                <a class="btn btn-primary"
+                                                    href="{{ route('admin.question', ['survey' => $survey->id]) }}">
+                                                    Daftar Pertanyaan
+                                                </a>
+                                            </div>
+
+                                            <!-- Delete Button -->
+                                            <form action="{{ route('admin.surveys.destroy', $survey) }}"
+                                                method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">
+                                                    Hapus
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="collapse" id="collapseExample{{ $survey->id }}">
+                                            {{ $survey->description }}<br>
+                                            <small>{{ $survey->created_at->format('d/m/Y') }}</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Respon orang tua terhadap hasil kegiatan Outbound</h4>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text row">
-                                        <span class="badge bg-light-danger">Tidak Aktif</span>
-                                    </p>
-                                    <p>
-                                        <a class="btn btn-outline-success" data-bs-toggle="collapse" role="button">
-                                            Aktifkan
-                                        </a>
-                                        <button class="btn btn-outline-secondary" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseExample2"
-                                            aria-expanded="false" aria-controls="collapseExample2">
-                                            Deskripsi
-                                        </button>
-                                        <a class="btn btn-primary" href="{{ route('admin.question') }}">
-                                            Daftar Pertanyaan</a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample2">
-                                        19/10/2024<br>
-                                        Some placeholder content for the collapse component. This panel is hidden by
-                                        default but revealed when the user activates the relevant trigger.
+                            <!-- Edit Survey Modal -->
+                            <div class="modal fade" id="editSurveyModal{{ $survey->id }}" tabindex="-1"
+                                aria-labelledby="editSurveyModalLabel{{ $survey->id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form method="POST" action="{{ route('admin.surveys.update', $survey) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editSurveyModalLabel{{ $survey->id }}">
+                                                    Edit Survey</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="editNama{{ $survey->id }}">Nama Survey</label>
+                                                    <input type="text" id="editNama{{ $survey->id }}"
+                                                        class="form-control" name="nama"
+                                                        value="{{ $survey->title }}" placeholder="Nama survey"
+                                                        required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editDeskripsi{{ $survey->id }}">Deskripsi</label>
+                                                    <textarea id="editDeskripsi{{ $survey->id }}" class="form-control" name="deskripsi" placeholder="Deskripsi..."
+                                                        rows="3">{{ $survey->description }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @empty
+                            <div class="alert alert-light-danger color-danger"><i
+                                    class="bi bi-exclamation-circle"></i> Belum ada data survey.</div>
+                        @endforelse
                     </div>
                 </section>
                 <!-- list groups simple & disabled end -->
@@ -311,8 +363,8 @@
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form class="form form-vertical" id="lowonganForm" method="post" action="#"
-                                enctype="multipart/form-data">
+                            <form class="form form-vertical" method="POST"
+                                action="{{ route('admin.surveys.store') }}">
                                 @csrf
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="lowonganModalLabel">Tambah Survey Baru</h5>
@@ -326,13 +378,13 @@
                                                 <div class="form-group">
                                                     <label for="nama">Nama Survey</label>
                                                     <input type="text" id="nama" class="form-control"
-                                                        name="nama" placeholder="Nama lowonngan">
+                                                        name="nama" placeholder="Nama survey">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="nama">Deskripsi</label>
-                                                    <textarea type="text" id="deskripsi" class="form-control" name="deskripsi" placeholder="..."></textarea>
+                                                    <label for="deskripsi">Deskripsi</label>
+                                                    <textarea id="deskripsi" class="form-control" name="deskripsi" placeholder="Deskripsi..."></textarea>
                                                 </div>
                                             </div>
                                         </div>
