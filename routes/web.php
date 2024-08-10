@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('welcome');})->name('/');
@@ -19,13 +21,24 @@ Route::get('/admin-daftar-survey/pertanyaan', function () {return view('admin.su
 Route::get('/admin-hasil-survey', function () {return view('admin.surveys.results.index');})->middleware(['auth', 'verified'])->name('admin.surveys.result');
 Route::get('/admin-hasil-survey/detail', function () {return view('admin.surveys.results.detail.index');})->middleware(['auth', 'verified'])->name('admin.surveys.result.detail');
 
-Route::get('/admin-faq', function () {return view('admin.faq.index');})->middleware(['auth', 'verified'])->name('admin.faq');
+Route::get('/admin-faq', [FaqController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.faq');
+Route::post('/admin-faq/store', [FaqController::class, 'store'])->middleware(['auth', 'verified'])->name('faqs.store');
+Route::get('/admin-faq/{faq}/edit', [FaqController::class, 'edit'])->middleware(['auth', 'verified'])->name('faqs.edit');
+Route::put('/admin-faq/{faq}', [FaqController::class, 'update'])->middleware(['auth', 'verified'])->name('faqs.update');
+Route::delete('/admin-faq/{faq}', [FaqController::class, 'destroy'])->middleware(['auth', 'verified'])->name('faqs.destroy');
+
 Route::get('/admin-fasilitas', function () {return view('admin.fasilitas.index');})->middleware(['auth', 'verified'])->name('admin.fasilitas');
 Route::get('/admin-informasi-ppdb', function () {return view('admin.ppdb.index');})->middleware(['auth', 'verified'])->name('admin.ppdb');
 Route::get('/admin-kalender-akademik', function () {return view('admin.kalender-akademik.index');})->middleware(['auth', 'verified'])->name('admin.kalender-akademik');
 Route::get('/admin-kurikulum', function () {return view('admin.kurikulum.index');})->middleware(['auth', 'verified'])->name('admin.kurikulum');
 Route::get('/admin-sambutan-kepala-sekolah', function () {return view('admin.sambutan.index');})->middleware(['auth', 'verified'])->name('admin.sambutan');
-Route::get('/admin-daftar-guru', function () {return view('admin.guru.index');})->middleware(['auth', 'verified'])->name('admin.guru');
+
+Route::get('/admin-daftar-guru', [TeacherController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.guru');
+Route::post('/admin-daftar-guru/store', [TeacherController::class, 'store'])->middleware(['auth', 'verified'])->name('teachers.store');
+Route::get('/admin-daftar-guru/{teacher}/edit', [TeacherController::class, 'edit'])->middleware(['auth', 'verified'])->name('teachers.edit');
+Route::put('/admin-daftar-guru/{teacher}', [TeacherController::class, 'update'])->middleware(['auth', 'verified'])->name('teachers.update');
+Route::delete('/admin-daftar-guru/{teacher}', [TeacherController::class, 'destroy'])->middleware(['auth', 'verified'])->name('teachers.destroy');
+
 Route::get('/admin-ekstrakulikuler', function () {return view('admin.ekstrakulikuler.index');})->middleware(['auth', 'verified'])->name('admin.ekstrakulikuler');
 
 Route::middleware('auth')->group(function () {
