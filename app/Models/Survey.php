@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Survey extends Model
 {
     use HasFactory;
+    
     protected $table = 'surveys';
 
     protected $fillable = [
@@ -20,11 +21,10 @@ class Survey extends Model
     {
         return $this->hasMany(Question::class);
     }
+
     public function respondents()
     {
-        return $this->hasManyThrough(Respondent::class, Response::class, 'answer_id', 'id', 'id', 'respondent_id')
-                    ->distinct(); // Untuk memastikan hanya responden unik yang dihitung
+        return $this->belongsToMany(Respondent::class, 'responses', 'question_id', 'respondent_id')
+                    ->distinct();
     }
-    
-
 }

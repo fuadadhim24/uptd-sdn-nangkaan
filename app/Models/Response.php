@@ -8,20 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Response extends Model
 {
     use HasFactory;
-
+    
     protected $table = 'responses';
+
     protected $fillable = [
         'respondent_id',
-        'answer_id',
+        'question_id',
+        'answer_text',
+        'file_path',
+        'checkbox_answers'
     ];
 
+    // Relasi dengan Question
+    public function question()
+    {
+        return $this->belongsTo(Question::class);
+    }
+
+    // Relasi dengan Respondent
     public function respondent()
     {
         return $this->belongsTo(Respondent::class);
-    }
-
-    public function answer()
-    {
-        return $this->belongsTo(Answer::class);
     }
 }

@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('survey_id')->constrained()->onDelete('cascade');
-            $table->enum('question_type', ['text_input', 'text_description', 'radio', 'range', 'checkbox', 'file']); // Jenis pertanyaan
-            $table->text('question_text'); 
-            $table->text('description')->nullable(); 
-            $table->text('options')->nullable(); // Opsi untuk radio dan checkbox dalam format JSON
+            $table->enum('question_type', ['text_input', 'text_description', 'radio', 'range', 'checkbox', 'file']);
+            $table->text('question_text');
+            $table->text('description')->nullable();
+            $table->json('options')->nullable(); // Opsi untuk radio dan checkbox
             $table->string('range')->nullable(); // Rentang nilai (untuk range input)
             $table->timestamps();
         });

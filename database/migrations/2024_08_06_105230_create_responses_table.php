@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('responses', function (Blueprint $table) {
+       Schema::create('responses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('respondent_id')->constrained()->onDelete('cascade');
-            $table->foreignId('answer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('question_id')->constrained()->onDelete('cascade');
+            $table->text('answer_text')->nullable(); // Jawaban untuk tipe text
+            $table->string('file_path')->nullable(); // File untuk tipe file
+            $table->integer('range_value')->nullable(); // Nilai untuk tipe range
+            $table->json('checkbox_answers')->nullable(); // Jawaban untuk tipe checkbox (array JSON)
             $table->timestamps();
         });
     }

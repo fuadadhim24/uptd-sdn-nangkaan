@@ -680,14 +680,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Replace with the actual survey ID you want to fetch
             const surveyId = document.getElementById('survey-id').value;
-
+    
             if (surveyId) {
                 fetchSurveyResponses(surveyId);
             }
         });
-
+    
         async function fetchSurveyResponses(surveyId) {
             try {
                 const response = await fetch(`/admin-hasil-survey/detail/${surveyId}/data`, {
@@ -696,34 +695,34 @@
                         'Content-Type': 'application/json',
                     },
                 });
-
+    
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-
+    
                 const data = await response.json();
                 populateDropdown(data.respondents);
                 setupDropdownEventListeners(data);
-
+    
                 if (data.respondents.length > 0) {
                     const firstRespondentId = data.respondents[0].respondent_id;
                     updateSurveyResults(data, firstRespondentId);
                 }
-
+    
             } catch (error) {
                 console.error('Error fetching survey responses:', error);
             }
         }
-
+    
         function populateDropdown(respondents) {
             const dropdownMenu = document.getElementById('dropdown-menu');
             dropdownMenu.innerHTML = respondents.map(respondent => `
-        <a class="dropdown-item" href="#" data-respondent-id="${respondent.respondent_id}">
-            ${respondent.name}
-        </a>
-    `).join('');
+                <a class="dropdown-item" href="#" data-respondent-id="${respondent.respondent_id}">
+                    ${respondent.name}
+                </a>
+            `).join('');
         }
-
+    
         function setupDropdownEventListeners(data) {
             const dropdownMenu = document.getElementById('dropdown-menu');
             dropdownMenu.querySelectorAll('.dropdown-item').forEach(item => {
@@ -734,71 +733,54 @@
                 });
             });
         }
-
+    
         function updateSurveyResults(data, selectedRespondentId) {
             const resultsContainer = document.getElementById('survey-results');
             resultsContainer.innerHTML = '';
-
+    
             // Filter responses for the selected respondent
             const filteredQuestions = data.questions.map(question => {
-                const answers = question.answers.map(answer => {
-                    const responses = answer.responses.filter(response => response.respondent_id ==
-                        selectedRespondentId);
-                    if (responses.length > 0) {
-                        return {
-                            ...answer,
-                            responses: responses
-                        };
-                    }
-                    return null;
-                }).filter(answer => answer !== null);
-
-                if (answers.length > 0) {
+                const responses = question.responses.filter(response => response.respondent_id == selectedRespondentId);
+    
+                if (responses.length > 0) {
                     return {
                         ...question,
-                        answers: answers
+                        responses: responses
                     };
                 }
                 return null;
             }).filter(question => question !== null);
-
+    
             // Render the survey data
             resultsContainer.innerHTML = `
-        <h1>Survey Results for Respondent ${selectedRespondentId}</h1>
-        <div>
-            ${filteredQuestions.map(question => `
-                    <div>
-                        <h2>Question ID: ${question.question_id}</h2>
-                        <p>Question Text: ${question.question_text}</p>
-                        <p>Question Type: ${question.question_type}</p>
-                        <p>Description: ${question.description || 'N/A'}</p>
-                        <p>Range: ${question.range || 'N/A'}</p>
-                        <p>Options: ${question.options ? JSON.parse(question.options).join(', ') : 'N/A'}</p>
+                <h1>Survey Results for Respondent ${selectedRespondentId}</h1>
+                <div>
+                    ${filteredQuestions.map(question => `
                         <div>
-                            ${question.answers.map(answer => `
+                            <h2>Question ID: ${question.question_id}</h2>
+                            <p>Question Text: ${question.question_text}</p>
+                            <p>Question Type: ${question.question_type}</p>
+                            <p>Description: ${question.description || 'N/A'}</p>
+                            <p>Range: ${question.range || 'N/A'}</p>
+                            <p>Options: ${question.options ? JSON.parse(question.options).join(', ') : 'N/A'}</p>
                             <div>
-                                <h3>Answer ID: ${answer.answer_id}</h3>
-                                <p>Answer Text: ${answer.answer_text || 'N/A'}</p>
-                                <p>File Path: ${answer.file_path || 'N/A'}</p>
-                                <div>
-                                    ${answer.responses.map(response => `
-                                            <div>
-                                                <p>Response ID: ${response.response_id}</p>
-                                                <p>Respondent ID: ${response.respondent_id}</p>
-                                                <p>Response Text: ${response.response_text || 'N/A'}</p>
-                                                <p>File URL: ${response.file_url || 'N/A'}</p>
-                                            </div>
-                                        `).join('')}
-                                </div>
+                                ${question.responses.map(response => `
+                                    <div>
+                                        <p>Response ID: ${response.response_id}</p>
+                                        <p>Respondent ID: ${response.respondent_id}</p>
+                                        <p>Response Text: ${response.response_text || 'N/A'}</p>
+                                        <p>File URL: ${response.file_url || 'N/A'}</p>
+                                    </div>
+                                `).join('')}
                             </div>
-                        `).join('')}
                         </div>
-                    </div>
-                `).join('')}
-        </div>
-    `;
+                    `).join('')}
+                </div>
+            `;
         }
     </script>
+    
+
 
 </body>
 

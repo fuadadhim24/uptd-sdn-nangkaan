@@ -13,26 +13,19 @@ class Question extends Model
 
     protected $fillable = [
         'survey_id',
+        'question_type',
         'question_text',
-        'question_type',  
-        'description',  
-        'range',   
-        'options'    
+        'options',
+        'range'
     ];
 
-    protected $casts = [
-        'options' => 'array', 
-    ];
-
+    // Relasi dengan Survey
     public function survey()
     {
         return $this->belongsTo(Survey::class);
     }
 
-    public function answers()
-    {
-        return $this->hasMany(Answer::class);
-    }
+    // Relasi dengan Response
     public function responses()
     {
         return $this->hasMany(Response::class);
