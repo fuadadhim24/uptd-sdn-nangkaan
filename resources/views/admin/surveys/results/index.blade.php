@@ -216,78 +216,37 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- list groups simple & disabled start -->
                 <section id="basic-list-group">
                     <div class="row match-height">
-                        <div class="col-xl-4 col-md-6 col-sm-12">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Kepuasan Siswa Terhadap Fasilitas dan Layanan Sekolah
-                                        </h4>
-                                        <p class="card-text">
-                                            
-                                            Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
-                                            roll. Toffee
-                                            sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.<br>
-                                            19/10/2024 <span class="badge bg-success mt-4">Aktif</span>
-                                        </p>
+                        @foreach ($surveys as $survey)
+                            <div class="col-xl-4 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ $survey->title }}</h4>
+                                            <p class="card-text">
+                                                {{ $survey->description }}<br>
+                                                {{ $survey->created_at->format('d/m/Y') }}
+                                                <span
+                                                    class="badge {{ $survey->is_active ? 'bg-success' : 'bg-danger' }} mt-4">
+                                                    {{ $survey->is_active ? 'Aktif' : 'Tidak Aktif' }}
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between">
+                                        <span>{{ $survey->respondents_count }} Responden</span>
+                                        <a class="btn btn-outline-primary"
+                                            href="{{ route('admin.surveys.result.detail', ['surveyId' => $survey->id]) }}">Selengkapnya</a>
                                     </div>
                                 </div>
-                                <div class="card-footer d-flex justify-content-between">
-                                    <span>120 Responden</span>
-                                    <a class="btn btn-outline-primary"
-                                        href="{{ route('admin.surveys.result.detail') }}">Selengkapnya</a>
-                                </div>
                             </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-sm-12">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Respon orang tua terhadap hasil kegiatan Outbound</h4>
-                                        <p class="card-text">
-                                            
-                                            Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
-                                            roll. Toffee
-                                            sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.<br>
-                                            19/10/2024 <span class="badge bg-danger mt-4">Tidak Aktif</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="card-footer d-flex justify-content-between">
-                                    <span>30 Responden</span>
-                                    <a class="btn btn-outline-primary"
-                                        href="{{ route('admin.surveys.result.detail') }}">Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-sm-12">
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Respon guru terhadap hasil kegiatan Outbound</h4>
-                                        <p class="card-text">
-                                            
-                                            Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
-                                            roll. Toffee
-                                            sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.<br>
-                                            19/10/2024 <span class="badge bg-success mt-4">Aktif</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="card-footer d-flex justify-content-between">
-                                    <span>300 Responden</span>
-                                    <a class="btn btn-outline-primary"
-                                        href="{{ route('admin.surveys.result.detail') }}">Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </section>
                 <!-- list groups simple & disabled end -->
-
-
             </div>
 
             <footer>

@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    <script src="assets/static/js/initTheme.js"></script>
+    <script src="{{ asset('js/initTheme.js') }}js/initTheme.js"></script>
     <div id="app">
         <div id="sidebar">
             <div class="sidebar-wrapper active">
@@ -210,6 +210,7 @@
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
                             <h3>Hasil Survey</h3>
+                            <input type="hidden" id="survey-id" value="{{ $surveyId }}">
                             <p class="text-subtitle text-muted">Collapse your content and control its visibility with
                                 buttons.</p>
                         </div>
@@ -230,6 +231,7 @@
                             <h4 class="card-title">24 Jawaban</h4>
                         </div>
                         <div class="card-body">
+                            {{-- <div id="survey-results"></div> --}}
                             <div class="row">
                                 <div class="col-3">
                                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
@@ -597,175 +599,16 @@
                                                         type="button" id="dropdownMenuButton"
                                                         data-bs-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false">
-                                                        Jawaban 1
+                                                        Select Respondent
                                                     </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Jawaban 1</a>
-                                                        <a class="dropdown-item" href="#">Jawaban 2</a>
-                                                        <a class="dropdown-item" href="#">Jawaban 3</a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                                        id="dropdown-menu">
+                                                        <!-- Respondent items will be populated here -->
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-xl-12">
-                                                <div class="card custom-card">
-                                                    <div class="card-header">
-                                                        <h4>1. Nama & teks input</h4>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control"
-                                                                readonly="readonly" id="basicInput"
-                                                                value="Fuad Adhim">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-xl-12">
-                                                <div class="card custom-card">
-                                                    <div class="card-header">
-                                                        <h4>2. Radio Button</h4>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDisabled" id="flexRadioDisabled"
-                                                                disabled>
-                                                            <label class="form-check-label" for="flexRadioDisabled">
-                                                                Option 1
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDisabled" id="flexRadioDisabled"
-                                                                disabled>
-                                                            <label class="form-check-label" for="flexRadioDisabled">
-                                                                Option 2
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDisabled" id="flexRadioDisabled"
-                                                                disabled>
-                                                            <label class="form-check-label" for="flexRadioDisabled">
-                                                                Option 3
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDisabled" id="flexRadioCheckedDisabled"
-                                                                checked disabled>
-                                                            <label class="form-check-label"
-                                                                for="flexRadioCheckedDisabled">
-                                                                Option 4
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-xl-12">
-                                                <div class="card custom-card">
-                                                    <div class="card-header">
-                                                        <h4>3. CheckBox</h4>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <li class="d-inline-block me-2 mb-1">
-                                                            <div class="form-check">
-                                                                <div class="checkbox">
-                                                                    <input type="checkbox" id="checkbox3"
-                                                                        class="form-check-input" disabled checked>
-                                                                    <label for="checkbox3">Option 1</label>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="d-inline-block mb-1">
-                                                            <div class="form-check">
-                                                                <div class="checkbox">
-                                                                    <input type="checkbox" id="checkbox4"
-                                                                        class="form-check-input" disabled>
-                                                                    <label for="checkbox4">Option 2</label>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="d-inline-block mb-1">
-                                                            <div class="form-check">
-                                                                <div class="checkbox">
-                                                                    <input type="checkbox" id="checkbox4"
-                                                                        class="form-check-input" disabled>
-                                                                    <label for="checkbox4">Option 3</label>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="d-inline-block mb-1">
-                                                            <div class="form-check">
-                                                                <div class="checkbox">
-                                                                    <input type="checkbox" id="checkbox4"
-                                                                        class="form-check-input" disabled>
-                                                                    <label for="checkbox4">Option 4</label>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-xl-12">
-                                                <div class="card custom-card">
-                                                    <div class="card-header">
-                                                        <h4>3. Range</h4>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDisabled2" id="flexRadio1" disabled>
-                                                            <label class="form-check-label" for="flexRadio1">1</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDisabled2" id="flexRadio2" disabled>
-                                                            <label class="form-check-label" for="flexRadio2">2</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDisabled2" id="flexRadio3" checked
-                                                                disabled>
-                                                            <label class="form-check-label" for="flexRadio3">3</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDisabled2" id="flexRadio3" checked
-                                                                disabled>
-                                                            <label class="form-check-label" for="flexRadio3">4</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDisabled2" id="flexRadio3" checked
-                                                                disabled>
-                                                            <label class="form-check-label" for="flexRadio3">5</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-xl-12">
-                                                <div class="card custom-card">
-                                                    <div class="card-header">
-                                                        <h4>3. File Input</h4>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <table class="table table-hover table-lg">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="col-auto">
-                                                                        <div>
-                                                                            <span><i
-                                                                                    class="bi bi-file-earmark-arrow-down-fill"></i></span>
-                                                                            <a href="#" class="mb-0">Dokumen
-                                                                                A</a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
+                                            <div id="survey-results">
+                                                <!-- Survey results will be populated here -->
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="v-pills-download" role="tabpanel"
@@ -834,6 +677,128 @@
     <!-- Need: Apexcharts -->
     <script src="{{ asset('extensions') }}/apexcharts/apexcharts.min.js"></script>
     <script src="{{ asset('js') }}/pages/detail-result.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Replace with the actual survey ID you want to fetch
+            const surveyId = document.getElementById('survey-id').value;
+
+            if (surveyId) {
+                fetchSurveyResponses(surveyId);
+            }
+        });
+
+        async function fetchSurveyResponses(surveyId) {
+            try {
+                const response = await fetch(`/admin-hasil-survey/detail/${surveyId}/data`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                populateDropdown(data.respondents);
+                setupDropdownEventListeners(data);
+
+                if (data.respondents.length > 0) {
+                    const firstRespondentId = data.respondents[0].respondent_id;
+                    updateSurveyResults(data, firstRespondentId);
+                }
+
+            } catch (error) {
+                console.error('Error fetching survey responses:', error);
+            }
+        }
+
+        function populateDropdown(respondents) {
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            dropdownMenu.innerHTML = respondents.map(respondent => `
+        <a class="dropdown-item" href="#" data-respondent-id="${respondent.respondent_id}">
+            ${respondent.name}
+        </a>
+    `).join('');
+        }
+
+        function setupDropdownEventListeners(data) {
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            dropdownMenu.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const respondentId = e.target.dataset.respondentId;
+                    updateSurveyResults(data, respondentId);
+                });
+            });
+        }
+
+        function updateSurveyResults(data, selectedRespondentId) {
+            const resultsContainer = document.getElementById('survey-results');
+            resultsContainer.innerHTML = '';
+
+            // Filter responses for the selected respondent
+            const filteredQuestions = data.questions.map(question => {
+                const answers = question.answers.map(answer => {
+                    const responses = answer.responses.filter(response => response.respondent_id ==
+                        selectedRespondentId);
+                    if (responses.length > 0) {
+                        return {
+                            ...answer,
+                            responses: responses
+                        };
+                    }
+                    return null;
+                }).filter(answer => answer !== null);
+
+                if (answers.length > 0) {
+                    return {
+                        ...question,
+                        answers: answers
+                    };
+                }
+                return null;
+            }).filter(question => question !== null);
+
+            // Render the survey data
+            resultsContainer.innerHTML = `
+        <h1>Survey Results for Respondent ${selectedRespondentId}</h1>
+        <div>
+            ${filteredQuestions.map(question => `
+                    <div>
+                        <h2>Question ID: ${question.question_id}</h2>
+                        <p>Question Text: ${question.question_text}</p>
+                        <p>Question Type: ${question.question_type}</p>
+                        <p>Description: ${question.description || 'N/A'}</p>
+                        <p>Range: ${question.range || 'N/A'}</p>
+                        <p>Options: ${question.options ? JSON.parse(question.options).join(', ') : 'N/A'}</p>
+                        <div>
+                            ${question.answers.map(answer => `
+                            <div>
+                                <h3>Answer ID: ${answer.answer_id}</h3>
+                                <p>Answer Text: ${answer.answer_text || 'N/A'}</p>
+                                <p>File Path: ${answer.file_path || 'N/A'}</p>
+                                <div>
+                                    ${answer.responses.map(response => `
+                                            <div>
+                                                <p>Response ID: ${response.response_id}</p>
+                                                <p>Respondent ID: ${response.respondent_id}</p>
+                                                <p>Response Text: ${response.response_text || 'N/A'}</p>
+                                                <p>File URL: ${response.file_url || 'N/A'}</p>
+                                            </div>
+                                        `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+        </div>
+    `;
+        }
+    </script>
 
 </body>
 

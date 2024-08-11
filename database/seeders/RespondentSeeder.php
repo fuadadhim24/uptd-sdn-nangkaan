@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Respondent;
 
 class RespondentSeeder extends Seeder
 {
@@ -12,11 +13,19 @@ class RespondentSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('respondents')->insert([
-            ['name' => 'John Doe', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Jane Smith', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Alice Johnson', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Bob Brown', 'created_at' => now(), 'updated_at' => now()]
-        ]);
+        Respondent::create(['name' => 'Alice']);
+        Respondent::create(['name' => 'Bob']);
+        Respondent::create(['name' => 'Charlie']);
+
+        // Kasus 2: Responden untuk Survey 2
+        Respondent::create(['name' => 'David']);
+        Respondent::create(['name' => 'Eve']);
+        Respondent::create(['name' => 'Frank']);
+        Respondent::create(['name' => 'Grace']);
+        Respondent::create(['name' => 'Heidi']);
+
+        // Kasus 3: Responden untuk Survey 3
+        Respondent::create(['name' => 'Ivan']);
+        Respondent::create(['name' => 'Judy']);
     }
 }

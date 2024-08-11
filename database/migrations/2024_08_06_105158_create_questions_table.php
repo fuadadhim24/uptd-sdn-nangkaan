@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('survey_id')->constrained()->onDelete('cascade');
             $table->enum('question_type', ['text_input', 'text_description', 'radio', 'range', 'checkbox', 'file']); // Jenis pertanyaan
             $table->text('question_text'); 
-            $table->text('description')->nullable();
+            $table->text('description')->nullable(); 
             $table->text('options')->nullable(); // Opsi untuk radio dan checkbox dalam format JSON
             $table->string('range')->nullable(); // Rentang nilai (untuk range input)
             $table->timestamps();

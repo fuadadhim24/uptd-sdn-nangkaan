@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Response;
 
 class ResponseSeeder extends Seeder
 {
@@ -12,14 +13,96 @@ class ResponseSeeder extends Seeder
      */
     public function run(): void
     {
-        $respondentId = DB::table('respondents')->first()->id;
+        Response::create([
+            'respondent_id' => 1,
+            'answer_id' => 1,
+        ]);
 
-        DB::table('responses')->insert([
-            ['respondent_id' => $respondentId, 'answer_id' => 1, 'created_at' => now(), 'updated_at' => now()],
-            ['respondent_id' => $respondentId, 'answer_id' => 2, 'created_at' => now(), 'updated_at' => now()],
-            ['respondent_id' => $respondentId, 'answer_id' => 3, 'created_at' => now(), 'updated_at' => now()],
-            ['respondent_id' => $respondentId, 'answer_id' => 4, 'created_at' => now(), 'updated_at' => now()],
-            ['respondent_id' => $respondentId, 'answer_id' => 5, 'created_at' => now(), 'updated_at' => now()],
+        Response::create([
+            'respondent_id' => 1,
+            'answer_id' => 2,
+        ]);
+
+        Response::create([
+            'respondent_id' => 2,
+            'answer_id' => 1,
+        ]);
+
+        Response::create([
+            'respondent_id' => 2,
+            'answer_id' => 2,
+        ]);
+
+        Response::create([
+            'respondent_id' => 3,
+            'answer_id' => 1,
+        ]);
+
+        Response::create([
+            'respondent_id' => 3,
+            'answer_id' => 2,
+        ]);
+
+        // Kasus 2: Respons untuk Survey 2
+        Response::create([
+            'respondent_id' => 4,
+            'answer_id' => 3,
+        ]);
+
+        Response::create([
+            'respondent_id' => 4,
+            'answer_id' => 4,
+        ]);
+
+        Response::create([
+            'respondent_id' => 5,
+            'answer_id' => 3,
+        ]);
+
+        Response::create([
+            'respondent_id' => 5,
+            'answer_id' => 4,
+        ]);
+
+        Response::create([
+            'respondent_id' => 6,
+            'answer_id' => 3,
+        ]);
+
+        Response::create([
+            'respondent_id' => 6,
+            'answer_id' => 4,
+        ]);
+
+        Response::create([
+            'respondent_id' => 7,
+            'answer_id' => 3,
+        ]);
+
+        Response::create([
+            'respondent_id' => 7,
+            'answer_id' => 4,
+        ]);
+
+        Response::create([
+            'respondent_id' => 8,
+            'answer_id' => 3,
+        ]);
+
+        Response::create([
+            'respondent_id' => 8,
+            'answer_id' => 4,
+        ]);
+
+        // Kasus 3: Respons untuk Survey 3
+        Response::create([
+            'respondent_id' => 9,
+            'answer_id' => 5,
+        ]);
+
+        Response::create([
+            'respondent_id' => 10,
+            'answer_id' => 5,
         ]);
     }
 }

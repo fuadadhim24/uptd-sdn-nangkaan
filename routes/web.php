@@ -33,8 +33,12 @@ Route::delete('/admin-daftar-survey/pertanyaan/{question}', [QuestionController:
 Route::post('/admin-daftar-survey/pertanyaan/store', [QuestionController::class, 'store'])->middleware(['auth', 'verified'])->name('admin.questions.store');
 
 
-Route::get('/admin-hasil-survey', function () {return view('admin.surveys.results.index');})->middleware(['auth', 'verified'])->name('admin.surveys.result');
-Route::get('/admin-hasil-survey/detail', function () {return view('admin.surveys.results.detail.index');})->middleware(['auth', 'verified'])->name('admin.surveys.result.detail');
+Route::get('/admin-hasil-survey', [SurveyController::class, 'showAllSurveyResults'])->middleware(['auth', 'verified'])->name('admin.surveys.result');
+Route::get('/admin-hasil-survey/detail/{surveyId}', [SurveyController::class, 'showSurveyResults'])->middleware(['auth', 'verified'])->name('admin.surveys.result.detail');
+Route::get('/admin-hasil-survey/detail/{surveyId}/data', [SurveyController::class, 'getDataRespondent'])->middleware(['auth', 'verified'])->name('admin.surveys.result.responses');
+
+
+
 
 Route::get('/admin-daftar-survey', [SurveyController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.surveys');
 Route::post('/admin-surveys/store', [SurveyController::class, 'store'])->middleware(['auth', 'verified'])->name('admin.surveys.store');
