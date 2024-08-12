@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     let currentPage = 1;
-    const totalPages = 3;
+    const totalPages = document.querySelectorAll('.page').length;
 
     const showPage = (pageNumber) => {
         document.querySelectorAll('.page').forEach(page => page.style.display = 'none');

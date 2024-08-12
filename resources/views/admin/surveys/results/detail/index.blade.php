@@ -581,7 +581,7 @@
                                                         <div class="card-header">
                                                             <div
                                                                 class="d-flex justify-content-between align-items-center">
-                                                                <h4 class="mb-0">Download Excel</h4>
+                                                                <h4 class="mb-0">Download Spreadsheet</h4>
                                                                 <i class="bi bi-file-earmark-spreadsheet"></i>
                                                             </div>
                                                         </div>

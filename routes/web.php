@@ -23,6 +23,7 @@ Route::get('/kepala-sekolah', function () {return view('sambutan-kepala-sekolah'
 Route::get('/visi-misi', function () {return view('visi-misi');})->name('visi-misi');
 Route::get('/survey', [SurveyController::class, 'lPIndex'])->name('survey');
 Route::post('/survey/{survey}', [ResponseController::class, 'surveyBegin'])->name('survey.begin');
+Route::post('/survey/{survey}/submit', [ResponseController::class, 'surveyBeginSubmit'])->name('survey.submit');
 
 
 // admin

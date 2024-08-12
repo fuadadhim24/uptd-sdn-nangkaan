@@ -202,6 +202,8 @@
                                     </div>
                                     <input type="hidden" name="survey_id" id="survey_id"
                                         value="{{ $survey->id }}">
+                                    <input type="hidden" name="survey_title" id="survey_title"
+                                        value="{{ $survey->title }}">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"

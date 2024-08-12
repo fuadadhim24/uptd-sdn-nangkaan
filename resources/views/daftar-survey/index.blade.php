@@ -7,6 +7,16 @@
     <title>Survey Form</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css') }}/survey.css">
+
+    <link rel="stylesheet" href="{{ asset('css') }}/app.css">
+    <link rel="stylesheet" href="{{ asset('css') }}/app-dark.css">
+    <link rel="stylesheet" href="{{ asset('css') }}/iconly.css">
+    <style>
+        .custom-card {
+            border: 2px solid #ced4da;
+            border-radius: 0.5rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,7 +26,8 @@
             <span id="time-display">00:00</span>
         </div>
         <div class="header-buttons">
-            <button id="end-button" class="btn btn-dark">Akhiri Sekarang</button>
+            <button id="end-button" class="btn btn-custom" style="background-color: #1bbca3; color:white">Akhiri
+                Sekarang</button>
         </div>
     </header>
 
@@ -26,165 +37,238 @@
             <img src="{{ asset('assets') }}/img/survey/tut_wuri.png" alt="Logo" class="logo">
             <div class="header-text">
                 <h1>UPTD SPF SDN Nangkaan Kec. Bondowoso</h1>
-                <h3>Survey Kecerdasan Buatan</h3>
+                <h3>{{ $surveyData['title'] }}</h3>
             </div>
         </div>
 
-        <!-- Page 1 -->
-        <div class="page" id="page-1">
-            <div class="soal-container">
-                <div class="soal">
-                    <h2>1. Apakah Anda suka makanan pedas?</h2>
-                    <div class="form-check-inline mt-4">
-                        <div class="form-check-option">
-                            <input class="form-check-input" type="radio" name="soal1" value="ya" id="soal1-ya">
-                            <label class="form-check-label" for="soal1-ya">Ya</label>
+        @php
+            $totalPages = count($surveyData['pages']); // Calculate total pages
+        @endphp
+        <form action="{{ route('survey.submit', $surveyId) }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="name" value="{{ $name }}">
+            @foreach ($surveyData['pages'] as $pageNumber => $questions)
+                <div class="page" id="page-{{ $pageNumber }}"
+                    style="{{ $pageNumber == 1 ? 'display: block;' : 'display: none;' }}">
+                    <div class="soal-container">
+                        @forelse ($questions as $question)
+                            <div class="col-12 col-xl-12 mb-4">
+                                <div class="card custom-card">
+                                    <div class="card-header">
+                                        <h4>{{ $question->question_text }}</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        @switch($question->question_type)
+                                            @case('text_input')
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control"
+                                                        name="question_{{ $question->id }}" placeholder="Jawaban Anda ...">
+                                                </div>
+                                            @break
+
+                                            @case('text_description')
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="question_{{ $question->id }}" rows="4" placeholder="Jawaban Anda ..."></textarea>
+                                                </div>
+                                            @break
+
+                                            @case('radio')
+                                                @php
+                                                    $radioOptions = json_decode($question->options, true);
+                                                @endphp
+                                                @forelse ($radioOptions as $index => $option)
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="question_{{ $question->id }}"
+                                                            id="radio{{ $question->id }}_{{ $index }}"
+                                                            value="{{ $option }}">
+                                                        <label class="form-check-label"
+                                                            for="radio{{ $question->id }}_{{ $index }}">{{ $option }}</label>
+                                                    </div>
+                                                @empty
+                                                    <p>No options available.</p>
+                                                @endforelse
+                                            @break
+
+                                            @case('checkbox')
+                                                @php
+                                                    $checkboxOptions = json_decode($question->options, true);
+                                                @endphp
+                                                <div class="custom-checkbox-group">
+                                                    @forelse ($checkboxOptions as $index => $option)
+                                                        <div class="form-check form-check-inline">
+                                                            <input type="checkbox"
+                                                                id="checkbox{{ $question->id }}_{{ $index }}"
+                                                                class="form-check-input" name="question_{{ $question->id }}[]"
+                                                                value="{{ $option }}">
+                                                            <label
+                                                                for="checkbox{{ $question->id }}_{{ $index }}">{{ $option }}</label>
+                                                        </div>
+                                                    @empty
+                                                        <p>No options available.</p>
+                                                    @endforelse
+                                                </div>
+                                            @break
+
+                                            @case('range')
+                                                @php
+                                                    $rangeParts = explode('-', $question->range);
+                                                    $rangeStart = (int) $rangeParts[0];
+                                                    $rangeEnd = (int) $rangeParts[1];
+                                                    $rangeOptions = range($rangeStart, $rangeEnd);
+                                                @endphp
+                                                <div class="custom-range-group">
+                                                    @forelse ($rangeOptions as $option)
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio"
+                                                                id="range{{ $question->id }}_{{ $option }}"
+                                                                name="question_{{ $question->id }}"
+                                                                value="{{ $option }}">
+                                                            <label class="form-check-label"
+                                                                for="range{{ $question->id }}_{{ $option }}">{{ $option }}</label>
+                                                        </div>
+                                                    @empty
+                                                        <p>No range options available.</p>
+                                                    @endforelse
+                                                </div>
+                                            @break
+
+                                            @case('file')
+                                                <div class="form-group">
+                                                    <input type="file" class="form-control-file"
+                                                        name="question_{{ $question->id }}">
+                                                </div>
+                                            @break
+                                        @endswitch
+                                    </div>
+                                </div>
+                            </div>
+                            @empty
+                                <div class="col-12 col-xl-12 mb-4">
+                                    <div class="card custom-card text-center">
+                                        <div class="card-body">
+                                            <p>Silakan hubungi Customer Service kami jika Anda membutuhkan bantuan.</p>
+                                            <a href="https://wa.me/1234567890" class="btn btn-primary">Hubungi CS</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforelse
                         </div>
-                        <div class="form-check-option">
-                            <input class="form-check-input" type="radio" name="soal1" value="tidak"
-                                id="soal1-tidak">
-                            <label class="form-check-label" for="soal1-tidak">Tidak</label>
+
+                        <!-- Navigation buttons -->
+                        <div class="nav-buttons text-center mt-4">
+                            @if ($pageNumber > 1)
+                                <button id="prev-button-{{ $pageNumber }}" class="btn btn-custom-prev"
+                                    type="button">Previous</button>
+                            @endif
+
+                            @if ($pageNumber < $totalPages)
+                                <button id="next-button-{{ $pageNumber }}" class="btn btn-primary btn-custom"
+                                    type="button">Next</button>
+                            @else
+                                <button id="confirm-button" class="btn btn-custom"
+                                    style="background-color: #1bbca3; color:white" type="button" type="button"
+                                    data-toggle="modal" data-target="#confirmModal">Submit</button>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+                <!-- Modal Konfirmasi -->
+                <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog"
+                    aria-labelledby="confirmModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmModalLabel">Konfirmasi Pengiriman</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Apakah Anda yakin ingin mengirimkan survei ini?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                <button id="confirm-button" class="btn btn-custom"
+                                    style="background-color: #1bbca3; color:white" type="submit">Kirim</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="soal">
-                    <h2>2. Seberapa puas Anda dengan layanan kami?</h2>
-                    <div class="form-group mt-4">
-                        <select class="form-control" name="soal2">
-                            <option value="sangat puas">Sangat Puas</option>
-                            <option value="puas">Puas</option>
-                            <option value="netral">Netral</option>
-                            <option value="kurang puas">Kurang Puas</option>
-                            <option value="sangat kurang puas">Sangat Kurang Puas</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="soal">
-                    <h2>3. Sebutkan nama makanan favorit Anda:</h2>
-                    <input type="text" class="form-control mt-4" name="soal3" placeholder="Jawaban saya ...">
-                </div>
-            </div>
+            </form>
         </div>
 
-        <!-- Page 2 -->
-        <div class="page" id="page-2" style="display: none;">
-            <div class="soal-container">
-                <div class="soal">
-                    <h2>4. Pilih gambar favorit Anda:</h2>
-                    <div class="image-options mt-4">
-                        <div class="image-option">
-                            <input type="radio" name="soal4" value="gambar1" id="soal4-gambar1" class="image-radio">
-                            <label for="soal4-gambar1" class="image-label">
-                                <img src="{{ asset('assets') }}/img/survey/gambar1.jpg" alt="Gambar 1"
-                                    class="img-thumbnail">
-                            </label>
-                        </div>
-                        <div class="image-option">
-                            <input type="radio" name="soal4" value="gambar2" id="soal4-gambar2" class="image-radio">
-                            <label for="soal4-gambar2" class="image-label">
-                                <img src="{{ asset('assets') }}/img/survey/gambar2.jpg" alt="Gambar 2"
-                                    class="img-thumbnail">
-                            </label>
-                        </div>
-                        <div class="image-option">
-                            <input type="radio" name="soal4" value="gambar3" id="soal4-gambar3" class="image-radio">
-                            <label for="soal4-gambar3" class="image-label">
-                                <img src="{{ asset('assets') }}/img/survey/gambar3.jpg" alt="Gambar 3"
-                                    class="img-thumbnail">
-                            </label>
-                        </div>
-                    </div>
-                </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let currentPage = parseInt('{{ $currentPage }}');
+                const totalPages = parseInt('{{ $totalPages }}');
 
-                <div class="soal">
-                    <h2>5. Pilih hobi yang Anda sukai:</h2>
-                    <div class="form-check-inline mt-4">
-                        <div class="form-check-option">
-                            <input class="form-check-input" type="checkbox" name="soal5" value="membaca"
-                                id="soal5-membaca">
-                            <label class="form-check-label" for="soal5-membaca">Membaca</label>
-                        </div>
-                        <div class="form-check-option">
-                            <input class="form-check-input" type="checkbox" name="soal5" value="berlari"
-                                id="soal5-berlari">
-                            <label class="form-check-label" for="soal5-berlari">Berlari</label>
-                        </div>
-                        <div class="form-check-option">
-                            <input class="form-check-input" type="checkbox" name="soal5" value="menulis"
-                                id="soal5-menulis">
-                            <label class="form-check-label" for="soal5-menulis">Menulis</label>
-                        </div>
-                    </div>
-                </div>
+                const showPage = (pageNumber) => {
+                    document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
+                    document.getElementById(`page-${pageNumber}`).style.display = 'block';
 
-                <div class="soal">
-                    <h2>6. Pilih pekerjaan Anda saat ini:</h2>
-                    <select class="form-control mt-4" name="soal6">
-                        <option value="mahasiswa">Mahasiswa</option>
-                        <option value="karyawan">Karyawan</option>
-                        <option value="pengusaha">Pengusaha</option>
-                        <option value="lainnya">Lainnya</option>
-                    </select>
-                </div>
-            </div>
-        </div>
+                    // Hide all navigation buttons first
+                    document.querySelectorAll('.nav-buttons button').forEach(button => button.style.display =
+                        'none');
 
-        <!-- Page 3 -->
-        <div class="page" id="page-3" style="display: none;">
-            <div class="soal-container">
-                <div class="soal">
-                    <h2>7. Seberapa tertarik Anda dengan topik ini?</h2>
-                    <div class="range-container">
-                        <input type="range" id="range-input" min="0" max="3" step="1"
-                            value="1">
-                        <div class="range-labels">
-                            <span class="range-label" data-value="0">Tidak Tertarik</span>
-                            <span class="range-label" data-value="1">Biasa Saja</span>
-                            <span class="range-label" data-value="2">Tertarik</span>
-                            <span class="range-label" data-value="3">Sangat Tertarik</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="reaction-question soal">
-                    <h2 class="question-title">How satisfied are you with our service?</h2>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input class="radio-input" type="radio" name="satisfaction" value="extremely-dissatisfied" id="extremely-dissatisfied">
-                            <label class="radio-label" for="extremely-dissatisfied">Extremely dissatisfied</label>
-                        </div>
-                        <div class="radio-option">
-                            <input class="radio-input" type="radio" name="satisfaction" value="dissatisfied" id="dissatisfied">
-                            <label class="radio-label" for="dissatisfied">Dissatisfied</label>
-                        </div>
-                        <div class="radio-option">
-                            <input class="radio-input" type="radio" name="satisfaction" value="neutral" id="neutral">
-                            <label class="radio-label" for="neutral">Neutral</label>
-                        </div>
-                        <div class="radio-option">
-                            <input class="radio-input" type="radio" name="satisfaction" value="satisfied" id="satisfied">
-                            <label class="radio-label" for="satisfied">Satisfied</label>
-                        </div>
-                        <div class="radio-option">
-                            <input class="radio-input" type="radio" name="satisfaction" value="extremely-satisfied" id="extremely-satisfied">
-                            <label class="radio-label" for="extremely-satisfied">Extremely satisfied</label>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-        </div>
+                    if (pageNumber > 1) {
+                        document.getElementById(`prev-button-${pageNumber}`).style.display = 'inline-block';
+                    }
 
-        <div class="nav-buttons text-center mt-4">
-            <button id="prev-button" class="btn btn-custom-prev">Previous</button>
-            <button id="next-button" class="btn btn-primary btn-custom">Next</button>
-            <button id="submit-button" class="btn btn-custom" style="display: none; background-color: #1bbca3; color:white">Submit</button>
-        </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/survey.js') }}"></script>
-</body>
+                    if (pageNumber < totalPages) {
+                        document.getElementById(`next-button-${pageNumber}`).style.display = 'inline-block';
+                    } else {
+                        document.getElementById('confirm-button').style.display = 'inline-block';
+                    }
+                };
 
-</html>
+                // Event listener for the "Previous" button
+                document.querySelectorAll('.btn-custom-prev').forEach(button => {
+                    button.addEventListener('click', () => {
+                        if (currentPage > 1) {
+                            currentPage--;
+                            showPage(currentPage);
+                        }
+                    });
+                });
+
+                // Event listener for the "Next" button
+                document.querySelectorAll('.btn-custom').forEach(button => {
+                    button.addEventListener('click', () => {
+                        if (currentPage < totalPages) {
+                            currentPage++;
+                            showPage(currentPage);
+                        }
+                    });
+                });
+
+                // // Event listener for the "Submit" button
+                // document.getElementById('submit-button').addEventListener('click', () => {
+                //     alert('Survey submitted!');
+                //     // document.getElementById('survey-form').submit();
+                // });
+
+                // Initialize the display
+                showPage(currentPage);
+
+                // Timer code
+                const timeDisplay = document.getElementById('time-display');
+                let startTime = Date.now();
+
+                setInterval(() => {
+                    const elapsed = Date.now() - startTime;
+                    const minutes = Math.floor(elapsed / 60000);
+                    const seconds = Math.floor((elapsed % 60000) / 1000);
+                    timeDisplay.textContent =
+                        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                }, 1000);
+            });
+        </script>
+
+
+    </body>
+
+    </html>

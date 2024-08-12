@@ -271,16 +271,23 @@ class SurveyController extends Controller
     }
 
     public function lPIndex(){
-        $surveys = Survey::where('is_active', 1)->get()->map(function ($survey) {
+        $surveysWithRespondentCounts = Survey::withCount('respondents')
+        ->where('is_active', 1)
+        ->get()
+        ->map(function ($survey) {
+            // Menghitung hari sejak survei dibuat
             $created_at = Carbon::parse($survey->created_at);
             $now = Carbon::now();
             $days_since_creation = $created_at->diffInDays($now);
             $survey->days_since_creation = floor($days_since_creation);
+
+            // Menambahkan jumlah responden ke objek survei
+            $survey->respondent_count = $survey->respondents_count;
             
             return $survey;
         });
-    
-        // dd($surveys);
-        return view('survey', compact('surveys'));
+
+        // Mengirim data survei dan jumlah responden ke tampilan
+        return view('survey', ['surveys' => $surveysWithRespondentCounts]);
     }
 }
