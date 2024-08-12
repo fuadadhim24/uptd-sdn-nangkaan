@@ -34,6 +34,26 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="{{ asset('css') }}/landingpage.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main {
+            flex: 1;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -131,125 +151,68 @@
 
             <div class="container">
 
-                <!-- Survey Pengguna Tiktok -->
-                <div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h3>Survey Pengguna Tiktok</h3>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4>4<sup>hari</sup><span> 32 Responden</span></h4>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <ul>
-                            <li><span>Kriteria Responden:</span></li>
-                            <li><i class="bi bi-check"></i> <span>Pengguna aktif TikTok</span></li>
-                            <li><i class="bi bi-check"></i> <span>Berusia 18-35 tahun</span></li>
-                            <li><i class="bi bi-check"></i> <span>Berbasis di kota besar</span></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="text-center">
-                            <a href="#" class="buy-btn" data-bs-toggle="modal"
-                                data-bs-target="#surveyModal">Jadi Kontributor</a>
+                @forelse($surveys as $survey)
+                    <!-- Menampilkan setiap item survei dengan latar belakang putih -->
+                    <div class="row gy-4 pricing-item mt-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                            <h3>{{ $survey->title }}</h3>
+                        </div>
+                        <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                            <h4><sup>Hari Ke-</sup>{{ $survey->days_since_creation }}</h4>
+                        </div>
+                        <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                            <ul>
+                                <li><span>{{ $survey->respondent_count ?? '0' }}
+                                        Responden</span></li>
+                                <li>
+                                    <div>{{ $survey->description }}</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                            <div class="text-center">
+                                <a href="#" class="buy-btn" data-bs-toggle="modal"
+                                    data-bs-target="#surveyModal">Jadi Kontributor</a>
+                            </div>
                         </div>
                     </div>
-                </div><!-- End Pricing Item -->
+
+                @empty
+                    <p>Belum ada survei tersedia.</p>
+                @endforelse
+
                 <!-- Modal HTML -->
                 <div class="modal fade" id="surveyModal" tabindex="-1" aria-labelledby="surveyModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="surveyModalLabel">Bergabung sebagai Kontributor</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="surveyForm">
+                            <form id="surveyForm" method="POST"
+                                action="{{ route('survey.begin', ['survey' => $survey->id]) }}">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="surveyModalLabel">Bergabung sebagai Kontributor</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="name"
+                                        <input type="text" class="form-control" id="name" name="name"
                                             placeholder="Masukkan nama Anda" required>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Tutup</button>
-                                <a href="{{ route('survey-1') }}" id="submitButton"
-                                    class="btn btn-primary">Mulai</a>
-                            </div>
+                                    <input type="hidden" name="survey_id" id="survey_id"
+                                        value="{{ $survey->id }}">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-primary">Mulai</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-
-                <!-- Survey Konsumsi Media Sosial -->
-                <div class="row gy-4 pricing-item mt-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h3>Survey Konsumsi Media Sosial</h3>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4>7<sup>hari</sup><span> 50 Responden</span></h4>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <ul>
-                            <li><span>Kriteria Responden:</span></li>
-                            <li><i class="bi bi-check"></i> <span>Pengguna media sosial aktif</span></li>
-                            <li><i class="bi bi-check"></i> <span>Berusia 16-45 tahun</span></li>
-                            <li><i class="bi bi-check"></i> <span>Beragam lokasi geografis</span></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="text-center"><a href="#" class="buy-btn">Jadi Kontributor</a></div>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-                <!-- Survey Kebiasaan Berbelanja Online -->
-                <div class="row gy-4 pricing-item mt-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h3>Survey Kebiasaan Berbelanja Online</h3>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4>5<sup>hari</sup><span> 10 Responden</span></h4>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <ul>
-                            <li><span>Kriteria Responden:</span></li>
-                            <li><i class="bi bi-check"></i> <span>Pemilik akun belanja online aktif</span></li>
-                            <li><i class="bi bi-check"></i> <span>Berusia 20-40 tahun</span></li>
-                            <li><i class="bi bi-check"></i> <span>Berbasis di daerah urban</span></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="text-center"><a href="#" class="buy-btn">Jadi Kontributor</a></div>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-                <!-- Survey Kesehatan Mental -->
-                <div class="row gy-4 pricing-item mt-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h3>Survey Kesehatan Mental</h3>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4>6<sup>hari</sup><span> 30 Responden</span></h4>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <ul>
-                            <li><span>Kriteria Responden:</span></li>
-                            <li><i class="bi bi-check"></i> <span>Individu yang mengalami stres atau kecemasan</span>
-                            </li>
-                            <li><i class="bi bi-check"></i> <span>Berusia 18-50 tahun</span></li>
-                            <li><i class="bi bi-check"></i> <span>Berbasis di berbagai daerah</span></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="text-center"><a href="#" class="buy-btn">Jadi Kontributor</a></div>
-                    </div>
-                </div><!-- End Pricing Item -->
-
             </div>
-
-
         </section><!-- /Buy Tickets Section -->
     </main>
 
@@ -332,8 +295,6 @@
     </footer>
 
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('vendor') }}/purecounter/purecounter_vanilla.js"></script>

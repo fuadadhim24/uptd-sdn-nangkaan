@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Respondent;
 use App\Models\Survey;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class SurveyController extends Controller
 {
@@ -243,33 +244,43 @@ class SurveyController extends Controller
     // }
 
     public function getResponsesForRespondent($surveyId, $respondentId)
-{
-    $survey = Survey::with(['questions.responses'])->findOrFail($surveyId);
+    {
+        $survey = Survey::with(['questions.responses'])->findOrFail($surveyId);
 
-    if (empty($respondentId)) {
-        return response()->json(['error' => 'Respondent ID is required'], 400);
-    }
+        if (empty($respondentId)) {
+            return response()->json(['error' => 'Respondent ID is required'], 400);
+        }
 
-    $responses = [];
+        $responses = [];
 
-    foreach ($survey->questions as $question) {
-        foreach ($question->responses as $response) {
-            if ($response->respondent_id == $respondentId) {
-                $responses[] = [
-                    'question_id' => $question->id,
-                    'response_id' => $response->id,
-                    'response_text' => $response->answer_text ?? '',
-                    'file_url' => $response->file_path ?? ''
-                ];
+        foreach ($survey->questions as $question) {
+            foreach ($question->responses as $response) {
+                if ($response->respondent_id == $respondentId) {
+                    $responses[] = [
+                        'question_id' => $question->id,
+                        'response_id' => $response->id,
+                        'response_text' => $response->answer_text ?? '',
+                        'file_url' => $response->file_path ?? ''
+                    ];
+                }
             }
         }
+        return response()->json([
+            'responses' => $responses
+        ]);
     }
-    return response()->json([
-        'responses' => $responses
-    ]);
-}
 
-
-
-
+    public function lPIndex(){
+        $surveys = Survey::where('is_active', 1)->get()->map(function ($survey) {
+            $created_at = Carbon::parse($survey->created_at);
+            $now = Carbon::now();
+            $days_since_creation = $created_at->diffInDays($now);
+            $survey->days_since_creation = floor($days_since_creation);
+            
+            return $survey;
+        });
+    
+        // dd($surveys);
+        return view('survey', compact('surveys'));
+    }
 }

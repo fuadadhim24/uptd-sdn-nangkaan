@@ -9,6 +9,7 @@ use App\Http\Controllers\PpdbInformationController;
 use App\Http\Controllers\PrincipalWelcomeMessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
@@ -20,8 +21,8 @@ Route::get('/guru', function () {return view('guru');})->name('guru');
 Route::get('/karya-dan-aktivitas', function () {return view('karya');})->name('karya');
 Route::get('/kepala-sekolah', function () {return view('sambutan-kepala-sekolah');})->name('kepala-sekolah');
 Route::get('/visi-misi', function () {return view('visi-misi');})->name('visi-misi');
-Route::get('/survey', function () {return view('survey');})->name('survey');
-Route::get('/survey-1', function () {return view('daftar-survey.index');})->name('survey-1');
+Route::get('/survey', [SurveyController::class, 'lPIndex'])->name('survey');
+Route::post('/survey/{survey}', [ResponseController::class, 'surveyBegin'])->name('survey.begin');
 
 
 // admin
