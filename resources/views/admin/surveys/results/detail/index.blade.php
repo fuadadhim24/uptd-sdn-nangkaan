@@ -228,7 +228,7 @@
                 <section id="basic-list-group">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">24 Jawaban</h4>
+                            <h4 class="card-title">{{ $surveyData['respondent_count'] }} Responden</h4>
                         </div>
                         <div class="card-body">
                             {{-- <div id="survey-results"></div> --}}
@@ -257,90 +257,159 @@
                                             <div class="col-12 col-xl-12">
                                                 <div class="card custom-card">
                                                     <div class="card-header">
-                                                        <h4>1. Nama & teks input</h4>
+                                                        <h4>1. Nama & Teks Input</h4>
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="table-responsive">
                                                             <table class="table table-hover table-lg">
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <td class="col-auto">
-                                                                            <p class=" mb-0">Joko Sari</p>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="col-auto">
-                                                                            <p class=" mb-0">Fuad Adhim</p>
-                                                                        </td>
-                                                                    </tr>
+                                                                    @foreach ($namesAndTexts as $item)
+                                                                        <tr>
+                                                                            <td class="col-auto">
+                                                                                <p class="mb-0">{{ $item }}
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
                                                                 </tbody>
                                                             </table>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="col-12 col-xl-12">
                                                 <div class="card custom-card">
                                                     <div class="card-header">
-                                                        <h4>2. Radio Button & range input</h4>
+                                                        <h4>2. Radio Button & Range Input</h4>
                                                     </div>
                                                     <div class="card-body">
-                                                        <div class="col-12 col-xl-12">
-                                                            <div id="chart-visitors-profile"></div>
-                                                        </div>
+                                                        <div id="chart-visitors-profile"></div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="col-12 col-xl-12">
                                                 <div class="card custom-card">
                                                     <div class="card-header">
                                                         <h4>3. CheckBox</h4>
                                                     </div>
                                                     <div class="card-body">
-                                                        <div class="col-12 col-xl-12">
-                                                            <div id="bar"></div>
-                                                        </div>
+                                                        <div id="bar"></div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="col-12 col-xl-12">
                                                 <div class="card custom-card">
                                                     <div class="card-header">
                                                         <h4>4. File Input</h4>
                                                     </div>
                                                     <div class="card-body">
-                                                        <div class="col-12 col-xl-12">
-                                                            <div class="table-responsive">
-                                                                <table class="table table-hover table-lg">
-                                                                    <tbody>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover table-lg">
+                                                                <tbody>
+                                                                    @foreach ($files as $file)
                                                                         <tr>
                                                                             <td class="col-auto">
                                                                                 <div>
                                                                                     <span><i
                                                                                             class="bi bi-file-earmark-arrow-down-fill"></i></span>
-                                                                                    <a href="#"
-                                                                                        class="mb-0">Dokumen A</a>
+                                                                                    <a href="{{ asset($file['file_path']) }}"
+                                                                                        class="mb-0"
+                                                                                        download>{{ basename($file['file_path']) }}</a>
                                                                                 </div>
                                                                             </td>
                                                                         </tr>
-                                                                        <tr>
-                                                                            <td class="col-auto">
-                                                                                <div>
-                                                                                    <span><i
-                                                                                            class="bi bi-file-earmark-arrow-down-fill"></i></span>
-                                                                                    <a href="#"
-                                                                                        class=" mb-0">Dokumen B</a>
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
+                                                                    @endforeach
+                                                                </tbody>
+                                                            </table>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Need: Apexcharts -->
+                                        <script src="{{ asset('extensions') }}/apexcharts/apexcharts.min.js"></script>
+
+                                        <script>
+                                            var optionsVisitorsProfile = {
+                                                series: @json($radioButtonData['series']),
+                                                labels: @json($radioButtonData['labels']),
+                                                colors: ["#0e1b4d", "#1bbca3"],
+                                                chart: {
+                                                    type: "donut",
+                                                    width: "100%",
+                                                    height: "350px",
+                                                },
+                                                legend: {
+                                                    position: "right",
+                                                },
+                                                plotOptions: {
+                                                    pie: {
+                                                        donut: {
+                                                            size: "30%",
+                                                        },
+                                                    },
+                                                },
+                                            };
+
+                                            var chartVisitorsProfile = new ApexCharts(
+                                                document.getElementById("chart-visitors-profile"),
+                                                optionsVisitorsProfile
+                                            );
+
+                                            chartVisitorsProfile.render();
+
+                                            var barOptions = {
+                                                series: @json($checkboxData['series']),
+                                                chart: {
+                                                    type: "bar",
+                                                    height: 350,
+                                                },
+                                                plotOptions: {
+                                                    bar: {
+                                                        horizontal: true,
+                                                        columnWidth: "55%",
+                                                        endingShape: "rounded",
+                                                    },
+                                                },
+                                                dataLabels: {
+                                                    enabled: false,
+                                                },
+                                                stroke: {
+                                                    show: true,
+                                                    width: 2,
+                                                    colors: ["transparent"],
+                                                },
+                                                xaxis: {
+                                                    categories: @json($checkboxData['categories']),
+                                                },
+                                                yaxis: {
+                                                    title: {
+                                                        text: "",
+                                                    },
+                                                },
+                                                fill: {
+                                                    opacity: 1,
+                                                },
+                                                tooltip: {
+                                                    y: {
+                                                        formatter: function(val) {
+                                                            return val + " responden";
+                                                        },
+                                                    },
+                                                },
+                                            };
+
+                                            var bar = new ApexCharts(
+                                                document.querySelector("#bar"),
+                                                barOptions
+                                            );
+
+                                            bar.render();
+                                        </script>
                                         <div class="tab-pane fade" id="v-pills-pertanyaan" role="tabpanel"
                                             aria-labelledby="v-pills-pertanyaan-tab">
                                             <div class="row match-height">
@@ -484,8 +553,6 @@
                                                 @endforeach
                                             </div>
                                         </div>
-
-
                                         <div class="tab-pane fade" id="v-pills-individual" role="tabpanel"
                                             aria-labelledby="v-pills-individual-tab">
                                             <div class="btn-group d-flex justify-content-end mb-4">
@@ -569,9 +636,7 @@
 
     <script src="{{ asset('js') }}/app.js"></script>
 
-    <!-- Need: Apexcharts -->
-    <script src="{{ asset('extensions') }}/apexcharts/apexcharts.min.js"></script>
-    <script src="{{ asset('js') }}/pages/detail-result.js"></script>
+    {{-- <script src="{{ asset('js') }}/pages/detail-result.js"></script> --}}
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -706,11 +771,11 @@
                     </div>
                     <div class="card-body">
                         ${radioOptions.map((option, index) => `
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" id="radio${question.question_id}_${index}" disabled ${selectedRadio === option ? 'checked' : ''}>
-                                            <label class="form-check-label" for="radio${question.question_id}_${index}">${option}</label>
-                                        </div>
-                                    `).join('')}
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" id="radio${question.question_id}_${index}" disabled ${selectedRadio === option ? 'checked' : ''}>
+                                                        <label class="form-check-label" for="radio${question.question_id}_${index}">${option}</label>
+                                                    </div>
+                                                `).join('')}
                     </div>
                 </div>
             </div>
@@ -727,11 +792,11 @@
                     </div>
                     <div class="card-body">
                         ${checkboxOptions.map((option, index) => `
-                                        <div class="form-check">
-                                            <input type="checkbox" id="checkbox${question.question_id}_${index}" class="form-check-input" disabled ${selectedCheckboxes.includes(option) ? 'checked' : ''}>
-                                            <label for="checkbox${question.question_id}_${index}">${option}</label>
-                                        </div>
-                                    `).join('')}
+                                                    <div class="form-check">
+                                                        <input type="checkbox" id="checkbox${question.question_id}_${index}" class="form-check-input" disabled ${selectedCheckboxes.includes(option) ? 'checked' : ''}>
+                                                        <label for="checkbox${question.question_id}_${index}">${option}</label>
+                                                    </div>
+                                                `).join('')}
                     </div>
                 </div>
             </div>
@@ -751,11 +816,11 @@
                     </div>
                     <div class="card-body">
                         ${rangeOptions.map(option => `
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="range${question.question_id}_${option}" disabled ${selectedRange === option ? 'checked' : ''}>
-                                            <label class="form-check-label" for="range${question.question_id}_${option}">${option}</label>
-                                        </div>
-                                    `).join('')}
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="range${question.question_id}_${option}" disabled ${selectedRange === option ? 'checked' : ''}>
+                                                        <label class="form-check-label" for="range${question.question_id}_${option}">${option}</label>
+                                                    </div>
+                                                `).join('')}
                     </div>
                 </div>
             </div>

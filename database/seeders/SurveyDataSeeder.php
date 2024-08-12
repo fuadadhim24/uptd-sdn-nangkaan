@@ -81,7 +81,6 @@ class SurveyDataSeeder extends Seeder
         foreach ($respondents as $respondentData) {
             $respondent = Respondent::create($respondentData);
 
-            // Responden 1 dan 2 mengisi kedua survei
             $surveysToFill = $respondent->id < 3 ? [$survey1, $survey2] : [$survey1];
 
             foreach ($surveysToFill as $survey) {
@@ -107,7 +106,6 @@ class SurveyDataSeeder extends Seeder
                             break;
                         case 'checkbox':
                             $options = json_decode($question->options);
-                            // Pilih 1 hingga 2 opsi secara acak
                             $selectedOptions = array_rand($options, rand(1, 2));
                             $answerText = is_array($selectedOptions) ? implode(', ', array_intersect_key($options, array_flip($selectedOptions))) : $options[$selectedOptions];
                             break;

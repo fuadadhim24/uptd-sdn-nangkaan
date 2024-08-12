@@ -77,7 +77,8 @@ class SurveyController extends Controller
     {
         $survey = Survey::with(['questions.responses.respondent'])->findOrFail($surveyId);
 
-        // Prepare data to be returned in JSON format
+        $respondentCount = $survey->respondents->count();
+
         $surveyData = [
             'survey_id' => $survey->id,
             'title' => $survey->title,
@@ -106,13 +107,89 @@ class SurveyController extends Controller
                     'respondent_id' => $respondent->id,
                     'name' => $respondent->name,
                 ];
-            })
+            }),
+            'respondent_count' => $respondentCount,
         ];
         // dd($surveyData);
 
+        $namesAndTexts = [];
+        foreach ($surveyData['questions'] as $question) {
+            if ($question['question_type'] === 'text_input' || $question['question_type'] === 'text_description') {
+                foreach ($question['responses'] as $response) {
+                    $namesAndTexts[] = $response['answer_text'];
+                }
+            }
+        }
+
+        // Prepare data for "Radio Button"
+        $radioButtonOptions = [];
+        $radioButtonCounts = [];
+        foreach ($surveyData['questions'] as $question) {
+            if ($question['question_type'] === 'radio') {
+                $options = json_decode($question['options']);
+                foreach ($options as $option) {
+                    $radioButtonCounts[$option] = 0;
+                }
+                foreach ($question['responses'] as $response) {
+                    $selectedOptions = explode(', ', $response['answer_text']); // Adjust delimiter as necessary
+                    foreach ($selectedOptions as $selectedOption) {
+                        if (isset($radioButtonCounts[$selectedOption])) {
+                            $radioButtonCounts[$selectedOption]++;
+                        }
+                    }
+                }
+                $radioButtonOptions = [
+                    'series' => array_values($radioButtonCounts),
+                    'labels' => array_keys($radioButtonCounts),
+                ];
+            }
+        }
+
+        // Prepare data for "CheckBox"
+        $checkboxOptions = [];
+        $checkboxCounts = [];
+        foreach ($surveyData['questions'] as $question) {
+            if ($question['question_type'] === 'checkbox') {
+                $options = json_decode($question['options']);
+                foreach ($options as $option) {
+                    $checkboxCounts[$option] = 0;
+                }
+                foreach ($question['responses'] as $response) {
+                    $selectedOptions = explode(', ', $response['answer_text']); // Adjust delimiter as necessary
+                    foreach ($selectedOptions as $selectedOption) {
+                        if (isset($checkboxCounts[$selectedOption])) {
+                            $checkboxCounts[$selectedOption]++;
+                        }
+                    }
+                }
+                $checkboxOptions = [
+                    'series' => array_map(function($count) {
+                        return ['name' => $count[0], 'data' => [$count[1]]];
+                    }, array_map(null, array_keys($checkboxCounts), array_values($checkboxCounts))),
+                    'categories' => array_keys($checkboxCounts),
+                ];
+            }
+        }
+
+        // Prepare data for "File Input"
+        $files = [];
+        foreach ($surveyData['questions'] as $question) {
+            if ($question['question_type'] === 'file') {
+                foreach ($question['responses'] as $response) {
+                    if ($response['file_path']) {
+                        $files[] = $response;
+                    }
+                }
+            }
+        }
+
         return view('admin.surveys.results.detail.index', [
             'surveyId' => $surveyId, 
-            'surveyData' => $surveyData
+            'surveyData' => $surveyData,
+            'namesAndTexts' => $namesAndTexts,
+            'radioButtonData' => $radioButtonOptions,
+            'checkboxData' => $checkboxOptions,
+            'files' => $files
         ]);
     }
 
