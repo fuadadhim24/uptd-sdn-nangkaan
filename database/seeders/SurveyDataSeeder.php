@@ -18,13 +18,6 @@ class SurveyDataSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            [
-                'name' => 'Admin User',
-                'email' => 'admin@gmail.com',
-                'password' => Hash::make('password123'),
-            ],
-        ]);
         // Buat survei
         $survey1 = Survey::create([
             'title' => 'Survey Aktif',
@@ -97,7 +90,6 @@ class SurveyDataSeeder extends Seeder
                 foreach ($questions as $question) {
                     $answerText = '';
                     $filePath = null;
-                    $checkboxAnswers = null;
 
                     switch ($question->question_type) {
                         case 'text_input':
@@ -115,8 +107,9 @@ class SurveyDataSeeder extends Seeder
                             break;
                         case 'checkbox':
                             $options = json_decode($question->options);
-                            $selectedOptions = array_rand($options, 2);
-                            $checkboxAnswers = json_encode(array_intersect_key($options, array_flip($selectedOptions)));
+                            // Pilih 1 hingga 2 opsi secara acak
+                            $selectedOptions = array_rand($options, rand(1, 2));
+                            $answerText = is_array($selectedOptions) ? implode(', ', array_intersect_key($options, array_flip($selectedOptions))) : $options[$selectedOptions];
                             break;
                         case 'file':
                             $filename = 'dummy-file-' . Str::random(10) . '.txt';
@@ -130,7 +123,6 @@ class SurveyDataSeeder extends Seeder
                         'question_id' => $question->id,
                         'answer_text' => $answerText,
                         'file_path' => $filePath,
-                        'checkbox_answers' => $checkboxAnswers,
                     ]);
                 }
             }

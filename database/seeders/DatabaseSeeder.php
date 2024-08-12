@@ -13,11 +13,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            SurveySeeder::class,
-            QuestionSeeder::class, 
+            // SurveySeeder::class,
+            // QuestionSeeder::class, 
             // AnswerSeeder::class,
-            RespondentSeeder::class,
-            ResponseSeeder::class,
+            // RespondentSeeder::class,
+            // ResponseSeeder::class,
+            SurveyDataSeeder::class,
             FaqsTableSeeder::class,
             PpdbInformationTableSeeder::class,
             AcademicCalendarsTableSeeder::class,

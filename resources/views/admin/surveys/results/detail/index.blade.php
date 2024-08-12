@@ -344,253 +344,148 @@
                                         <div class="tab-pane fade" id="v-pills-pertanyaan" role="tabpanel"
                                             aria-labelledby="v-pills-pertanyaan-tab">
                                             <div class="row match-height">
-                                                <div class="col-12 col-md-6 mb-4">
-                                                    <div class="card custom-card">
-                                                        <div class="card-header">
-                                                            <h5>Nama</h5>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <div class="table-responsive">
-                                                                <table class="table table-hover table-lg">
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td class="col-auto">
-                                                                                <p class=" mb-0">Joko Sari</p>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
+                                                @foreach ($surveyData['questions'] as $question)
+                                                    <div class="col-12 col-md-6 mb-4">
+                                                        <div class="card custom-card">
+                                                            <div class="card-header">
+                                                                <h5>{{ $question['question_text'] }}</h5>
                                                             </div>
-                                                            <div class="btn-group mb-1">
-                                                                <div class="dropdown">
-                                                                    <button
-                                                                        class="btn btn-light-primary dropdown-toggle me-1"
-                                                                        type="button" id="dropdownMenuButton"
-                                                                        data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                        aria-expanded="false">
-                                                                        Jawaban 1
-                                                                    </button>
-                                                                    <div class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 1</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 2</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 3</a>
+                                                            <div class="card-body">
+                                                                @if ($question['question_type'] === 'text_input' || $question['question_type'] === 'text_description')
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-hover table-lg">
+                                                                            <tbody>
+                                                                                @foreach ($question['responses'] as $response)
+                                                                                    <tr>
+                                                                                        <td class="col-auto">
+                                                                                            <p class="mb-0">
+                                                                                                {{ $response['answer_text'] }}
+                                                                                            </p>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                @endforeach
+                                                                            </tbody>
+                                                                        </table>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12 col-md-6 mb-4">
-                                                    <div class="card custom-card">
-                                                        <div class="card-header">
-                                                            <h5>Option</h5>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <div class="form-check mb-3">
-                                                                <input class="form-check-input" type="radio"
-                                                                    name="flexRadioDisabled1"
-                                                                    id="flexRadioCheckedDisabled" checked disabled>
-                                                                <label class="form-check-label"
-                                                                    for="flexRadioCheckedDisabled">
-                                                                    Option 1
-                                                                </label>
-                                                            </div>
-                                                            <div class="btn-group mb-1">
-                                                                <div class="dropdown">
-                                                                    <button
-                                                                        class="btn btn-light-primary dropdown-toggle me-1"
-                                                                        type="button" id="dropdownMenuButton"
-                                                                        data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                        aria-expanded="false">
-                                                                        Jawaban 1
-                                                                    </button>
-                                                                    <div class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 1</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 2</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 3</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12 col-md-6 mb-4">
-                                                    <div class="card custom-card">
-                                                        <div class="card-header">
-                                                            <h5>Checkbox</h5>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <div class="mb-3">
-                                                                <li class="d-inline-block me-2 mb-1">
-                                                                    <div class="form-check">
-                                                                        <div class="checkbox">
-                                                                            <input type="checkbox" id="checkbox3"
-                                                                                class="form-check-input" disabled
-                                                                                checked>
-                                                                            <label for="checkbox3">Disabled Checked
-                                                                                Checkbox</label>
+                                                                @elseif ($question['question_type'] === 'radio')
+                                                                    @foreach (json_decode($question['options']) as $option)
+                                                                        <div class="form-check mb-3">
+                                                                            @php
+                                                                                $isChecked = $question[
+                                                                                    'responses'
+                                                                                ]->contains(function ($response) use (
+                                                                                    $option,
+                                                                                ) {
+                                                                                    return $response['answer_text'] ===
+                                                                                        $option;
+                                                                                });
+                                                                            @endphp
+                                                                            <input class="form-check-input"
+                                                                                type="radio"
+                                                                                id="radio{{ $loop->index }}" checked
+                                                                                disabled>
+                                                                            <label class="form-check-label"
+                                                                                for="radio{{ $loop->index }}">
+                                                                                {{ $option }}
+                                                                            </label>
                                                                         </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="d-inline-block me-2 mb-1">
-                                                                    <div class="form-check">
-                                                                        <div class="checkbox">
-                                                                            <input type="checkbox" id="checkbox3"
-                                                                                class="form-check-input" disabled
-                                                                                checked>
-                                                                            <label for="checkbox3">Disabled Checked
-                                                                                Checkbox</label>
+                                                                    @endforeach
+                                                                @elseif ($question['question_type'] === 'checkbox')
+                                                                    @php
+                                                                        // Decode the options from JSON
+                                                                        $options = json_decode(
+                                                                            $question['options'],
+                                                                            true,
+                                                                        );
+                                                                        // Extract all selected answers for easy lookup
+                                                                        $selectedAnswers = [];
+                                                                        foreach ($question['responses'] as $response) {
+                                                                            $answers = explode(
+                                                                                ', ',
+                                                                                $response['answer_text'],
+                                                                            ); // Assuming answers are comma-separated
+                                                                            foreach ($answers as $answer) {
+                                                                                $selectedAnswers[] = trim($answer); // Clean up spaces
+                                                                            }
+                                                                        }
+                                                                        $selectedAnswers = array_unique(
+                                                                            $selectedAnswers,
+                                                                        ); // Remove duplicates if necessary
+                                                                    @endphp
+
+                                                                    @foreach ($options as $index => $option)
+                                                                        <div class="form-check mb-3">
+                                                                            @php
+                                                                                $isChecked = in_array(
+                                                                                    $option,
+                                                                                    $selectedAnswers,
+                                                                                ); // Check if the option is selected
+                                                                            @endphp
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox"
+                                                                                id="checkbox{{ $index }}"
+                                                                                {{ $isChecked ? 'checked' : '' }}
+                                                                                disabled>
+                                                                            <label class="form-check-label"
+                                                                                for="checkbox{{ $index }}">
+                                                                                {{ $option }}
+                                                                            </label>
                                                                         </div>
-                                                                    </div>
-                                                                </li>
-                                                            </div>
-                                                            <div class="btn-group mb-1">
-                                                                <div class="dropdown">
-                                                                    <button
-                                                                        class="btn btn-light-primary dropdown-toggle me-1"
-                                                                        type="button" id="dropdownMenuButton"
-                                                                        data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                        aria-expanded="false">
-                                                                        Jawaban 1
-                                                                    </button>
-                                                                    <div class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 1</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 2</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 3</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12 col-md-6 mb-4">
-                                                    <div class="card custom-card">
-                                                        <div class="card-header">
-                                                            <h5>Range Input</h5>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <div class="mb-3">
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="flexRadioDisabled2" id="flexRadio1"
-                                                                        disabled>
-                                                                    <label class="form-check-label"
-                                                                        for="flexRadio1">1</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="flexRadioDisabled2" id="flexRadio2"
-                                                                        disabled>
-                                                                    <label class="form-check-label"
-                                                                        for="flexRadio2">2</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="flexRadioDisabled2" id="flexRadio3"
-                                                                        checked disabled>
-                                                                    <label class="form-check-label"
-                                                                        for="flexRadio3">3</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="flexRadioDisabled2" id="flexRadio3"
-                                                                        checked disabled>
-                                                                    <label class="form-check-label"
-                                                                        for="flexRadio3">4</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="flexRadioDisabled2" id="flexRadio3"
-                                                                        checked disabled>
-                                                                    <label class="form-check-label"
-                                                                        for="flexRadio3">5</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="btn-group mb-1">
-                                                                <div class="dropdown">
-                                                                    <button
-                                                                        class="btn btn-light-primary dropdown-toggle me-1"
-                                                                        type="button" id="dropdownMenuButton"
-                                                                        data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                        aria-expanded="false">
-                                                                        Jawaban 1
-                                                                    </button>
-                                                                    <div class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 1</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 2</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 3</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12 col-md-6 mb-4">
-                                                    <div class="card custom-card">
-                                                        <div class="card-header">
-                                                            <h5>File Input</h5>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <table class="table table-hover table-lg">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="col-auto">
-                                                                            <div>
-                                                                                <span><i
-                                                                                        class="bi bi-file-earmark-arrow-down-fill"></i></span>
-                                                                                <a href="#"
-                                                                                    class="mb-0">Dokumen A</a>
+                                                                    @endforeach
+                                                                @elseif ($question['question_type'] === 'range')
+                                                                    <div class="mb-3">
+                                                                        @foreach (range(1, 5) as $value)
+                                                                            @php
+                                                                                $isChecked = $question[
+                                                                                    'responses'
+                                                                                ]->contains(function ($response) use (
+                                                                                    $value,
+                                                                                ) {
+                                                                                    return $response['answer_text'] ==
+                                                                                        $value;
+                                                                                });
+                                                                            @endphp
+                                                                            <div class="form-check form-check-inline">
+                                                                                <input class="form-check-input"
+                                                                                    type="radio"
+                                                                                    name="range{{ $question['question_id'] }}"
+                                                                                    id="rangeRadio{{ $value }}"
+                                                                                    {{ $isChecked ? 'checked' : '' }}
+                                                                                    disabled>
+                                                                                <label class="form-check-label"
+                                                                                    for="rangeRadio{{ $value }}">{{ $value }}</label>
                                                                             </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                            <div class="btn-group mb-1">
-                                                                <div class="dropdown">
-                                                                    <button
-                                                                        class="btn btn-light-primary dropdown-toggle me-1"
-                                                                        type="button" id="dropdownMenuButton"
-                                                                        data-bs-toggle="dropdown" aria-haspopup="true"
-                                                                        aria-expanded="false">
-                                                                        Jawaban 1
-                                                                    </button>
-                                                                    <div class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 1</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 2</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="#">Jawaban 3</a>
+                                                                        @endforeach
                                                                     </div>
-                                                                </div>
+                                                                @elseif ($question['question_type'] === 'file')
+                                                                    <table class="table table-hover table-lg">
+                                                                        <tbody>
+                                                                            @foreach ($question['responses'] as $response)
+                                                                                @if ($response['file_path'])
+                                                                                    <tr>
+                                                                                        <td class="col-auto">
+                                                                                            <div>
+                                                                                                <span><i
+                                                                                                        class="bi bi-file-earmark-arrow-down-fill"></i></span>
+                                                                                                <a href="{{ asset($response['file_path']) }}"
+                                                                                                    class="mb-0"
+                                                                                                    download>{{ basename($response['file_path']) }}</a>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </tbody>
+                                                                    </table>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
+
+
                                         <div class="tab-pane fade" id="v-pills-individual" role="tabpanel"
                                             aria-labelledby="v-pills-individual-tab">
                                             <div class="btn-group d-flex justify-content-end mb-4">
@@ -681,12 +576,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const surveyId = document.getElementById('survey-id').value;
-    
+
             if (surveyId) {
                 fetchSurveyResponses(surveyId);
             }
         });
-    
+
         async function fetchSurveyResponses(surveyId) {
             try {
                 const response = await fetch(`/admin-hasil-survey/detail/${surveyId}/data`, {
@@ -695,25 +590,28 @@
                         'Content-Type': 'application/json',
                     },
                 });
-    
+
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-    
+
                 const data = await response.json();
                 populateDropdown(data.respondents);
                 setupDropdownEventListeners(data);
-    
+                console.log(data);
+
+
                 if (data.respondents.length > 0) {
                     const firstRespondentId = data.respondents[0].respondent_id;
                     updateSurveyResults(data, firstRespondentId);
                 }
-    
+                // console.log('hallo');
+
             } catch (error) {
                 console.error('Error fetching survey responses:', error);
             }
         }
-    
+
         function populateDropdown(respondents) {
             const dropdownMenu = document.getElementById('dropdown-menu');
             dropdownMenu.innerHTML = respondents.map(respondent => `
@@ -722,7 +620,7 @@
                 </a>
             `).join('');
         }
-    
+
         function setupDropdownEventListeners(data) {
             const dropdownMenu = document.getElementById('dropdown-menu');
             dropdownMenu.querySelectorAll('.dropdown-item').forEach(item => {
@@ -733,15 +631,17 @@
                 });
             });
         }
-    
+
         function updateSurveyResults(data, selectedRespondentId) {
             const resultsContainer = document.getElementById('survey-results');
             resultsContainer.innerHTML = '';
-    
+
+
             // Filter responses for the selected respondent
             const filteredQuestions = data.questions.map(question => {
-                const responses = question.responses.filter(response => response.respondent_id == selectedRespondentId);
-    
+                const responses = question.responses.filter(response => response.respondent_id ==
+                    selectedRespondentId);
+
                 if (responses.length > 0) {
                     return {
                         ...question,
@@ -750,36 +650,148 @@
                 }
                 return null;
             }).filter(question => question !== null);
-    
+            // console.log(data);
+
             // Render the survey data
             resultsContainer.innerHTML = `
                 <h1>Survey Results for Respondent ${selectedRespondentId}</h1>
                 <div>
-                    ${filteredQuestions.map(question => `
-                        <div>
-                            <h2>Question ID: ${question.question_id}</h2>
-                            <p>Question Text: ${question.question_text}</p>
-                            <p>Question Type: ${question.question_type}</p>
-                            <p>Description: ${question.description || 'N/A'}</p>
-                            <p>Range: ${question.range || 'N/A'}</p>
-                            <p>Options: ${question.options ? JSON.parse(question.options).join(', ') : 'N/A'}</p>
-                            <div>
-                                ${question.responses.map(response => `
-                                    <div>
-                                        <p>Response ID: ${response.response_id}</p>
-                                        <p>Respondent ID: ${response.respondent_id}</p>
-                                        <p>Response Text: ${response.response_text || 'N/A'}</p>
-                                        <p>File URL: ${response.file_url || 'N/A'}</p>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `).join('')}
+                    ${filteredQuestions.map(question => generateQuestionHTML(question)).join('')}
                 </div>
             `;
         }
+
+        function generateQuestionHTML(question) {
+            switch (question.question_type) {
+                case 'text_input':
+                    return `
+            <div class="col-12 col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <h4>${question.question_text}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" readonly="readonly" value="${question.responses[0].answer_text}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+                case 'text_description':
+                    return `
+            <div class="col-12 col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <h4>${question.question_text}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="4" readonly>${question.responses[0].answer_text}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+                case 'radio':
+                    const radioOptions = JSON.parse(question.options || '[]');
+                    const selectedRadio = question.responses[0].answer_text;
+                    return `
+            <div class="col-12 col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <h4>${question.question_text}</h4>
+                    </div>
+                    <div class="card-body">
+                        ${radioOptions.map((option, index) => `
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" id="radio${question.question_id}_${index}" disabled ${selectedRadio === option ? 'checked' : ''}>
+                                            <label class="form-check-label" for="radio${question.question_id}_${index}">${option}</label>
+                                        </div>
+                                    `).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+
+                case 'checkbox':
+                    const checkboxOptions = JSON.parse(question.options || '[]');
+                    const selectedCheckboxes = question.responses[0].answer_text.split(', ').map(option => option.trim());
+                    return `
+            <div class="col-12 col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <h4>${question.question_text}</h4>
+                    </div>
+                    <div class="card-body">
+                        ${checkboxOptions.map((option, index) => `
+                                        <div class="form-check">
+                                            <input type="checkbox" id="checkbox${question.question_id}_${index}" class="form-check-input" disabled ${selectedCheckboxes.includes(option) ? 'checked' : ''}>
+                                            <label for="checkbox${question.question_id}_${index}">${option}</label>
+                                        </div>
+                                    `).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+
+                case 'range':
+                    const [rangeStart, rangeEnd] = question.range.split('-').map(Number);
+                    const rangeOptions = Array.from({
+                        length: (rangeEnd - rangeStart + 1)
+                    }, (_, i) => rangeStart + i);
+                    const selectedRange = parseInt(question.responses[0].answer_text, 10);
+                    return `
+            <div class="col-12 col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <h4>${question.question_text}</h4>
+                    </div>
+                    <div class="card-body">
+                        ${rangeOptions.map(option => `
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" id="range${question.question_id}_${option}" disabled ${selectedRange === option ? 'checked' : ''}>
+                                            <label class="form-check-label" for="range${question.question_id}_${option}">${option}</label>
+                                        </div>
+                                    `).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+
+                case 'file':
+                    return `
+            <div class="col-12 col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <h4>${question.question_text}</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover table-lg">
+                            <tbody>
+                                <tr>
+                                    <td class="col-auto">
+                                        <div>
+                                            <span><i class="bi bi-file-earmark-arrow-down-fill"></i></span>
+                                            <a href="${question.responses[0].file_path}" class="mb-0">Dokumen</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        `;
+
+                default:
+                    return '';
+            }
+        }
     </script>
-    
+
 
 
 </body>

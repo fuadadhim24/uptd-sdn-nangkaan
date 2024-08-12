@@ -75,55 +75,86 @@ class SurveyController extends Controller
 
     public function showSurveyResults($surveyId)
     {
-        $survey = Survey::with(['questions.responses.respondent'])
-                        ->findOrFail($surveyId);
+        $survey = Survey::with(['questions.responses.respondent'])->findOrFail($surveyId);
+
+        // Prepare data to be returned in JSON format
+        $surveyData = [
+            'survey_id' => $survey->id,
+            'title' => $survey->title,
+            'description' => $survey->description,
+            'is_active' => $survey->is_active,
+            'questions' => $survey->questions->map(function ($question) {
+                return [
+                    'question_id' => $question->id,
+                    'question_text' => $question->question_text,
+                    'question_type' => $question->question_type,
+                    'description' => $question->description,
+                    'range' => $question->range,
+                    'options' => $question->options,
+                    'responses' => $question->responses->map(function ($response) {
+                        return [
+                            'response_id' => $response->id,
+                            'respondent_id' => $response->respondent_id,
+                            'answer_text' => $response->answer_text, 
+                            'file_path' => $response->file_path
+                        ];
+                    })
+                ];
+            }),
+            'respondents' => $survey->respondents->map(function ($respondent) {
+                return [
+                    'respondent_id' => $respondent->id,
+                    'name' => $respondent->name,
+                ];
+            })
+        ];
+        // dd($surveyData);
 
         return view('admin.surveys.results.detail.index', [
-            'surveyId' => $surveyId
+            'surveyId' => $surveyId, 
+            'surveyData' => $surveyData
         ]);
     }
 
 
 
     public function getDataRespondent($surveyId)
-{
-    // Load the survey data with related models
-    $survey = Survey::with(['questions.responses.respondent'])->findOrFail($surveyId);
+    {
+        $survey = Survey::with(['questions.responses.respondent'])->findOrFail($surveyId);
 
-    // Prepare data to be returned in JSON format
-    $surveyData = [
-        'survey_id' => $survey->id,
-        'title' => $survey->title,
-        'description' => $survey->description,
-        'is_active' => $survey->is_active,
-        'questions' => $survey->questions->map(function ($question) {
-            return [
-                'question_id' => $question->id,
-                'question_text' => $question->question_text,
-                'question_type' => $question->question_type,
-                'description' => $question->description,
-                'range' => $question->range,
-                'options' => $question->options,
-                'responses' => $question->responses->map(function ($response) {
-                    return [
-                        'response_id' => $response->id,
-                        'respondent_id' => $response->respondent_id,
-                        'answer_text' => $response->answer_text, // Make sure this field exists
-                        'file_path' => $response->file_path // Make sure this field exists
-                    ];
-                })
-            ];
-        }),
-        'respondents' => $survey->respondents->map(function ($respondent) {
-            return [
-                'respondent_id' => $respondent->id,
-                'name' => $respondent->name,
-            ];
-        })
-    ];
+        $surveyData = [
+            'survey_id' => $survey->id,
+            'title' => $survey->title,
+            'description' => $survey->description,
+            'is_active' => $survey->is_active,
+            'questions' => $survey->questions->map(function ($question) {
+                return [
+                    'question_id' => $question->id,
+                    'question_text' => $question->question_text,
+                    'question_type' => $question->question_type,
+                    'description' => $question->description,
+                    'range' => $question->range,
+                    'options' => $question->options,
+                    'responses' => $question->responses->map(function ($response) {
+                        return [
+                            'response_id' => $response->id,
+                            'respondent_id' => $response->respondent_id,
+                            'answer_text' => $response->answer_text,
+                            'file_path' => $response->file_path
+                        ];
+                    })
+                ];
+            }),
+            'respondents' => $survey->respondents->map(function ($respondent) {
+                return [
+                    'respondent_id' => $respondent->id,
+                    'name' => $respondent->name,
+                ];
+            })
+        ];
 
-    return response()->json($surveyData);
-}
+        return response()->json($surveyData);
+    }
 
 
     //     return view('admin.surveys.results.detail.index', [
@@ -136,18 +167,14 @@ class SurveyController extends Controller
 
     public function getResponsesForRespondent($surveyId, $respondentId)
 {
-    // Load survey with related questions and responses
     $survey = Survey::with(['questions.responses'])->findOrFail($surveyId);
 
-    // Ensure $respondentId is set
     if (empty($respondentId)) {
         return response()->json(['error' => 'Respondent ID is required'], 400);
     }
 
-    // Initialize responses array
     $responses = [];
 
-    // Iterate through questions and responses to filter by respondent ID
     foreach ($survey->questions as $question) {
         foreach ($question->responses as $response) {
             if ($response->respondent_id == $respondentId) {
@@ -160,8 +187,6 @@ class SurveyController extends Controller
             }
         }
     }
-
-    // Return JSON response
     return response()->json([
         'responses' => $responses
     ]);
