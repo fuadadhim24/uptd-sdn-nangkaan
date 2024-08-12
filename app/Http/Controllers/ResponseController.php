@@ -63,19 +63,22 @@ use Illuminate\Support\Str;
             if (strpos($key, 'question_') === 0) {
                 $questionId = str_replace('question_', '', $key);
                 $question = Question::find($questionId);
-
+    
+                // Inisialisasi filename
+                $filename = null;
+    
                 // Menangani file upload
-                $filePath = null;
                 if ($request->hasFile($key)) {
                     $file = $request->file($key);
-                    $filePath = $file->storeAs('responses', Str::random(10) . '.' . $file->getClientOriginalExtension(), 'public');
+                    $filename = 'respondent-file-' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+                    $file->storeAs('public/answer', $filename);
                 }
-
+    
                 Response::create([
                     'respondent_id' => $respondent->id,
                     'question_id' => $question->id,
                     'answer_text' => is_array($value) ? implode(',', $value) : $value,
-                    'file_path' => $filePath,
+                    'file_path' => $filename,
                 ]);
             }
         }

@@ -88,7 +88,7 @@ class SurveyDataSeeder extends Seeder
 
                 foreach ($questions as $question) {
                     $answerText = '';
-                    $filePath = null;
+                    $fileName = null;
 
                     switch ($question->question_type) {
                         case 'text_input':
@@ -120,7 +120,7 @@ class SurveyDataSeeder extends Seeder
                         'respondent_id' => $respondent->id,
                         'question_id' => $question->id,
                         'answer_text' => $answerText,
-                        'file_path' => $filePath,
+                        'file_path' => $fileName,
                     ]);
                 }
             }

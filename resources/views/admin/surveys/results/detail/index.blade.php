@@ -315,7 +315,7 @@
                                                                                 <div>
                                                                                     <span><i
                                                                                             class="bi bi-file-earmark-arrow-down-fill"></i></span>
-                                                                                    <a href="{{ asset($file['file_path']) }}"
+                                                                                    <a href="{{ asset('storage/answer/' . $file['file_path']) }}"
                                                                                         class="mb-0"
                                                                                         download>{{ basename($file['file_path']) }}</a>
                                                                                 </div>
@@ -536,9 +536,10 @@
                                                                                             <div>
                                                                                                 <span><i
                                                                                                         class="bi bi-file-earmark-arrow-down-fill"></i></span>
-                                                                                                <a href="{{ asset($response['file_path']) }}"
+                                                                                                <a href="{{ asset('storage/answer/' . $response['file_path']) }}"
                                                                                                     class="mb-0"
                                                                                                     download>{{ basename($response['file_path']) }}</a>
+
                                                                                             </div>
                                                                                         </td>
                                                                                     </tr>
@@ -727,6 +728,7 @@
         }
 
         function generateQuestionHTML(question) {
+            const baseURL = '{{ asset('storage/answer') }}/';
             switch (question.question_type) {
                 case 'text_input':
                     return `
@@ -771,11 +773,11 @@
                     </div>
                     <div class="card-body">
                         ${radioOptions.map((option, index) => `
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="radio${question.question_id}_${index}" disabled ${selectedRadio === option ? 'checked' : ''}>
-                                                        <label class="form-check-label" for="radio${question.question_id}_${index}">${option}</label>
-                                                    </div>
-                                                `).join('')}
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" id="radio${question.question_id}_${index}" disabled ${selectedRadio === option ? 'checked' : ''}>
+                                                                <label class="form-check-label" for="radio${question.question_id}_${index}">${option}</label>
+                                                            </div>
+                                                        `).join('')}
                     </div>
                 </div>
             </div>
@@ -792,11 +794,11 @@
                     </div>
                     <div class="card-body">
                         ${checkboxOptions.map((option, index) => `
-                                                    <div class="form-check">
-                                                        <input type="checkbox" id="checkbox${question.question_id}_${index}" class="form-check-input" disabled ${selectedCheckboxes.includes(option) ? 'checked' : ''}>
-                                                        <label for="checkbox${question.question_id}_${index}">${option}</label>
-                                                    </div>
-                                                `).join('')}
+                                                            <div class="form-check">
+                                                                <input type="checkbox" id="checkbox${question.question_id}_${index}" class="form-check-input" disabled ${selectedCheckboxes.includes(option) ? 'checked' : ''}>
+                                                                <label for="checkbox${question.question_id}_${index}">${option}</label>
+                                                            </div>
+                                                        `).join('')}
                     </div>
                 </div>
             </div>
@@ -816,11 +818,11 @@
                     </div>
                     <div class="card-body">
                         ${rangeOptions.map(option => `
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" id="range${question.question_id}_${option}" disabled ${selectedRange === option ? 'checked' : ''}>
-                                                        <label class="form-check-label" for="range${question.question_id}_${option}">${option}</label>
-                                                    </div>
-                                                `).join('')}
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" id="range${question.question_id}_${option}" disabled ${selectedRange === option ? 'checked' : ''}>
+                                                                <label class="form-check-label" for="range${question.question_id}_${option}">${option}</label>
+                                                            </div>
+                                                        `).join('')}
                     </div>
                 </div>
             </div>
@@ -840,7 +842,7 @@
                                     <td class="col-auto">
                                         <div>
                                             <span><i class="bi bi-file-earmark-arrow-down-fill"></i></span>
-                                            <a href="${question.responses[0].file_path}" class="mb-0">Dokumen</a>
+                                            <a href="${baseURL+question.responses[0].file_path}" class="mb-0">${question.responses[0].file_path}</a>
                                         </div>
                                     </td>
                                 </tr>
