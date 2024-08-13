@@ -15,7 +15,7 @@ class CurriculaTableSeeder extends Seeder
         DB::table('curricula')->insert([
             [
                 'title' => 'Curriculum 2024',
-                'file_path' => 'files/curriculum_2024.pdf',
+                'file_path' => 'h4H8S6cz8A.pdf',
             ]
         ]);
     }

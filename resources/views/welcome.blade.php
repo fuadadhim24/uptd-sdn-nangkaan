@@ -228,8 +228,8 @@
                 <p class="animate__animated animate__fadeInLeft">82% siswa UPTD SPF SDN Nangkaan memilih melanjutkan
                     pendidikan setelah lulus. Siswa kami memiliki ambisi tinggi dan tersebar di berbagai institusi
                     pendidikan di seluruh Indonesia dan luar negeri.</p>
-                <a href="#" class="animate__animated animate__fadeInUp" data-bs-toggle="modal"
-                    data-bs-target="#lulusanModal">Lihat daftar lulusan --></a>
+                {{-- <a href="#" class="animate__animated animate__fadeInUp" data-bs-toggle="modal"
+                    data-bs-target="#lulusanModal">Lihat daftar lulusan --></a> --}}
             </div>
         </section>
 
@@ -418,6 +418,29 @@
                 </div><!-- End Section Title -->
                 <div class="horizontal-line animate__animated animate__fadeInUp"></div>
 
+                <!-- Modal -->
+                <div class="modal fade" id="curriculumModal" tabindex="-1" aria-labelledby="curriculumModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="curriculumModalLabel">Kurikulum</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <embed src="{{ asset('storage/curricula/' . $curriculum->file_path) }}"
+                                    type="application/pdf" width="100%" height="600px">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Tutup</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 <!-- card hover section -->
                 <div class="tab-content row justify-content-end" data-aos="fade-up" data-aos-delay="200">
                     <!-- tab 1 -->
@@ -488,7 +511,7 @@
                                         siswa dengan keterampilan dan nilai-nilai penting dalam menghadapi tantangan
                                         masa depan.</p>
 
-                                    <a data-splitting="" href="#">Detail →</a>
+                                    <a data-bs-toggle="modal" data-bs-target="#curriculumModal" href="#">Detail →</a>
                                 </div>
                             </div>
                             <div class="card animate__animated animate__fadeIn" data-aos="fade-up"
@@ -797,7 +820,8 @@
                         <ul>
                             <li><a href="{{ route('/') }}">Beranda</a></li>
                             <li><a href="{{ route('karya') }}">Karya, Atletik & Aktivitas</a></li>
-                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
+                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a>
+                            </li>
                             <li><a href="https://wa.me/6287840199095" target="_blank">Kontak</a></li>
                         </ul>
                     </div>
