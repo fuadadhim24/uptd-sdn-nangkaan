@@ -16,14 +16,14 @@ class TeachersTableSeeder extends Seeder
             [
                 'name' => 'John Doe',
                 'designation' => 'Mathematics Teacher',
-                'photo' => 'photos/john_doe.jpg',
-                'biography' => 'John Doe has been teaching Mathematics for over 10 years.',
+                'photo' => '241YtvOfzZ.png',
+                // 'biography' => 'John Doe has been teaching Mathematics for over 10 years.',
             ],
             [
                 'name' => 'Jane Smith',
                 'designation' => 'English Teacher',
-                'photo' => 'photos/jane_smith.jpg',
-                'biography' => 'Jane Smith is an expert in English Literature with a passion for teaching.',
+                'photo' => 'h9iNplboXy.png',
+                // 'biography' => 'Jane Smith is an expert in English Literature with a passion for teaching.',
             ],
         ]);
     }

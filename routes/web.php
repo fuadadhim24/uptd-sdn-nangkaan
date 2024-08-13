@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {return view('welcome');})->name('/');
 Route::get('/ekstrakulikuler', function () {return view('ekstrakulikuler');})->name('ekstrakulikuler');
 Route::get('/fasilitas', function () {return view('fasilitas');})->name('fasilitas');
-Route::get('/guru', function () {return view('guru');})->name('guru');
+Route::get('/guru', [TeacherController::class, 'lPIndex'])->name('guru');
 Route::get('/karya-dan-aktivitas', function () {return view('karya');})->name('karya');
 Route::get('/kepala-sekolah', [PrincipalWelcomeMessageController::class, 'lPIndex'])->name('kepala-sekolah');
 Route::get('/visi-misi', function () {return view('visi-misi');})->name('visi-misi');

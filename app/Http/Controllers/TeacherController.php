@@ -11,7 +11,7 @@ class TeacherController extends Controller
 {
     public function index()
     {
-        $teachers = Teacher::all();
+    $teachers = Teacher::all();
         return view('admin.guru.index', compact('teachers'));
     }
 
@@ -26,7 +26,7 @@ class TeacherController extends Controller
             'name' => 'required|string|max:255',
             'designation' => 'required|string|max:255',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg',
-            'biography' => 'required|string',
+            // 'biography' => 'required|string',
         ]);
 
         $teacher = new Teacher();
@@ -40,7 +40,7 @@ class TeacherController extends Controller
             $teacher->photo = $filename;
         }
 
-        $teacher->biography = $request->biography;
+        // $teacher->biography = $request->biography;
         $teacher->save();
 
         return redirect()->route('admin.guru')->with('success', 'Teacher added successfully.');
@@ -62,7 +62,7 @@ class TeacherController extends Controller
             'name' => 'required|string|max:255',
             'designation' => 'required|string|max:255',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg',
-            'biography' => 'nullable|string',
+            // 'biography' => 'nullable|string',
         ]);
 
         $teacher->name = $request->input('name');
@@ -81,9 +81,9 @@ class TeacherController extends Controller
             $teacher->photo = $filename;
         }
 
-        if ($request->has('biography')) {
-            $teacher->biography = $request->input('biography');
-        }
+        // if ($request->has('biography')) {
+        //     $teacher->biography = $request->input('biography');
+        // }
 
         $teacher->save();
 
@@ -99,5 +99,12 @@ class TeacherController extends Controller
 
         $teacher->delete();
         return redirect()->route('admin.guru')->with('success', 'Teacher deleted successfully.');
+    }
+
+    public function lPIndex()
+    {
+    $teachers = Teacher::all();
+    // dd($teachers);
+        return view('guru', compact('teachers'));
     }
 }

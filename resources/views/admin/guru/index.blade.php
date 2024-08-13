@@ -234,7 +234,7 @@
                                             <th>Nama</th>
                                             <th>Mapel</th>
                                             <th>Foto</th>
-                                            <th>Biografi</th>
+                                            {{-- <th>Biografi</th> --}}
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -286,7 +286,7 @@
                                                     @endif
                                                 </td>
 
-                                                <td>{{ $teacher->biography }}</td>
+                                                {{-- <td>{{ $teacher->biography }}</td> --}}
                                                 <td>
                                                     <!-- Edit and Delete Buttons -->
                                                     <button type="button" class="btn btn-warning btn-sm"
@@ -344,10 +344,10 @@
                                                                     <input type="file" id="photo"
                                                                         class="form-control" name="photo">
                                                                 </div>
-                                                                <div class="form-group">
+                                                                {{-- <div class="form-group">
                                                                     <label for="biography">Biografi</label>
                                                                     <textarea id="biography" class="form-control" name="biography" required>{{ $teacher->biography }}</textarea>
-                                                                </div>
+                                                                </div> --}}
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
@@ -409,10 +409,10 @@
                                         <label for="photo">Foto</label>
                                         <input type="file" id="photo" class="form-control" name="photo">
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="biography">Biografi</label>
                                         <textarea id="biography" class="form-control" name="biography" required></textarea>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"

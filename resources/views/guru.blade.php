@@ -34,6 +34,26 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="{{ asset('css') }}/landingpage.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main {
+            flex: 1;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -129,92 +149,32 @@
         </div><!-- End Page Title -->
 
         <section id="ruang-lain" class="ruang-lain section mt-4">
-
-
             <div class="container">
                 <div class="row gy-3">
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="member">
-                            <img src="{{ asset('assets') }}/img/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="teacher-details.html">Dr. Andi Prasetyo</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">Matematika</span>
+                    @forelse ($teachers as $teacher)
+                        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="member">
+                                <img src="{{ asset('storage/guru/' . $teacher->photo) }}" class="img-fluid"
+                                    alt="{{ $teacher->name }}">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>{{ $teacher->name }}
+                                        </h4>
+                                        <span
+                                            style="color: white; margin-bottom: 3em;">{{ $teacher->designation }}</span>
+                                    </div>
                                 </div>
                             </div>
+                        </div><!-- End Team Member -->
+                    @empty
+                        <div class="col-12">
+                            <p>No teachers available at the moment.</p>
                         </div>
-                    </div><!-- End Team Member -->
-
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="member">
-                            <img src="{{ asset('assets') }}/img/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="teacher-details.html">Siti Nurhaliza</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">Fisika</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="member">
-                            <img src="{{ asset('assets') }}/img/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="teacher-details.html">Budi Santoso</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">Kimia</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="{{ asset('assets') }}/img/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="teacher-details.html">Rina Wijaya</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">Bahasa Inggris</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="{{ asset('assets') }}/img/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="teacher-details.html">Joko Widodo</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">Bahasa Indonesia</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="{{ asset('assets') }}/img/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="teacher-details.html">Lina Sari</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">Sejarah</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
+                    @endforelse
                 </div>
             </div>
-
-
         </section><!-- /ruang-lain Section -->
+
     </main>
 
     <footer id="footer" class="footer dark-background mt-4">
