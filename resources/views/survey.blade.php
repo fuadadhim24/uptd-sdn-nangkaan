@@ -75,7 +75,7 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="{{ route('/') }}">Home<br></a></li>
+                    <li><a href="{{ route('/') }}">Beranda<br></a></li>
                     <li class="dropdown"><a href="#"><span>Tentang</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
@@ -218,7 +218,7 @@
         </section><!-- /Buy Tickets Section -->
     </main>
 
-    <footer id="footer" class="footer dark-background mt-4">
+    <footer id="footer" class="footer dark-background">
 
         <div class="footer-top">
             <div class="container">
@@ -241,9 +241,10 @@
                     <div class="col-lg-2 col-md-3 footer-links">
                         <h4>Akses Cepat</h4>
                         <ul>
-                            <li><a href="index.html">Beranda</a></li>
-                            <li><a href="karya.html">karya</a></li>
-                            <li><a href="#">Pendaftaran</a></li>
+                            <li><a href="{{ route('/') }}">Beranda</a></li>
+                            <li><a href="{{ route('karya') }}">Karya, Atletik & Aktivitas</a></li>
+                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a>
+                            </li>
                             <li><a href="https://wa.me/6287840199095" target="_blank">Kontak</a></li>
                         </ul>
                     </div>
@@ -252,11 +253,11 @@
                     <div class="col-lg-2 col-md-3 footer-links">
                         <h4>Tentang Kami</h4>
                         <ul>
-                            <li><a href="sambutan.kepala.sekolah.html">Sambutan Kepala Sekolah</a></li>
-                            <li><a href="guru.html">Guru</a></li>
-                            <li><a href="guru.html">Fasilitas</a></li>
-                            <li><a href="visi.misi.html">Visi dan Misi</a></li>
-                            <li><a href="ekstrakulikuler.html">Ekstrakurikuler</a></li>
+                            <li><a href="{{ route('kepala-sekolah') }}">Sambutan Kepala Sekolah</a></li>
+                            <li><a href="{{ route('guru') }}">Guru</a></li>
+                            <li><a href="{{ route('fasilitas') }}">Fasilitas</a></li>
+                            <li><a href="{{ route('visi-misi') }}">Visi dan Misi</a></li>
+                            <li><a href="{{ route('ekstrakulikuler') }}">Ekstrakulikuler</a></li>
                         </ul>
                     </div>
 
@@ -295,6 +296,7 @@
         </div>
 
     </footer>
+
 
 
 

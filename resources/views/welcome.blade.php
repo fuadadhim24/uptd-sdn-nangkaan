@@ -46,20 +46,21 @@
     <!-- header section -->
     <header id="header" class="header d-flex align-items-center fixed-top active">
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
-    
-          <a href="index.html" class="logo d-flex align-items-center me-auto">
-            <img src="{{ asset('img') }}/logo.png" alt="">
-            <!-- Uncomment the line below if you also wish to use an text logo -->
-            <!-- <h1 class="sitename">TheEvent</h1>  -->
-          </a>
-    
-          <nav id="navmenu" class="navmenu">
-            <ul>
-              <li><a href="{{ route('/') }}" class="active">Home<br></a></li>
-              <li class="dropdown"><a href="#"><span>Tentang</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <img src="{{ asset('img') }}/logo.png" alt="">
+                <!-- Uncomment the line below if you also wish to use an text logo -->
+                <!-- <h1 class="sitename">TheEvent</h1>  -->
+            </a>
+
+            <nav id="navmenu" class="navmenu">
                 <ul>
-                  <!-- <li><a href="#">Sekolah</a></li>  -->
-                  <!-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <li><a href="{{ route('/') }}" class="active">Beranda<br></a></li>
+                    <li class="dropdown"><a href="#"><span>Tentang</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <!-- <li><a href="#">Sekolah</a></li>  -->
+                            <!-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                       <li><a href="#">Visi Misi</a></li>
                       <li><a href="#">Kepemimpinan Sekolah</a></li>
@@ -69,49 +70,57 @@
                       <li><a href="#">Berita dan Media</a></li>
                     </ul>
                   </li> -->
-                   <li><a href="{{ route('kepala-sekolah') }}">Sambutan Kepala Sekolah</a></li>
-                   <li><a href="{{ route('guru') }}">Guru</a></li>
-                   <li><a href="{{ route('fasilitas') }}">Fasilitas</a></li>
-                    <li><a href="{{ route('visi-misi') }}">Visi dan Misi</a></li>
-                    <li><a href="{{ route('ekstrakulikuler') }}">Ekstrakulikuler</a></li>
-                    <!-- <li><a href="#">Berita dan Media</a></li> -->
+                            <li><a href="{{ route('kepala-sekolah') }}">Sambutan Kepala Sekolah</a></li>
+                            <li><a href="{{ route('guru') }}">Guru</a></li>
+                            <li><a href="{{ route('fasilitas') }}">Fasilitas</a></li>
+                            <li><a href="{{ route('visi-misi') }}">Visi dan Misi</a></li>
+                            <li><a href="{{ route('ekstrakulikuler') }}">Ekstrakulikuler</a></li>
+                            <!-- <li><a href="#">Berita dan Media</a></li> -->
+                        </ul>
+                    </li>
+                    <!-- <li><a href="#tentang">Tentang</a></li> -->
+                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
+                    <li><a href="#gallery">Akademik</a></li>
+                    <li><a href="#achievement">Prestasi</a></li>
+                    <li><a href="{{ route('karya') }}">Karya, Atletik & Aktivitas</a></li>
+                    <li><a href="{{ route('survey') }}">Survey</a></li>
+                    <li><a href="https://wa.me/6287840199095" target="_blank">Hubungi Kami</a></li>
                 </ul>
-              </li>
-              <!-- <li><a href="#tentang">Tentang</a></li> -->
-              <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
-              <li><a href="#gallery">Akademik</a></li>
-              <li><a href="#achievement">Prestasi</a></li>
-              <li><a href="{{ route('karya') }}">Karya, Atletik & Activities</a></li>
-              <li><a href="{{ route('survey') }}">Survey</a></li>
-              <li><a href="https://wa.me/6287840199095" target="_blank">Hubungi Kami</a></li>
-            </ul>
-            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-          </nav>
-    
-          <a class="cta-btn d-none d-sm-block" href="{{ route('login') }}">Sign In</a>
-    
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+            <a class="cta-btn d-none d-sm-block" href="{{ route('login') }}">Sign In</a>
+
         </div>
-        
+
     </header>
     <!-- end header section -->
     <!-- Modal -->
     <div class="modal fade" id="ppdbModal" tabindex="-1" aria-labelledby="ppdbModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="ppdbModalLabel">Poster Pendaftaran PPDB</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ppdbModalLabel">{{ $ppdbInformation->title }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @if ($ppdbInformation && $ppdbInformation->file_path)
+                        <img src="{{ asset('storage/ppdb/' . $ppdbInformation->file_path) }}" class="img-fluid"
+                            alt="{{ $ppdbInformation->title }}">
+                    @else
+                        <p>No poster available at the moment.</p>
+                    @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                        <a href="http://wa.me/6287840199095" target="_blank"
+                            class="text-white text-decoration-none">Hubungi Kami</a>
+                    </button>
+                </div>
             </div>
-            <div class="modal-body">
-            <img src="path/to/your/poster.jpg" class="img-fluid" alt="Poster PPDB">
-            <!-- Ganti `path/to/your/poster.jpg` dengan URL gambar poster yang sesuai -->
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-primary"><a href="http://wa.me/6287840199095" target="_blank">Hubungi Kami</a></button>
-            </div>
-        </div>
         </div>
     </div>
+
     <main class="main">
         <!-- section hero -->
         <section id="hero">
@@ -124,7 +133,8 @@
                     <div class="carousel-inner" role="listbox">
 
                         <!-- Slide 1 -->
-                        <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg);">
+                        <div class="carousel-item active"
+                            style="background-image: url(assets/img/slide/slide-1.jpg);">
                             <div class="carousel-container">
                                 <div class="carousel-content">
                                     <div class="row animate__animated animate__fadeInUp justify-content-center">
@@ -350,23 +360,28 @@
                 </script>
                     <div class="swiper-wrapper align-items-center ">
                         <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/polije.png"
+                                href="assets\img\landingpage\ui.jpg"><img
+                                    src="assets/img/landingpage/logo/smpn_1_jember.jpg" class="img-fluid"
+                                    alt=""></a></div>
+                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                href="assets\img\landingpage\ui.jpg"><img
+                                    src="assets/img/landingpage/logo/smpn_2_bondowoso.png" class="img-fluid"
+                                    alt=""></a></div>
+                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/logo/gontor.jpg"
                                     class="img-fluid" alt=""></a></div>
                         <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/unesa.jpg"
-                                    class="img-fluid" alt=""></a></div>
+                                href="assets\img\landingpage\ui.jpg"><img
+                                    src="assets/img/landingpage/logo/smpn_5_jember.jpg" class="img-fluid"
+                                    alt=""></a></div>
                         <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/nus.png"
-                                    class="img-fluid" alt=""></a></div>
+                                href="assets\img\landingpage\ui.jpg"><img
+                                    src="assets/img/landingpage/logo/smpn_3_jember.jpg" class="img-fluid"
+                                    alt=""></a></div>
                         <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/pens.jpg"
-                                    class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/um.jpg"
-                                    class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\nus.png"><img src="assets/img/landingpage/nus.png"
-                                    class="img-fluid" alt=""></a></div>
+                                href="assets\img\landingpage\nus.png"><img
+                                    src="assets/img/landingpage/logo/smpn_1_banyuwangipng.png" class="img-fluid"
+                                    alt=""></a></div>
                     </div>
                     <!-- <div class="swiper-pagination"></div> -->
                 </div>
@@ -416,7 +431,8 @@
                                     <p data-splitting="">Fasilitas yang modern dan ramah lingkungan. Kunjungi sekolah
                                         kami dan lihat langsung bagaimana kami mendukung pendidikan berkualitas untuk
                                         anak-anak.</p>
-                                    <a data-splitting="" href="#">Detail →</a>
+                                    <a data-splitting="" href="https://maps.app.goo.gl/ufv2Eq6N7XJfQF7D9"
+                                        target="_blank">Detail →</a>
                                 </div>
                             </div>
 
@@ -428,7 +444,8 @@
                                     <p data-splitting="">Proses Penerimaan Peserta Didik Baru (PPDB) kami, mulai dari
                                         pendaftaran hingga penilaian. Kami memastikan proses yang transparan dan adil.
                                     </p>
-                                    <a data-splitting="" href="#">Detail →</a>
+                                    <a data-splitting="" data-bs-toggle="modal" data-bs-target="#ppdbModal"
+                                        href="#">Detail →</a>
                                 </div>
                             </div>
                             <div class="card animate__animated animate__fadeIn" data-aos="fade-up"
@@ -436,9 +453,9 @@
                                 <img src="assets/img/landingpage/lapangan.jpeg" alt="Campus Grounds">
                                 <div class="text">
                                     <h2 data-splitting="">Kata Mereka</h2>
-                                    <p data-splitting="">Pendapat dan pengalaman dari siswa, orang tua, dan alumni kami
-                                        tentang kehidupan sekolah dan proses pendidikan yang kami tawarkan.</p>
-                                    <a data-splitting="" href="#">Detail →</a>
+                                    <p data-splitting="">Masyarakat percaya bahwa pendidikan yang kami berikan mencetak
+                                        generasi unggul.</p>
+                                    {{-- <a data-splitting="" href="#">Detail →</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -465,8 +482,12 @@
                                 <img src="assets/img/landingpage/guru.jpg" alt="Curriculum Overview">
                                 <div class="text">
                                     <h2 data-splitting="">Kurikulum</h2>
-                                    <p data-splitting="">Kurikulum yang kami tawarkan, termasuk mata pelajaran dan
-                                        program khusus yang mendukung pengembangan akademis dan karakter siswa kami.</p>
+                                    <p data-splitting="">Kami menerapkan Kurikulum 2013 (K-13), sesuai dengan regulasi
+                                        Kemendikbud, yang mendukung pengembangan akademis dan karakter siswa. Kurikulum
+                                        ini mengintegrasikan mata pelajaran inti dengan program khusus untuk membekali
+                                        siswa dengan keterampilan dan nilai-nilai penting dalam menghadapi tantangan
+                                        masa depan.</p>
+
                                     <a data-splitting="" href="#">Detail →</a>
                                 </div>
                             </div>
@@ -478,7 +499,7 @@
                                     <p data-splitting="">Fasilitas yang tersedia di sekolah kami, termasuk ruang kelas,
                                         laboratorium, dan area rekreasi yang mendukung pengalaman belajar yang
                                         menyenangkan.</p>
-                                    <a data-splitting="" href="#">Detail →</a>
+                                    <a data-splitting="" href="{{ route('fasilitas') }}">Detail →</a>
                                 </div>
                             </div>
                         </div>
@@ -493,10 +514,11 @@
                                 <img src="assets/img/landingpage/pramuka.jpg" alt="Integrated Data">
                                 <div class="text">
                                     <h2 data-splitting="">Data Terpadu</h2>
-                                    <p data-splitting="">Akses data dan informasi terintegrasi tentang siswa dan
-                                        kegiatan sekolah. Kami menyediakan laporan yang komprehensif untuk memantau
-                                        kemajuan dan hasil pendidikan.</p>
-                                    <a data-splitting="" href="#">Detail →</a>
+                                    <p data-splitting="">Kami menyediakan raport siswa yang lengkap setiap semester,
+                                        memberikan gambaran menyeluruh mengenai kemajuan akademis dan perkembangan
+                                        pribadi mereka. Laporan ini memudahkan pemantauan dan evaluasi hasil pendidikan
+                                        siswa secara berkala.</p>
+
                                 </div>
                             </div>
 
@@ -508,7 +530,6 @@
                                     <p data-splitting="">Layanan bimbingan dan konseling yang kami tawarkan untuk
                                         mendukung kebutuhan emosional dan akademis siswa kami. Kami berkomitmen untuk
                                         memberikan dukungan penuh.</p>
-                                    <a data-splitting="" href="#">Detail →</a>
                                 </div>
                             </div>
                             <div class="card animate__animated animate__fadeIn" data-aos="fade-up"
@@ -518,7 +539,6 @@
                                     <h2 data-splitting="">Lawan Kekerasan</h2>
                                     <p data-splitting="">Inisiatif kami dalam melawan kekerasan dan menciptakan
                                         lingkungan belajar yang aman dan mendukung bagi semua siswa.</p>
-                                    <a data-splitting="" href="#">Detail →</a>
                                 </div>
                             </div>
                         </div>
@@ -544,7 +564,7 @@
                         class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
                         <div class="content">
-                            <h3>Dr. Aan Marlinah, S.E., M.Ak.<br><strong>Kepala Sekolah SD Nangkaan</strong></h3>
+                            <h3>{{ $message->title }}<br><strong>Kepala Sekolah</strong></h3>
                             <p>
                                 Selamat datang di SD Nangkaan! Kami berusaha untuk menciptakan lingkungan belajar yang
                                 mendukung pertumbuhan dan kesuksesan setiap anak.
@@ -560,12 +580,7 @@
                                     <div id="accordion-list-1" class="collapse show"
                                         data-bs-parent=".accordion-list">
                                         <p>
-                                            "SD Nangkaan dikenal karena pendekatannya yang inovatif dalam pendidikan
-                                            dasar. Kami mengintegrasikan kurikulum yang berorientasi pada keterampilan
-                                            dengan berbagai kegiatan ekstrakurikuler yang memperkaya pengalaman siswa.
-                                            Tim pengajar kami yang berdedikasi dan fasilitas modern mendukung misi kami
-                                            untuk membentuk generasi masa depan yang cerdas, percaya diri, dan siap
-                                            menghadapi tantangan global.""
+                                            {{ $message->message }}
                                         </p>
                                     </div>
                                 </li>
@@ -576,7 +591,8 @@
                     </div>
 
                     <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
-                        style="background-image: url(assets/img/landingpage/dosen.jpg);">&nbsp;</div>
+                        style="background-image: url({{ asset('storage') }}/principal_welcome_messages/{{ $message->photo_path }});">
+                        &nbsp;</div>
                 </div>
 
             </div>
@@ -730,57 +746,17 @@
 
                         <div class="faq-container">
 
-                            <div class="faq-item faq-active">
-                                <h3>Apa saja syarat pendaftaran di SD Nangkaan?</h3>
-                                <div class="faq-content">
-                                    <p>Untuk mendaftar di SD Nangkaan, orang tua harus membawa akta kelahiran anak,
-                                        kartu keluarga, fotokopi rapor tahun sebelumnya, dan pas foto terbaru anak.
-                                        Selain itu, kami juga meminta dokumen kesehatan yang menunjukkan bahwa anak
-                                        dalam keadaan sehat.</p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
-
-                            <div class="faq-item">
-                                <h3>Bagaimana jadwal belajar di SD Nangkaan?</h3>
-                                <div class="faq-content">
-                                    <p>Jadwal belajar di SD Nangkaan dimulai dari pukul 07:00 hingga 14:00, dari Senin
-                                        hingga Jumat. Kami juga menyediakan kegiatan ekstrakurikuler setelah jam
-                                        pelajaran reguler, termasuk olahraga, seni, dan klub-klub khusus.</p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
-
-                            <div class="faq-item">
-                                <h3>Apakah SD Nangkaan memiliki program bimbingan karir?</h3>
-                                <div class="faq-content">
-                                    <p>Ya, kami memiliki program bimbingan dan konseling yang dirancang untuk membantu
-                                        siswa mengenali bakat dan minat mereka. Program ini melibatkan kegiatan yang
-                                        memfasilitasi pengembangan keterampilan sosial dan perencanaan masa depan.</p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
-
-                            <div class="faq-item">
-                                <h3>Bagaimana dengan fasilitas kesehatan di sekolah?</h3>
-                                <div class="faq-content">
-                                    <p>SD Nangkaan memiliki klinik kesehatan di sekolah dengan tenaga medis yang siap
-                                        membantu. Kami juga mengadakan pemeriksaan kesehatan rutin untuk memastikan
-                                        bahwa semua siswa berada dalam kondisi kesehatan yang baik.</p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
-
-                            <div class="faq-item">
-                                <h3>Apakah ada program beasiswa untuk siswa berprestasi?</h3>
-                                <div class="faq-content">
-                                    <p>Kami menyediakan program beasiswa untuk siswa berprestasi akademik maupun
-                                        non-akademik. Beasiswa ini mencakup bantuan biaya sekolah dan fasilitas
-                                        pendukung lainnya. Informasi lebih lanjut tentang beasiswa dapat diperoleh
-                                        melalui kantor administrasi sekolah.</p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
+                            @forelse ($faqs as $faq)
+                                <div class="faq-item {{ $loop->first ? 'faq-active' : '' }}">
+                                    <h3>{{ $faq->question }}</h3>
+                                    <div class="faq-content">
+                                        <p>{{ $faq->answer }}</p>
+                                    </div>
+                                    <i class="faq-toggle bi bi-chevron-right"></i>
+                                </div><!-- End Faq item-->
+                            @empty
+                                <p>Belum ada pertanyaan yang sering diajukan.</p>
+                            @endforelse
 
                         </div>
 
@@ -791,6 +767,7 @@
             </div>
 
         </section>
+
         <!-- end faq -->
 
     </main>
@@ -818,9 +795,9 @@
                     <div class="col-lg-2 col-md-3 footer-links">
                         <h4>Akses Cepat</h4>
                         <ul>
-                            <li><a href="index.html">Beranda</a></li>
-                            <li><a href="karya.html">karya</a></li>
-                            <li><a href="#">Pendaftaran</a></li>
+                            <li><a href="{{ route('/') }}">Beranda</a></li>
+                            <li><a href="{{ route('karya') }}">Karya, Atletik & Aktivitas</a></li>
+                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
                             <li><a href="https://wa.me/6287840199095" target="_blank">Kontak</a></li>
                         </ul>
                     </div>
@@ -829,11 +806,11 @@
                     <div class="col-lg-2 col-md-3 footer-links">
                         <h4>Tentang Kami</h4>
                         <ul>
-                            <li><a href="sambutan.kepala.sekolah.html">Sambutan Kepala Sekolah</a></li>
-                            <li><a href="guru.html">Guru</a></li>
-                            <li><a href="guru.html">Fasilitas</a></li>
-                            <li><a href="visi.misi.html">Visi dan Misi</a></li>
-                            <li><a href="ekstrakulikuler.html">Ekstrakurikuler</a></li>
+                            <li><a href="{{ route('kepala-sekolah') }}">Sambutan Kepala Sekolah</a></li>
+                            <li><a href="{{ route('guru') }}">Guru</a></li>
+                            <li><a href="{{ route('fasilitas') }}">Fasilitas</a></li>
+                            <li><a href="{{ route('visi-misi') }}">Visi dan Misi</a></li>
+                            <li><a href="{{ route('ekstrakulikuler') }}">Ekstrakulikuler</a></li>
                         </ul>
                     </div>
 

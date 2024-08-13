@@ -279,7 +279,7 @@ class SurveyController extends Controller
             $created_at = Carbon::parse($survey->created_at);
             $now = Carbon::now();
             $days_since_creation = $created_at->diffInDays($now);
-            $survey->days_since_creation = floor($days_since_creation);
+            $survey->days_since_creation = floor($days_since_creation)+1;
 
             // Menambahkan jumlah responden ke objek survei
             $survey->respondent_count = $survey->respondents_count;

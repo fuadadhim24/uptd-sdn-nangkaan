@@ -16,7 +16,7 @@ class PrincipalWelcomeMessagesTableSeeder extends Seeder
             [
                 'title' => 'Dr. Aan Mulyaningsih S.pd',
                 'message' => 'Welcome to our school! We are committed to providing the best education and support for our students.',
-                'photo_path' => 'photos/principal_welcome.jpg',
+                'photo_path' => 'c5HCsm4qqE.jpg',
             ],
         ]);
     }

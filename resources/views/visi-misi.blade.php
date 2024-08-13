@@ -55,7 +55,7 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="{{ route('/') }}">Home<br></a></li>
+                    <li><a href="{{ route('/') }}">Beranda<br></a></li>
                     <li class="dropdown"><a href="#" class="active"><span>Tentang</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
@@ -80,8 +80,8 @@
                     </li>
                     <!-- <li><a href="#tentang">Tentang</a></li> -->
                     <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
-                    <li><a href="#gallery">Akademik</a></li>
-                    <li><a href="#achievement">Prestasi</a></li>
+                    <li><a href="{{ route('/') }}">Akademik</a></li>
+                    <li><a href="{{ route('/') }}">Prestasi</a></li>
                     <li><a href="{{ route('karya') }}">Karya, Atletik & Activities</a></li>
                     <li><a href="{{ route('survey') }}">Survey</a></li>
                     <li><a href="https://wa.me/6287840199095" target="_blank">Hubungi Kami</a></li>
@@ -161,64 +161,54 @@
         </section><!-- /visi-misi Section -->
     </main>
 
-    <footer id="footer" class="footer dark-background mt-4">
+    <footer id="footer" class="footer dark-background">
 
         <div class="footer-top">
             <div class="container">
                 <div class="row gy-4">
-                    <div class="col-lg-4 col-md-6 footer-about">
+                    <div class="col-lg-6 col-md-6 footer-about">
                         <a href="index.html" class="logo d-flex align-items-center">
-                            <span class="sitename">TheEvent</span>
+                            <span class="sitename">UPTD SPF SDN Nangkaan</span>
                         </a>
                         <div class="footer-contact pt-3">
-                            <p>A108 Adam Street</p>
-                            <p>New York, NY 535022</p>
-                            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                            <p><strong>Email:</strong> <span>info@example.com</span></p>
+                            <p>Jln. Brigpol Sudarlan NO. 457</p>
+                            <p>Nangkaan Barat, Nangkaan, Kec. Bondowoso</p>
+                            <p class="mt-3"><strong>Telepon:</strong> +62 123 456 789</p>
+                            <p><strong>Email:</strong> <a href="mailto:info@sdnnangkaan.sch.id"
+                                    style="color: white;">info@sdnnangkaan.sch.id</a></p>
                         </div>
                     </div>
 
+
+                    <!-- Useful Links -->
                     <div class="col-lg-2 col-md-3 footer-links">
-                        <h4>Useful Links</h4>
+                        <h4>Akses Cepat</h4>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Terms of service</a></li>
-                            <li><a href="#">Privacy policy</a></li>
+                            <li><a href="{{ route('/') }}">Beranda</a></li>
+                            <li><a href="{{ route('karya') }}">Karya, Atletik & Aktivitas</a></li>
+                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a>
+                            </li>
+                            <li><a href="https://wa.me/6287840199095" target="_blank">Kontak</a></li>
                         </ul>
                     </div>
 
+                    <!-- Our Services -->
                     <div class="col-lg-2 col-md-3 footer-links">
-                        <h4>Our Services</h4>
+                        <h4>Tentang Kami</h4>
                         <ul>
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">Product Management</a></li>
-                            <li><a href="#">Marketing</a></li>
-                            <li><a href="#">Graphic Design</a></li>
+                            <li><a href="{{ route('kepala-sekolah') }}">Sambutan Kepala Sekolah</a></li>
+                            <li><a href="{{ route('guru') }}">Guru</a></li>
+                            <li><a href="{{ route('fasilitas') }}">Fasilitas</a></li>
+                            <li><a href="{{ route('visi-misi') }}">Visi dan Misi</a></li>
+                            <li><a href="{{ route('ekstrakulikuler') }}">Ekstrakulikuler</a></li>
                         </ul>
                     </div>
 
+                    <!-- Support -->
                     <div class="col-lg-2 col-md-3 footer-links">
-                        <h4>Hic solutasetp</h4>
+                        <h4>Dukungan</h4>
                         <ul>
-                            <li><a href="#">Molestiae accusamus iure</a></li>
-                            <li><a href="#">Excepturi dignissimos</a></li>
-                            <li><a href="#">Suscipit distinctio</a></li>
-                            <li><a href="#">Dilecta</a></li>
-                            <li><a href="#">Sit quas consectetur</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-2 col-md-3 footer-links">
-                        <h4>Nobis illum</h4>
-                        <ul>
-                            <li><a href="#">Ipsam</a></li>
-                            <li><a href="#">Laudantium dolorum</a></li>
-                            <li><a href="#">Dinera</a></li>
-                            <li><a href="#">Trodelas</a></li>
-                            <li><a href="#">Flexo</a></li>
+                            <li><a href="https://wa.me/6287840199095" target="_blank">Hubungi Kami</a></li>
                         </ul>
                     </div>
 
@@ -232,14 +222,9 @@
 
                 <div class="d-flex flex-column align-items-center align-items-lg-start">
                     <div>
-                        © Copyright <strong><span>MyWebsite</span></strong>. All Rights Reserved
+                        © Copyright <strong><span>UPTD SPF SDN Nangkaan</span></strong>. All Rights Reserved
                     </div>
                     <div class="credits">
-                        <!-- All the links in the footer should remain intact. -->
-                        <!-- You can delete the links only if you purchased the pro version. -->
-                        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-                        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
                     </div>
                 </div>
 
@@ -254,6 +239,7 @@
         </div>
 
     </footer>
+
 
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i

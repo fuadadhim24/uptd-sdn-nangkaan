@@ -15,7 +15,7 @@ class PpdbInformationTableSeeder extends Seeder
         DB::table('ppdb_information')->insert([
             [
                 'title' => 'PPDB Guidelines 2024',
-                'file_path' => 'files/ppdb_guidelines_2024.pdf',
+                'file_path' => '5DXU78Aahk.png',
             ]
         ]);
     }

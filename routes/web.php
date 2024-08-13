@@ -12,9 +12,10 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {return view('welcome');})->name('/');
+Route::get('/', [WelcomeController::class,'lPIndex'])->name('/');
 Route::get('/ekstrakulikuler', [ExtracurricularController::class, 'lPIndex'])->name('ekstrakulikuler');
 Route::get('/fasilitas', [FacilitiesController::class,'lPIndex'])->name('fasilitas');
 Route::get('/guru', [TeacherController::class, 'lPIndex'])->name('guru');
