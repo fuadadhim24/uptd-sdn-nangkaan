@@ -80,7 +80,7 @@
                     </li>
                     <!-- <li><a href="#tentang">Tentang</a></li> -->
                     <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
-                    <li><a href="#gallery">Akademik</a></li>
+                    <li><a href="{{ route('akademik') }}">Akademik</a></li>
                     <li><a href="#achievement">Prestasi</a></li>
                     <li><a href="{{ route('karya') }}">Karya, Atletik & Aktivitas</a></li>
                     <li><a href="{{ route('survey') }}">Survey</a></li>
@@ -148,7 +148,7 @@
                                                 kepercayaan diri.</p>
                                         </div>
                                         <div class="col-lg-2">
-                                            <a href="">Selengkapnya ></a>
+                                            <a href="#gallery">Selengkapnya ></a>
                                         </div>
                                     </div>
 
@@ -172,7 +172,7 @@
                                                 mereka.</p>
                                         </div>
                                         <div class="col-lg-2">
-                                            <a href="">Selengkapnya ></a>
+                                            <a href="#gallery">Selengkapnya ></a>
                                         </div>
                                     </div>
 
@@ -195,7 +195,7 @@
                                             <p>Mendukung siswa untuk berprestasi akademik dan non akademik.</p>
                                         </div>
                                         <div class="col-lg-2">
-                                            <a href="">Selengkapnya ></a>
+                                            <a href="#gallery">Selengkapnya ></a>
                                         </div>
                                     </div>
 

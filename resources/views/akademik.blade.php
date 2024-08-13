@@ -8,8 +8,8 @@
     <title>UPTD SPF SDN Nangkaan Kec. Bondowoso | Menumbuhkan Potensi, Mewujudkan Mimpi</title>
 
     <!-- Favicons -->
-    <link href="{{ asset('img') }}/favicon.png" rel="icon">
-    <link href="{{ asset('img') }}/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{ asset('assets/img') }}/favicon.png" rel="icon">
+    <link href="{{ asset('assets/img') }}/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -34,18 +34,6 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="{{ asset('css') }}/landingpage.css">
-    <style>
-        /* custom.css */
-        .section-spacing {
-            margin-bottom: 2rem;
-            /* Adjust the value as needed */
-        }
-
-        .pricing-item-spacing {
-            margin-bottom: 1.5rem;
-            /* Adjust the value as needed */
-        }
-    </style>
 </head>
 
 <body>
@@ -68,20 +56,20 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="{{ route('/') }}">Beranda<br></a></li>
-                    <li class="dropdown"><a href="#" class="active"><span>Tentang</span> <i
+                    <li class="dropdown"><a href="#"><span>Tentang</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <!-- <li><a href="#">Sekolah</a></li>  -->
                             <!-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                    <ul>
-                      <li><a href="#">Visi Misi</a></li>
-                      <li><a href="#">Kepemimpinan Sekolah</a></li>
-                      <li><a href="#">Perlindungan Anak</a></li>
-                      <li><a href="#">Inklusi dan Diversitas</a></li>
-                      <li><a href="#">Bekerjasama</a></li>
-                      <li><a href="#">Berita dan Media</a></li>
-                    </ul>
-                  </li> -->
+                  <ul>
+                    <li><a href="#">Visi Misi</a></li>
+                    <li><a href="#">Kepemimpinan Sekolah</a></li>
+                    <li><a href="#">Perlindungan Anak</a></li>
+                    <li><a href="#">Inklusi dan Diversitas</a></li>
+                    <li><a href="#">Bekerjasama</a></li>
+                    <li><a href="#">Berita dan Media</a></li>
+                  </ul>
+                </li> -->
                             <li><a href="{{ route('kepala-sekolah') }}">Sambutan Kepala Sekolah</a></li>
                             <li><a href="{{ route('guru') }}">Guru</a></li>
                             <li><a href="{{ route('fasilitas') }}">Fasilitas</a></li>
@@ -92,7 +80,7 @@
                     </li>
                     <!-- <li><a href="#tentang">Tentang</a></li> -->
                     <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
-                    <li><a href="{{ route('akademik') }}">Akademik</a></li>
+                    <li><a href="{{ route('/') }}" class="active">Akademik</a></li>
                     <li><a href="{{ route('/') }}">Prestasi</a></li>
                     <li><a href="{{ route('karya') }}">Karya, Atletik & Activities</a></li>
                     <li><a href="{{ route('survey') }}">Survey</a></li>
@@ -105,6 +93,7 @@
 
         </div>
     </header>
+
     <!-- Modal -->
     <div class="modal fade" id="ppdbModal" tabindex="-1" aria-labelledby="ppdbModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -124,104 +113,33 @@
             </div>
         </div>
     </div>
-    <!-- end header section -->
-    <main class="main">
-        <div class="page-title section-spacing" data-aos="fade"
-            style="background-image: url({{ asset('img') }}/page-title-bg.webp);">
+    <main>
+        <!-- activity Section -->
+        <!-- Page Title -->
+        <div class="page-title" data-aos="fade"
+            style="background-image: url({{ asset('assets/img') }}/page-title-bg.webp );">
             <div class="container position-relative">
-                <h1>Ekstrakulikuler</h1>
-                <p class="mt-2">UPTD SPF SDN Nangkaan Kec. Bondowoso</p>
+                <h1>Kalender Akademik</h1>
+                <p>Ikuti semua aktivitas penting dan acara sekolah untuk mendukung perkembangan siswa.</p>
+                <p>UPTD SPF SDN Nangkaan Kec. Bondowoso</p>
+
             </div>
         </div><!-- End Page Title -->
 
-        <!-- Buy Tickets Section -->
-        <section id="ekstrakulikuler" class="ekstrakulikuler section light-background section-spacing">
-            <div class="container">
-                @forelse ($extracurriculars as $index => $extracurricular)
-                    @if ($index % 2 === 0)
-                        <!-- Structure for even items -->
-                        <div class="row gy-4 pricing-item pricing-item-spacing featured" data-aos="fade-up"
-                            data-aos-delay="{{ $index * 100 }}">
-                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                                <h3>{{ $extracurricular->name }}</h3>
-                            </div>
-                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                                <h4><sup>x</sup>{{ $extracurricular->pertemuan }}<span> Pertemuan / bulan</span></h4>
-                            </div>
-                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                                <ul>
-                                    @php
-                                        // Decode JSON formatted data
-                                        $benefits = json_decode($extracurricular->manfaat, true);
-                                    @endphp
-                                    @foreach ($benefits as $benefit)
-                                        <li><i class="bi bi-check"></i> <span>{{ $benefit }}</span></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                                <div class="text-center">
-                                    @php
-                                        // Check if the phone number starts with 0 and replace it with 62
-                                        $phoneNumber = $extracurricular->nomor_handphone;
-                                        if (strpos($phoneNumber, '0') === 0) {
-                                            $phoneNumber = '62' . substr($phoneNumber, 1);
-                                        }
-                                    @endphp
-                                    <a href="https://wa.me/{{ $phoneNumber }}" class="buy-btn"
-                                        target="_blank">Tertarik</a>
-                                </div>
-                            </div>
-                        </div><!-- End Pricing Item -->
-                    @else
-                        <!-- Structure for odd items -->
-                        <div class="row gy-4 pricing-item pricing-item-spacing" data-aos="fade-up"
-                            data-aos-delay="{{ $index * 100 }}">
-                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                                <h3>{{ $extracurricular->name }}</h3>
-                            </div>
-                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                                <h4><sup>x</sup>{{ $extracurricular->pertemuan }}<span> Pertemuan / bulan</span></h4>
-                            </div>
-                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                                <ul>
-                                    @php
-                                        // Decode JSON formatted data
-                                        $benefits = json_decode($extracurricular->manfaat, true);
-                                    @endphp
-                                    @foreach ($benefits as $benefit)
-                                        <li><i class="bi bi-check"></i> <span>{{ $benefit }}</span></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                                <div class="text-center">
-                                    @php
-                                        // Check if the phone number starts with 0 and replace it with 62
-                                        $phoneNumber = $extracurricular->nomor_handphone;
-                                        if (strpos($phoneNumber, '0') === 0) {
-                                            $phoneNumber = '62' . substr($phoneNumber, 1);
-                                        }
-                                    @endphp
-                                    <a href="https://wa.me/{{ $phoneNumber }}" class="buy-btn"
-                                        target="_blank">Tertarik</a>
-                                </div>
-                            </div>
-                        </div><!-- End Pricing Item -->
-                    @endif
-                @empty
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <p>No extracurricular activities available at the moment.</p>
-                        </div>
-                    </div>
-                @endforelse
+        <section id="academic-calendar" class="activity section py-4">
+
+            <div class="container" data-aos="fade-up">
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('storage/academic_calendars/' . $academicCalendar->file_path) }}"
+                        alt="{{ $academicCalendar->title }}" class="img-fluid">
+                </div>
             </div>
-        </section><!-- /ekstrakulikuler Section -->
+
+        </section>
+
+
+
     </main>
-
-
-
 
 
     <footer id="footer" class="footer dark-background">
@@ -304,16 +222,12 @@
     </footer>
 
 
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-
     <!-- Vendor JS Files -->
     <script src="{{ asset('vendor') }}/purecounter/purecounter_vanilla.js"></script>
     <script src="{{ asset('vendor') }}/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('vendor') }}/glightbox/js/glightbox.min.js"></script>
     <script src="{{ asset('vendor') }}/isotope-layout/isotope.pkgd.min.js"></script>
-    {{-- <!-- <script src="{{ asset('vendor') }}/swiper/swiper-bundle.min.js"></script> --> --}}
+    <script src="{{ asset('vendor') }}/swiper/swiper-bundle.min.js"></script>
     <script src="{{ asset('vendor') }}/waypoints/noframework.waypoints.js"></script>
     <script src="{{ asset('vendor') }}/php-email-form/validate.js"></script>
 

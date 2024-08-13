@@ -80,7 +80,7 @@
                     </li>
                     <!-- <li><a href="#tentang">Tentang</a></li> -->
                     <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
-                    <li><a href="{{ route('/') }}">Akademik</a></li>
+                    <li><a href="{{ route('akademik') }}">Akademik</a></li>
                     <li><a href="{{ route('/') }}">Prestasi</a></li>
                     <li><a href="{{ route('karya') }}" class="active">Karya, Atletik & Activities</a></li>
                     <li><a href="{{ route('survey') }}">Survey</a></li>
