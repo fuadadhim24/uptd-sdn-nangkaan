@@ -34,6 +34,18 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="{{ asset('css') }}/landingpage.css">
+    <style>
+        /* custom.css */
+        .section-spacing {
+            margin-bottom: 2rem;
+            /* Adjust the value as needed */
+        }
+
+        .pricing-item-spacing {
+            margin-bottom: 1.5rem;
+            /* Adjust the value as needed */
+        }
+    </style>
 </head>
 
 <body>
@@ -114,87 +126,103 @@
     </div>
     <!-- end header section -->
     <main class="main">
-        <div class="page-title" data-aos="fade"
-            style="background-image: url({{ asset('img') }}/page-title-bg.webp );">
+        <div class="page-title section-spacing" data-aos="fade"
+            style="background-image: url({{ asset('img') }}/page-title-bg.webp);">
             <div class="container position-relative">
                 <h1>Ekstrakulikuler</h1>
-                <!-- <p>Bakat dan minat siswa kami berkembang melalui berbagai kegiatan kreatif dan olahraga.</p> -->
                 <p class="mt-2">UPTD SPF SDN Nangkaan Kec. Bondowoso</p>
-
             </div>
         </div><!-- End Page Title -->
+
         <!-- Buy Tickets Section -->
-        <section id="ekstrakulikuler" class="ekstrakulikuler section light-background mt-4">
-
-
-
+        <section id="ekstrakulikuler" class="ekstrakulikuler section light-background section-spacing">
             <div class="container">
-
-                <div class="row gy-4 pricing-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h3>Pramuka</h3>
+                @forelse ($extracurriculars as $index => $extracurricular)
+                    @if ($index % 2 === 0)
+                        <!-- Structure for even items -->
+                        <div class="row gy-4 pricing-item pricing-item-spacing featured" data-aos="fade-up"
+                            data-aos-delay="{{ $index * 100 }}">
+                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                                <h3>{{ $extracurricular->name }}</h3>
+                            </div>
+                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                                <h4><sup>x</sup>{{ $extracurricular->pertemuan }}<span> Pertemuan / bulan</span></h4>
+                            </div>
+                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                                <ul>
+                                    @php
+                                        // Decode JSON formatted data
+                                        $benefits = json_decode($extracurricular->manfaat, true);
+                                    @endphp
+                                    @foreach ($benefits as $benefit)
+                                        <li><i class="bi bi-check"></i> <span>{{ $benefit }}</span></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                                <div class="text-center">
+                                    @php
+                                        // Check if the phone number starts with 0 and replace it with 62
+                                        $phoneNumber = $extracurricular->nomor_handphone;
+                                        if (strpos($phoneNumber, '0') === 0) {
+                                            $phoneNumber = '62' . substr($phoneNumber, 1);
+                                        }
+                                    @endphp
+                                    <a href="https://wa.me/{{ $phoneNumber }}" class="buy-btn"
+                                        target="_blank">Tertarik</a>
+                                </div>
+                            </div>
+                        </div><!-- End Pricing Item -->
+                    @else
+                        <!-- Structure for odd items -->
+                        <div class="row gy-4 pricing-item pricing-item-spacing" data-aos="fade-up"
+                            data-aos-delay="{{ $index * 100 }}">
+                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                                <h3>{{ $extracurricular->name }}</h3>
+                            </div>
+                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                                <h4><sup>x</sup>{{ $extracurricular->pertemuan }}<span> Pertemuan / bulan</span></h4>
+                            </div>
+                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                                <ul>
+                                    @php
+                                        // Decode JSON formatted data
+                                        $benefits = json_decode($extracurricular->manfaat, true);
+                                    @endphp
+                                    @foreach ($benefits as $benefit)
+                                        <li><i class="bi bi-check"></i> <span>{{ $benefit }}</span></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                                <div class="text-center">
+                                    @php
+                                        // Check if the phone number starts with 0 and replace it with 62
+                                        $phoneNumber = $extracurricular->nomor_handphone;
+                                        if (strpos($phoneNumber, '0') === 0) {
+                                            $phoneNumber = '62' . substr($phoneNumber, 1);
+                                        }
+                                    @endphp
+                                    <a href="https://wa.me/{{ $phoneNumber }}" class="buy-btn"
+                                        target="_blank">Tertarik</a>
+                                </div>
+                            </div>
+                        </div><!-- End Pricing Item -->
+                    @endif
+                @empty
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <p>No extracurricular activities available at the moment.</p>
+                        </div>
                     </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4><sup>x</sup>4<span> Pertemuan / bulan</span></h4>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <ul>
-                            <li><i class="bi bi-check"></i> <span>Menumbuhkan keterampilan hidup dan
-                                    kepemimpinan</span></li>
-                            <li><i class="bi bi-check"></i> <span>Mengenal dan menghargai alam</span></li>
-                            <li><i class="bi bi-check"></i> <span>Melatih kerjasama dan tanggung jawab</span></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="text-center"><a href="#" class="buy-btn">Tertarik</a></div>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-                <div class="row gy-4 pricing-item featured mt-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h3>Voli</h3>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4><sup>x</sup>6<span> Pertemuan / bulan</span></h4>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <ul>
-                            <li><i class="bi bi-check"></i> <span>Meningkatkan kekuatan dan ketangkasan fisik</span>
-                            </li>
-                            <li><i class="bi bi-check"></i> <span>Belajar teknik dasar permainan voli</span></li>
-                            <li><i class="bi bi-check"></i> <span>Memperkuat kerja sama tim dan strategi
-                                    permainan</span></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="text-center"><a href="#" class="buy-btn">Tertarik</a></div>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-                <div class="row gy-4 pricing-item mt-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h3>Badminton</h3>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <h4><sup>x</sup>6<span> pertemuan / bulan</span></h4>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <ul>
-                            <li><i class="bi bi-check"></i> <span>Memperbaiki koordinasi tangan dan mata</span></li>
-                            <li><i class="bi bi-check"></i> <span>Menumbuhkan kecepatan dan ketangkasan</span></li>
-                            <li><i class="bi bi-check"></i> <span>Belajar teknik dasar dan strategi permainan
-                                    badminton</span></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="text-center"><a href="#" class="buy-btn">Tertarik</a></div>
-                    </div>
-                </div><!-- End Pricing Item -->
-
+                @endforelse
             </div>
-
-        </section><!-- /Buy Tickets Section -->
+        </section><!-- /ekstrakulikuler Section -->
     </main>
+
+
+
+
 
     <footer id="footer" class="footer dark-background mt-4">
 
