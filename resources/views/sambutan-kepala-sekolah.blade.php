@@ -135,7 +135,7 @@
                         class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
                         <div class="content">
-                            <h3>Dr. Aan Marlinah, S.E., M.Ak.<br><strong>Kepala Sekolah SD Nangkaan</strong></h3>
+                            <h3>{{ $message->title }}<br><strong>Kepala Sekolah</strong></h3>
                             <p>
                                 Selamat datang di SD Nangkaan! Kami berusaha untuk menciptakan lingkungan belajar yang
                                 mendukung pertumbuhan dan kesuksesan setiap anak.
@@ -151,12 +151,7 @@
                                     <div id="accordion-list-1" class="collapse show"
                                         data-bs-parent=".accordion-list">
                                         <p>
-                                            "SD Nangkaan dikenal karena pendekatannya yang inovatif dalam pendidikan
-                                            dasar. Kami mengintegrasikan kurikulum yang berorientasi pada keterampilan
-                                            dengan berbagai kegiatan ekstrakurikuler yang memperkaya pengalaman siswa.
-                                            Tim pengajar kami yang berdedikasi dan fasilitas modern mendukung misi kami
-                                            untuk membentuk generasi masa depan yang cerdas, percaya diri, dan siap
-                                            menghadapi tantangan global.""
+                                            {{ $message->message }}
                                         </p>
                                     </div>
                                 </li>
@@ -167,7 +162,8 @@
                     </div>
 
                     <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
-                        style="background-image: url({{ asset('assets/img') }}/landingpage/dosen.jpg);">&nbsp;</div>
+                        style="background-image: url({{ asset('storage') }}/principal_welcome_messages/{{ $message->photo_path }});">
+                        &nbsp;</div>
                 </div>
 
             </div>

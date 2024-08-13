@@ -19,7 +19,7 @@ Route::get('/ekstrakulikuler', function () {return view('ekstrakulikuler');})->n
 Route::get('/fasilitas', function () {return view('fasilitas');})->name('fasilitas');
 Route::get('/guru', function () {return view('guru');})->name('guru');
 Route::get('/karya-dan-aktivitas', function () {return view('karya');})->name('karya');
-Route::get('/kepala-sekolah', function () {return view('sambutan-kepala-sekolah');})->name('kepala-sekolah');
+Route::get('/kepala-sekolah', [PrincipalWelcomeMessageController::class, 'lPIndex'])->name('kepala-sekolah');
 Route::get('/visi-misi', function () {return view('visi-misi');})->name('visi-misi');
 Route::get('/survey', [SurveyController::class, 'lPIndex'])->name('survey');
 Route::post('/survey/{survey}', [ResponseController::class, 'surveyBegin'])->name('survey.begin');

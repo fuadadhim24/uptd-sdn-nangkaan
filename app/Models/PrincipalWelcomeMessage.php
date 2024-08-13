@@ -11,6 +11,7 @@ class PrincipalWelcomeMessage extends Model
     protected $table = 'principal_welcome_messages';
 
     protected $fillable = [
+        'title',
         'message',
         'photo_path',
     ];

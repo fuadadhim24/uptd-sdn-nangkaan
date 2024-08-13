@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('principal_welcome_messages', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->text('message');
             $table->string('photo_path')->nullable();
             $table->timestamps();

@@ -236,6 +236,10 @@
                                         @method('PUT')
 
                                         <div class="form-group">
+                                            <label for="message" class="form-label">Nama Kepala Sekolah</label>
+                                            <input name="text" id="message" class="form-control" rows="4" value="{{ old('message', $message->title) }}">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="message" class="form-label">Message</label>
                                             <textarea name="message" id="message" class="form-control" rows="4">{{ old('message', $message->message) }}</textarea>
                                         </div>

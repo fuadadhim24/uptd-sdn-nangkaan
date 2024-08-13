@@ -14,6 +14,7 @@ class PrincipalWelcomeMessageController extends Controller
         $message = PrincipalWelcomeMessage::latest()->first(); 
         return view('admin.sambutan.index', compact('message'));
     }
+    
 
     public function update(Request $request, PrincipalWelcomeMessage $principalWelcomeMessage)
     {
@@ -37,5 +38,11 @@ class PrincipalWelcomeMessageController extends Controller
 
         $principalWelcomeMessage->update($data);
         return redirect()->route('admin.sambutan')->with('success', 'Principal Welcome Message updated successfully.');
+    }
+    public function lPIndex()
+    {
+        $message = PrincipalWelcomeMessage::latest()->first(); 
+        // dd($message);
+        return view('sambutan-kepala-sekolah', compact('message'));
     }
 }
