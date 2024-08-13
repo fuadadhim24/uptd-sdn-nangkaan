@@ -94,4 +94,10 @@ class FacilitiesController extends Controller
         $facility->delete();
         return redirect()->route('admin.fasilitas')->with('success', 'Facility deleted successfully.');
     }
+    public function lPIndex()
+    {
+        $facilities = Facilities::all();
+        // dd($facilities);
+        return view('fasilitas', compact('facilities'));
+    }
 }

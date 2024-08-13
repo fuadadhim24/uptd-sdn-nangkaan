@@ -16,10 +16,12 @@ class FacilitiesTableSeeder extends Seeder
             [
                 'name' => 'Library',
                 'description' => 'Our library is well-stocked with books and study materials.',
+                'photo' => 'nWNvAZWsUs.png',
             ],
             [
                 'name' => 'Sports Complex',
                 'description' => 'The sports complex includes a gymnasium, swimming pool, and courts for various sports.',
+                'photo' => '0hpnaOpUw1.png',
             ],
         ]);
     }

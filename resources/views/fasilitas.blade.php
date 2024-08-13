@@ -260,154 +260,36 @@
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Ruang Penunjang Akademik<br></h2>
-
+                <h2>Ruang Penunjang Akademik</h2>
             </div><!-- End Section Title -->
 
             <div class="container">
-
                 <div class="row gy-3">
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="member">
-                            <img src="{{ asset('assets/img') }}/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="speaker-details.html">Kantor/ Ruang KS</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">1 Ruang</span>
+                    @forelse ($facilities as $facility)
+                        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="member">
+                                <img src="{{ $facility->photo ? asset('storage/facilities/' . $facility->photo) : asset('assets/img/landingpage/fasilitas/default.jpg') }}"
+                                    class="img-fluid" alt="{{ $facility->name }}">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>{{ $facility->name }}
+                                        </h4>
+                                        <span
+                                            style="color: white; margin-bottom: 3em;">{{ $facility->description }}</span>
+                                    </div>
                                 </div>
                             </div>
+                        </div><!-- End Team Member -->
+                    @empty
+                        <div class="col-12">
+                            <p>No facilities available at the moment.</p>
                         </div>
-                    </div><!-- End Team Member -->
-
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="member">
-                            <img src="{{ asset('assets/img') }}/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="speaker-details.html">Ruang Guru</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">1 Ruang</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="member">
-                            <img src="{{ asset('assets/img') }}/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="speaker-details.html">Kelas</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">6 Ruang</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="{{ asset('assets/img') }}/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="speaker-details.html">Tata Usaha</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">1 Ruang</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="{{ asset('assets/img') }}/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="speaker-details.html">Koperasi Sekolah</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">1 Ruang</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="{{ asset('assets/img') }}/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="speaker-details.html">Perpustakaan</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">1 Ruang</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="{{ asset('assets/img') }}/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="speaker-details.html">Laboratorium TIK</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">1 Ruang</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="{{ asset('assets/img') }}/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="speaker-details.html">WC Guru</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">2 Ruang</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="{{ asset('assets/img') }}/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="speaker-details.html">WC Siswa</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">4 Ruang</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="{{ asset('assets/img') }}/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="speaker-details.html">UKS</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">1 Ruang</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="{{ asset('assets/img') }}/landingpage/fasilitas/kantor.jpg" class="img-fluid"
-                                alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4><a href="speaker-details.html">Musholla</a></h4>
-                                    <span style="color: white;margin-bottom: 3em;">1 Ruang</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End Team Member -->
-
+                    @endforelse
                 </div>
-
             </div>
 
         </section><!-- /ruang-lain Section -->
+
 
     </main>
 
