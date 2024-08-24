@@ -5,6 +5,7 @@ use App\Http\Controllers\CurriculaController;
 use App\Http\Controllers\ExtracurricularController;
 use App\Http\Controllers\FacilitiesController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\KaryaController;
 use App\Http\Controllers\PpdbInformationController;
 use App\Http\Controllers\PrincipalWelcomeMessageController;
 use App\Http\Controllers\ProfileController;
@@ -81,6 +82,12 @@ Route::post('/admin-daftar-guru/store', [TeacherController::class, 'store'])->mi
 Route::get('/admin-daftar-guru/{teacher}/edit', [TeacherController::class, 'edit'])->middleware(['auth', 'verified'])->name('teachers.edit');
 Route::put('/admin-daftar-guru/{teacher}', [TeacherController::class, 'update'])->middleware(['auth', 'verified'])->name('teachers.update');
 Route::delete('/admin-daftar-guru/{teacher}', [TeacherController::class, 'destroy'])->middleware(['auth', 'verified'])->name('teachers.destroy');
+
+Route::get('/admin-karya-dan-aktivitas', [KaryaController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.karya');
+Route::post('/admin-karya-dan-aktivitas/store', [KaryaController::class, 'store'])->middleware(['auth', 'verified'])->name('karya.store');
+Route::get('/admin-karya-dan-aktivitas/{karya}/edit', [KaryaController::class, 'edit'])->middleware(['auth', 'verified'])->name('karya.edit');
+Route::put('/admin-karya-dan-aktivitas/{karya}', [KaryaController::class, 'update'])->middleware(['auth', 'verified'])->name('karya.update');
+Route::delete('/admin-karya-dan-aktivitas/{karya}', [KaryaController::class, 'destroy'])->middleware(['auth', 'verified'])->name('karya.destroy');
 
 Route::get('/admin-ekstrakulikuler', [ExtracurricularController::class,'index'])->middleware(['auth', 'verified'])->name('admin.ekstrakulikuler');
 Route::post('/admin-ekstrakurikuler/store', [ExtracurricularController::class, 'store'])->middleware(['auth', 'verified'])->name('extracurriculars.store');

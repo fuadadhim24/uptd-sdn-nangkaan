@@ -129,6 +129,15 @@
 
                         </li>
 
+                        <li class="sidebar-item  ">
+                            <a href="{{ route('admin.karya') }}" class='sidebar-link'>
+                                <i class="bi bi-calendar2-date-fill"></i>
+                                <span>Karya dan Aktivitas</span>
+                            </a>
+
+
+                        </li>
+
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>
