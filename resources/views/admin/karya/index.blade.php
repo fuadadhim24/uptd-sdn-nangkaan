@@ -134,7 +134,7 @@
                         </li>
 
                         <li class="sidebar-item active ">
-                            <a href="{{ route('admin.karya1') }}" class='sidebar-link'>
+                            <a href="{{ route('admin.karya') }}" class='sidebar-link'>
                                 <i class="bi bi-circle-square  "></i>
                                 <span>Karya dan Aktivitas</span>
                             </a>
