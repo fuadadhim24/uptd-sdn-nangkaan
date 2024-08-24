@@ -131,7 +131,7 @@
 
                         <li class="sidebar-item  ">
                             <a href="{{ route('admin.karya') }}" class='sidebar-link'>
-                                <i class="bi bi-calendar2-date-fill"></i>
+                                <i class="bi bi-circle-square  "></i>
                                 <span>Karya dan Aktivitas</span>
                             </a>
 

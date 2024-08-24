@@ -154,89 +154,24 @@
 
             <div class="container-fluid activity-gallery-container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row g-0">
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="activity-gallery">
-                            <a href="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-1.jpg"
-                                class="glightbox" data-gall="activity-gallery">
-                                <img src="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-1.jpg"
-                                    alt="" class="img-fluid">
-                            </a>
+                    @forelse ($karyas as $karya)
+                        <div class="col-lg-3 col-md-4">
+                            <div class="activity-gallery">
+                                <a href="{{ asset('storage') }}/karya/{{ $karya->photo_path }}"
+                                    class="glightbox" data-gall="activity-gallery">
+                                    <img src="{{ asset('storage') }}/karya/{{ $karya->photo_path }}"
+                                        alt="" class="img-fluid">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="activity-gallery">
-                            <a href="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-2.jpg"
-                                class="glightbox" data-gall="activity-gallery">
-                                <img src="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-2.jpg"
-                                    alt="" class="img-fluid">
-                            </a>
+                    @empty
+                        <div class="col-12">
+                            <p class="text-center">No gallery items available.</p>
                         </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="activity-gallery">
-                            <a href="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-3.jpg"
-                                class="glightbox" data-gall="activity-gallery">
-                                <img src="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-3.jpg"
-                                    alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="activity-gallery">
-                            <a href="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-4.jpg"
-                                class="glightbox" data-gall="activity-gallery">
-                                <img src="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-4.jpg"
-                                    alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="activity-gallery">
-                            <a href="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-5.jpg"
-                                class="glightbox" data-gall="activity-gallery">
-                                <img src="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-5.jpg"
-                                    alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="activity-gallery">
-                            <a href="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-6.jpg"
-                                class="glightbox" data-gall="activity-gallery">
-                                <img src="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-6.jpg"
-                                    alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="activity-gallery">
-                            <a href="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-7.jpg"
-                                class="glightbox" data-gall="activity-gallery">
-                                <img src="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-7.jpg"
-                                    alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="activity-gallery">
-                            <a href="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-8.jpg"
-                                class="glightbox" data-gall="activity-gallery">
-                                <img src="{{ asset('assets/img') }}/landingpage/activity-gallery/activity-gallery-8.jpg"
-                                    alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
+                    @endforelse
                 </div>
             </div>
+
 
         </section><!-- /activity Section -->
 

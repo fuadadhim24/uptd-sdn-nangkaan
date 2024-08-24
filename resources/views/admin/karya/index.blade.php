@@ -133,7 +133,16 @@
 
                         </li>
 
-                        <li class="sidebar-item active has-sub">
+                        <li class="sidebar-item active ">
+                            <a href="{{ route('admin.karya1') }}" class='sidebar-link'>
+                                <i class="bi bi-circle-square  "></i>
+                                <span>Karya dan Aktivitas</span>
+                            </a>
+
+
+                        </li>
+
+                        <li class="sidebar-item has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>
                                 <span>Tentang</span>
@@ -145,7 +154,7 @@
                                     <a href="{{ route('admin.kurikulum') }}" class="submenu-link">Kurikulum</a>
 
                                 </li>
-                                <li class="submenu-item active ">
+                                <li class="submenu-item ">
                                     <a href="{{ route('admin.guru') }}" class="submenu-link">Daftar Guru</a>
 
                                 </li>
@@ -268,7 +277,8 @@
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <img src="{{ asset('storage/karya/' . $karya->photo_path) }}"
-                                                                            alt="Foto Karya dan Aktivitas Photo" class="img-fluid">
+                                                                            alt="Foto Karya dan Aktivitas Photo"
+                                                                            class="img-fluid">
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button"
@@ -388,9 +398,10 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="photo_path">Foto</label>
-                                        <input type="file" id="photo_path" class="form-control" name="photo_path">
+                                        <input type="file" id="photo_path" class="form-control"
+                                            name="photo_path">
                                         <p class="mt-2 text-muted">Tipe file yang
-                                            diperbolehkan: JPEG, PNG, JPG.</p> 
+                                            diperbolehkan: JPEG, PNG, JPG.</p>
                                     </div>
                                     {{-- <div class="form-group">
                                         <label for="biography">Biografi</label>
