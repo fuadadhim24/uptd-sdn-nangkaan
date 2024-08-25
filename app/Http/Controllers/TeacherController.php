@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PpdbInformation;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -104,7 +105,9 @@ class TeacherController extends Controller
     public function lPIndex()
     {
     $teachers = Teacher::all();
+    
+    $ppdbInformation = PpdbInformation::latest()->first();
     // dd($teachers);
-        return view('guru', compact('teachers'));
+        return view('guru', compact('teachers','ppdbInformation'));
     }
 }

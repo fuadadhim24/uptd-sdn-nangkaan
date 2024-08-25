@@ -48,7 +48,7 @@
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
             <a href="index.html" class="logo d-flex align-items-center me-auto">
-                <img src="{{ asset('img') }}/logo.png" alt="">
+                {{-- <img src="{{ asset('img') }}/logo.png" alt=""> --}}
                 <!-- Uncomment the line below if you also wish to use an text logo -->
                 <!-- <h1 class="sitename">TheEvent</h1>  -->
             </a>
@@ -103,8 +103,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="path/to/your/poster.jpg" class="img-fluid" alt="Poster PPDB">
-                    <!-- Ganti `path/to/your/poster.jpg` dengan URL gambar poster yang sesuai -->
+                    @if ($ppdbInformation && $ppdbInformation->file_path)
+                        <img src="{{ asset('storage/ppdb/' . $ppdbInformation->file_path) }}" class="img-fluid"
+                            alt="{{ $ppdbInformation->title }}">
+                    @else
+                        <p>No poster available at the moment.</p>
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary"><a href="http://wa.me/6287840199095"

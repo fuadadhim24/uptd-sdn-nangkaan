@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Extracurricular;
+use App\Models\PpdbInformation;
 use Illuminate\Http\Request;
 
 class ExtracurricularController extends Controller
@@ -80,7 +81,8 @@ class ExtracurricularController extends Controller
     public function lPIndex()
     {
         $extracurriculars = Extracurricular::orderBy('created_at', 'asc')->get();
+        $ppdbInformation = PpdbInformation::latest()->first();
         // dd($extracurriculars);
-        return view('ekstrakulikuler', compact('extracurriculars'));
+        return view('ekstrakulikuler', compact('extracurriculars','ppdbInformation'));
     }
 }

@@ -68,7 +68,7 @@
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
             <a href="index.html" class="logo d-flex align-items-center me-auto">
-                <img src="{{ asset('img') }}/logo.png" alt="">
+                {{-- <img src="{{ asset('img') }}/logo.png" alt=""> --}}
                 <!-- Uncomment the line below if you also wish to use an text logo -->
                 <!-- <h1 class="sitename">TheEvent</h1>  -->
             </a>
@@ -101,8 +101,8 @@
                     <!-- <li><a href="#tentang">Tentang</a></li> -->
                     <li><a href="#" data-bs-toggle="modal" data-bs-target="#ppdbModal">Pendaftaran</a></li>
                     <li><a href="{{ route('akademik') }}">Akademik</a></li>
-                    <li><a href="{{ route('/') }}">Prestasi</a></li>
-                    <li><a href="{{ route('karya') }}">Karya, Atletik & Activities</a></li>
+                    <li><a href="#achievement">Prestasi</a></li>
+                    <li><a href="{{ route('karya') }}">Karya, Atletik & Aktivitas</a></li>
                     <li><a href="{{ route('survey') }}" class="active">Survey</a></li>
                     <li><a href="https://wa.me/6287840199095" target="_blank">Hubungi Kami</a></li>
                 </ul>
@@ -112,6 +112,7 @@
             <a class="cta-btn d-none d-sm-block" href="{{ route('login') }}">Sign In</a>
 
         </div>
+
     </header>
     <!-- Modal -->
     <div class="modal fade" id="ppdbModal" tabindex="-1" aria-labelledby="ppdbModalLabel" aria-hidden="true">
@@ -122,8 +123,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="path/to/your/poster.jpg" class="img-fluid" alt="Poster PPDB">
-                    <!-- Ganti `path/to/your/poster.jpg` dengan URL gambar poster yang sesuai -->
+                    @if ($ppdbInformation && $ppdbInformation->file_path)
+                        <img src="{{ asset('storage/ppdb/' . $ppdbInformation->file_path) }}" class="img-fluid"
+                            alt="{{ $ppdbInformation->title }}">
+                    @else
+                        <p>No poster available at the moment.</p>
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary"><a href="http://wa.me/6287840199095"
@@ -305,7 +310,7 @@
     <script src="{{ asset('vendor') }}/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('vendor') }}/glightbox/js/glightbox.min.js"></script>
     <script src="{{ asset('vendor') }}/isotope-layout/isotope.pkgd.min.js"></script>
-    {{-- <!-- <script src="{{ asset('vendor') }}/swiper/swiper-bundle.min.js"></script> --> --}}
+    <script src="{{ asset('vendor') }}/swiper/swiper-bundle.min.js"></script>
     <script src="{{ asset('vendor') }}/waypoints/noframework.waypoints.js"></script>
     <script src="{{ asset('vendor') }}/php-email-form/validate.js"></script>
 

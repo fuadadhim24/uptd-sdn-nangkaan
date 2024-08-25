@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AcademicCalendar;
+use App\Models\PpdbInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -44,7 +45,8 @@ class AcademicCalendarController extends Controller
     public function lPIndex()
     {
         $academicCalendar = AcademicCalendar::latest()->first();
+        $ppdbInformation = PpdbInformation::latest()->first();
         // dd($academicCalendar);
-        return view('akademik', compact('academicCalendar'));
+        return view('akademik', compact('academicCalendar','ppdbInformation'));
     }
 }

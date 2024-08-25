@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PpdbInformation;
 use App\Models\Respondent;
 use App\Models\Survey;
 use Illuminate\Http\Request;
@@ -271,6 +272,7 @@ class SurveyController extends Controller
     }
 
     public function lPIndex(){
+        $ppdbInformation = PpdbInformation::latest()->first();
         $surveysWithRespondentCounts = Survey::withCount('respondents')
         ->where('is_active', 1)
         ->get()
@@ -287,7 +289,6 @@ class SurveyController extends Controller
             return $survey;
         });
 
-        // Mengirim data survei dan jumlah responden ke tampilan
-        return view('survey', ['surveys' => $surveysWithRespondentCounts]);
+        return view('survey', ['surveys' => $surveysWithRespondentCounts,'ppdbInformation' => $ppdbInformation]);
     }
 }

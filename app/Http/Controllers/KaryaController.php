@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Karya;
+use App\Models\PpdbInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -94,8 +95,9 @@ class KaryaController extends Controller
 
     public function lPIndex()
     {
-    $karyas = Karya::all();
-    // dd($karyas);
-        return view('karya', compact('karyas'));
+        $karyas = Karya::all();
+        // dd($karyas);
+        $ppdbInformation = PpdbInformation::latest()->first();
+            return view('karya', compact('karyas','ppdbInformation'));
     }
 }

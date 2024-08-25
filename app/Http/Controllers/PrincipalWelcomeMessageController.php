@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataSekolah;
+use App\Models\PpdbInformation;
 use App\Models\PrincipalWelcomeMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -43,9 +44,9 @@ class PrincipalWelcomeMessageController extends Controller
     public function lPIndex()
     {
         $message = PrincipalWelcomeMessage::latest()->first(); 
-        
         $data = DataSekolah::all();
+        $ppdbInformation = PpdbInformation::latest()->first();
         // dd($message);
-        return view('sambutan-kepala-sekolah', compact('message','data'));
+        return view('sambutan-kepala-sekolah', compact('message','data','ppdbInformation'));
     }
 }

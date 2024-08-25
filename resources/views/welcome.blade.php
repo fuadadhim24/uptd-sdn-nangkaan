@@ -48,7 +48,7 @@
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
             <a href="index.html" class="logo d-flex align-items-center me-auto">
-                <img src="{{ asset('img') }}/logo.png" alt="">
+                {{-- <img src="{{ asset('img') }}/logo.png" alt=""> --}}
                 <!-- Uncomment the line below if you also wish to use an text logo -->
                 <!-- <h1 class="sitename">TheEvent</h1>  -->
             </a>

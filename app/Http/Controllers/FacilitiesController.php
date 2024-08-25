@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Facilities;
+use App\Models\PpdbInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -98,6 +99,7 @@ class FacilitiesController extends Controller
     {
         $facilities = Facilities::all();
         // dd($facilities);
-        return view('fasilitas', compact('facilities'));
+        $ppdbInformation = PpdbInformation::latest()->first();
+        return view('fasilitas', compact('facilities','ppdbInformation'));
     }
 }

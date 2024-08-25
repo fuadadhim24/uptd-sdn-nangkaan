@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PpdbInformation;
 use App\Models\VisiMisi;
 use Illuminate\Http\Request;
 
@@ -67,10 +68,11 @@ class VisiMisiController extends Controller
     }
     public function lPIndex(){
         $visiMisis = VisiMisi::all();
+        $ppdbInformation = PpdbInformation::latest()->first();
 
         $visi = $visiMisis->where('type', 'Visi')->first();
         $misi = $visiMisis->where('type', 'Misi');
 
-        return view('visi-misi', compact('visi', 'misi'));
+        return view('visi-misi', compact('visi', 'misi','ppdbInformation'));
     }
 }
