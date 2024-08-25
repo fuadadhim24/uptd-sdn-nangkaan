@@ -132,6 +132,24 @@
 
 
                         </li>
+                        
+                        <li class="sidebar-item  ">
+                            <a href="{{ route('admin.karya') }}" class='sidebar-link'>
+                                <i class="bi bi-circle-square  "></i>
+                                <span>Karya dan Aktivitas</span>
+                            </a>
+
+
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="{{ route('admin.prestasi') }}" class='sidebar-link'>
+                                <i class="bi bi-trophy-fill  "></i>
+                                <span>Prestasi</span>
+                            </a>
+
+
+                        </li>
 
                         <li class="sidebar-item active has-sub">
                             <a href="#" class='sidebar-link'>
@@ -166,7 +184,16 @@
                                         Sekolah</a>
 
                                 </li>
+                                
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.visi_misi') }}" class="submenu-link">Visi dan Misi</a>
 
+                                </li>
+
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.data_sekolah') }}" class="submenu-link">Data Sekolah</a>
+
+                                </li>
                             </ul>
 
 

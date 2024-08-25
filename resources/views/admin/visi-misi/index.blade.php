@@ -181,6 +181,11 @@
 
                                 </li>
 
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.data_sekolah') }}" class="submenu-link">Data Sekolah</a>
+
+                                </li>
+
                             </ul>
 
 

@@ -142,6 +142,15 @@
 
                         </li>
 
+                        <li class="sidebar-item  ">
+                            <a href="{{ route('admin.prestasi') }}" class='sidebar-link'>
+                                <i class="bi bi-trophy-fill  "></i>
+                                <span>Prestasi</span>
+                            </a>
+
+
+                        </li>
+
                         <li class="sidebar-item has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>
@@ -173,6 +182,16 @@
                                 <li class="submenu-item  ">
                                     <a href="{{ route('admin.sambutan') }}" class="submenu-link">Sambutan Kepala
                                         Sekolah</a>
+
+                                </li>
+
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.visi_misi') }}" class="submenu-link">Visi dan Misi</a>
+
+                                </li>
+
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.data_sekolah') }}" class="submenu-link">Data Sekolah</a>
 
                                 </li>
 

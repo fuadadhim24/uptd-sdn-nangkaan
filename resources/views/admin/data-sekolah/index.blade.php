@@ -127,6 +127,24 @@
 
                         </li>
 
+                        <li class="sidebar-item  ">
+                            <a href="{{ route('admin.karya') }}" class='sidebar-link'>
+                                <i class="bi bi-circle-square  "></i>
+                                <span>Karya dan Aktivitas</span>
+                            </a>
+
+
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="{{ route('admin.prestasi') }}" class='sidebar-link'>
+                                <i class="bi bi-trophy-fill  "></i>
+                                <span>Prestasi</span>
+                            </a>
+
+
+                        </li>
+
                         <li class="sidebar-item active  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>

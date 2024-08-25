@@ -185,6 +185,16 @@
 
                                 </li>
 
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.visi_misi') }}" class="submenu-link">Visi dan Misi</a>
+
+                                </li>
+
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.data_sekolah') }}" class="submenu-link">Data Sekolah</a>
+
+                                </li>
+
                             </ul>
 
 

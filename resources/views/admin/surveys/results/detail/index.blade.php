@@ -138,6 +138,24 @@
 
                         </li>
 
+                        <li class="sidebar-item  ">
+                            <a href="{{ route('admin.karya') }}" class='sidebar-link'>
+                                <i class="bi bi-circle-square  "></i>
+                                <span>Karya dan Aktivitas</span>
+                            </a>
+
+
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="{{ route('admin.prestasi') }}" class='sidebar-link'>
+                                <i class="bi bi-trophy-fill  "></i>
+                                <span>Prestasi</span>
+                            </a>
+
+
+                        </li>
+
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>
@@ -172,6 +190,15 @@
 
                                 </li>
 
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.visi_misi') }}" class="submenu-link">Visi dan Misi</a>
+
+                                </li>
+
+                                <li class="submenu-item  ">
+                                    <a href="{{ route('admin.data_sekolah') }}" class="submenu-link">Data Sekolah</a>
+
+                                </li>
                             </ul>
 
 
@@ -773,11 +800,11 @@
                     </div>
                     <div class="card-body">
                         ${radioOptions.map((option, index) => `
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" id="radio${question.question_id}_${index}" disabled ${selectedRadio === option ? 'checked' : ''}>
-                                                                <label class="form-check-label" for="radio${question.question_id}_${index}">${option}</label>
-                                                            </div>
-                                                        `).join('')}
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" id="radio${question.question_id}_${index}" disabled ${selectedRadio === option ? 'checked' : ''}>
+                                                                    <label class="form-check-label" for="radio${question.question_id}_${index}">${option}</label>
+                                                                </div>
+                                                            `).join('')}
                     </div>
                 </div>
             </div>
@@ -794,11 +821,11 @@
                     </div>
                     <div class="card-body">
                         ${checkboxOptions.map((option, index) => `
-                                                            <div class="form-check">
-                                                                <input type="checkbox" id="checkbox${question.question_id}_${index}" class="form-check-input" disabled ${selectedCheckboxes.includes(option) ? 'checked' : ''}>
-                                                                <label for="checkbox${question.question_id}_${index}">${option}</label>
-                                                            </div>
-                                                        `).join('')}
+                                                                <div class="form-check">
+                                                                    <input type="checkbox" id="checkbox${question.question_id}_${index}" class="form-check-input" disabled ${selectedCheckboxes.includes(option) ? 'checked' : ''}>
+                                                                    <label for="checkbox${question.question_id}_${index}">${option}</label>
+                                                                </div>
+                                                            `).join('')}
                     </div>
                 </div>
             </div>
@@ -818,11 +845,11 @@
                     </div>
                     <div class="card-body">
                         ${rangeOptions.map(option => `
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" id="range${question.question_id}_${option}" disabled ${selectedRange === option ? 'checked' : ''}>
-                                                                <label class="form-check-label" for="range${question.question_id}_${option}">${option}</label>
-                                                            </div>
-                                                        `).join('')}
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" id="range${question.question_id}_${option}" disabled ${selectedRange === option ? 'checked' : ''}>
+                                                                    <label class="form-check-label" for="range${question.question_id}_${option}">${option}</label>
+                                                                </div>
+                                                            `).join('')}
                     </div>
                 </div>
             </div>
