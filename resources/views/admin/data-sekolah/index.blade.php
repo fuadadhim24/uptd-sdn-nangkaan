@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - UPTD SPF SDN Nangkaan Admin Dashboard</title>
+    <title>Data Sekolah - UPTD SPF SDN Nangkaan Admin</title>
 
 
 
@@ -12,8 +12,6 @@
     <link rel="shortcut icon"
         href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAiCAYAAADRcLDBAAAEs2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgZXhpZjpQaXhlbFhEaW1lbnNpb249IjMzIgogICBleGlmOlBpeGVsWURpbWVuc2lvbj0iMzQiCiAgIGV4aWY6Q29sb3JTcGFjZT0iMSIKICAgdGlmZjpJbWFnZVdpZHRoPSIzMyIKICAgdGlmZjpJbWFnZUxlbmd0aD0iMzQiCiAgIHRpZmY6UmVzb2x1dGlvblVuaXQ9IjIiCiAgIHRpZmY6WFJlc29sdXRpb249Ijk2LjAiCiAgIHRpZmY6WVJlc29sdXRpb249Ijk2LjAiCiAgIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiCiAgIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIKICAgeG1wOk1vZGlmeURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiCiAgIHhtcDpNZXRhZGF0YURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJwcm9kdWNlZCIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWZmaW5pdHkgRGVzaWduZXIgMS4xMC4xIgogICAgICBzdEV2dDp3aGVuPSIyMDIyLTAzLTMxVDEwOjUwOjIzKzAyOjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2tldCBlbmQ9InIiPz5V57uAAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rRFEUxz9maORHo1hYKC9hISNGTWwsRn4VFmOUX5uZZ36oeTOv954kW2WrKLHxa8FfwFZZK0WkZClrYoOe87ypmWTO7dzzud97z+nec8ETzaiaWd4NWtYyIiNhZWZ2TvE946WZSjqoj6mmPjE1HKWkfdxR5sSbgFOr9Ll/rXoxYapQVik8oOqGJTwqPL5i6Q5vCzeo6dii8KlwpyEXFL519LjLLw6nXP5y2IhGBsFTJ6ykijhexGra0ITl5bRqmWU1fx/nJTWJ7PSUxBbxJkwijBBGYYwhBgnRQ7/MIQIE6ZIVJfK7f/MnyUmuKrPOKgZLpEhj0SnqslRPSEyKnpCRYdXp/9++msneoFu9JgwVT7b91ga+LfjetO3PQ9v+PgLvI1xkC/m5A+h7F32zoLXug38dzi4LWnwHzjeg8UGPGbFfySvuSSbh9QRqZ6H+Gqrm3Z7l9zm+h+iafNUV7O5Bu5z3L/wAdthn7QIme0YAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAJTSURBVFiF7Zi9axRBGIefEw2IdxFBRQsLWUTBaywSK4ubdSGVIY1Y6HZql8ZKCGIqwX/AYLmCgVQKfiDn7jZeEQMWfsSAHAiKqPiB5mIgELWYOW5vzc3O7niHhT/YZvY37/swM/vOzJbIqVq9uQ04CYwCI8AhYAlYAB4Dc7HnrOSJWcoJcBS4ARzQ2F4BZ2LPmTeNuykHwEWgkQGAet9QfiMZjUSt3hwD7psGTWgs9pwH1hC1enMYeA7sKwDxBqjGnvNdZzKZjqmCAKh+U1kmEwi3IEBbIsugnY5avTkEtIAtFhBrQCX2nLVehqyRqFoCAAwBh3WGLAhbgCRIYYinwLolwLqKUwwi9pxV4KUlxKKKUwxC6ZElRCPLYAJxGfhSEOCz6m8HEXvOB2CyIMSk6m8HoXQTmMkJcA2YNTHm3congOvATo3tE3A29pxbpnFzQSiQPcB55IFmFNgFfEQeahaAGZMpsIJIAZWAHcDX2HN+2cT6r39GxmvC9aPNwH5gO1BOPFuBVWAZue0vA9+A12EgjPadnhCuH1WAE8ivYAQ4ohKaagV4gvxi5oG7YSA2vApsCOH60WngKrA3R9IsvQUuhIGY00K4flQG7gHH/mLytB4C42EgfrQb0mV7us8AAMeBS8mGNMR4nwHamtBB7B4QRNdaS0M8GxDEog7iyoAguvJ0QYSBuAOcAt71Kfl7wA8DcTvZ2KtOlJEr+ByyQtqqhTyHTIeB+ONeqi3brh+VgIN0fohUgWGggizZFTplu12yW8iy/YLOGWMpDMTPXnl+Az9vj2HERYqPAAAAAElFTkSuQmCC"
         type="image/png">
-
-
 
     <link rel="stylesheet" href="{{ asset('css') }}/app.css">
     <link rel="stylesheet" href="{{ asset('css') }}/app-dark.css">
@@ -71,7 +69,7 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item ">
                             <a href="{{ route('dashboard') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
@@ -129,25 +127,7 @@
 
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="{{ route('admin.karya') }}" class='sidebar-link'>
-                                <i class="bi bi-circle-square  "></i>
-                                <span>Karya dan Aktivitas</span>
-                            </a>
-
-
-                        </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="{{ route('admin.prestasi') }}" class='sidebar-link'>
-                                <i class="bi bi-trophy-fill  "></i>
-                                <span>Prestasi</span>
-                            </a>
-
-
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item active  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>
                                 <span>Tentang</span>
@@ -175,7 +155,7 @@
 
                                 </li>
 
-                                <li class="submenu-item  ">
+                                <li class="submenu-item ">
                                     <a href="{{ route('admin.sambutan') }}" class="submenu-link">Sambutan Kepala
                                         Sekolah</a>
 
@@ -186,7 +166,7 @@
 
                                 </li>
 
-                                <li class="submenu-item  ">
+                                <li class="submenu-item active ">
                                     <a href="{{ route('admin.data_sekolah') }}" class="submenu-link">Data Sekolah</a>
 
                                 </li>
@@ -225,214 +205,167 @@
             </header>
 
             <div class="page-heading">
-                <h3>Statistik Lalu Lintas</h3>
-            </div>
-            <div class="page-content">
-                <section class="row">
-                    <div class="col-12 col-lg-9">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Pengunjung Website</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="chart-profile-visit"></div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Update Data Sekolah </h3>
+                            <p class="text-subtitle text-muted">Update informasi identitas atau data sekolah.</p>
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-xl-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Riwayat Lalu Lintas</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <div class="d-flex align-items-center">
-                                                    <h5 class="mb-0 ms-3">Juli</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-5">
-                                                <h5 class="mb-0 text-end">862</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-europe"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <div class="d-flex align-items-center">
-                                                    <h5 class="mb-0 ms-3">Juni</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-5">
-                                                <h5 class="mb-0 text-end">375</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-america"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <div class="d-flex align-items-center">
-                                                    <h5 class="mb-0 ms-3">Mei</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-5">
-                                                <h5 class="mb-0 text-end">1025</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-indonesia"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-xl-8">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Tanggapan Terbaru</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-lg">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nama</th>
-                                                        <th>Komentar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img
-                                                                        src="{{ asset('assets/img/admin/page') }}/5.jpg">
-                                                                </div>
-                                                                <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                                            </div>
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            <p class=" mb-0">Congratulations on your graduation!</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img
-                                                                        src="{{ asset('assets/img/admin/page') }}/2.jpg">
-                                                                </div>
-                                                                <p class="font-bold ms-3 mb-0">Si Ganteng</p>
-                                                            </div>
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            <p class=" mb-0">Wow amazing design! Can you make another
-                                                                tutorial for
-                                                                this design?</p>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Data Sekolah
+                                    </li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
+                </div>
+                <section class="section">
+
+                    <div class="col-12 col-lg-12">
                         <div class="card">
-                            <div class="card-body py-4 px-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="avatar avatar-xl">
-                                        <img src="{{ asset('assets/img/admin/page') }}/1.jpg" alt="Face 1">
-                                    </div>
-                                    <div class="ms-3 name">
-                                        <h5 class="font-bold">Admin</h5>
-                                        <h6 class="text-muted mb-0">UPTD SPF SDN Nangkaan</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Responden Terbaru</h4>
-                            </div>
-                            <div class="card-content pb-4">
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="{{ asset('assets/img/admin/page') }}/4.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Hank Schrader</h5>
-                                        <h6 class="text-muted mb-0">08:58 - Hari Ini</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="{{ asset('assets/img/admin/page') }}/5.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Dean Winchester</h5>
-                                        <h6 class="text-muted mb-0">12:22 - Kemarin</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="{{ asset('assets/img/admin/page') }}/1.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">John Dodol</h5>
-                                        <h6 class="text-muted mb-0">03:15 - 07/08/2024</h6>
-                                    </div>
-                                </div>
-                                <div class="px-4">
-                                    <button class='btn btn-block btn-xl btn-outline-primary font-bold mt-3'>Lihat Hasil
-                                        Survey</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Data Guru</h4>
-                            </div>
                             <div class="card-body">
-                                <div id="chart-visitors-profile"></div>
+                                @if ($data->isNotEmpty())
+                                    @php
+                                        $item = $data->first();
+                                    @endphp
+                                    <form action="{{ route('data_sekolah.update', $item->id) }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+
+                                        <div class="form-group">
+                                            <label for="nama_sekolah" class="form-label">Nama Sekolah</label>
+                                            <input type="text" name="nama_sekolah" id="nama_sekolah"
+                                                class="form-control"
+                                                value="{{ old('nama_sekolah', $item->nama_sekolah) }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="status_sekolah" class="form-label">Status Sekolah</label>
+                                            <input type="text" name="status_sekolah" id="status_sekolah"
+                                                class="form-control"
+                                                value="{{ old('status_sekolah', $item->status_sekolah) }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="nss" class="form-label">NSS</label>
+                                            <input type="text" name="nss" id="nss" class="form-control"
+                                                value="{{ old('nss', $item->nss) }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="npsn" class="form-label">NPSN</label>
+                                            <input type="text" name="npsn" id="npsn" class="form-control"
+                                                value="{{ old('npsn', $item->npsn) }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="alamat_sekolah" class="form-label">Alamat Sekolah</label>
+                                            <input type="text" name="alamat_sekolah" id="alamat_sekolah"
+                                                class="form-control"
+                                                value="{{ old('alamat_sekolah', $item->alamat_sekolah) }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="desa_kelurahan" class="form-label">Desa / Kelurahan</label>
+                                            <input type="text" name="desa_kelurahan" id="desa_kelurahan"
+                                                class="form-control"
+                                                value="{{ old('desa_kelurahan', $item->desa_kelurahan) }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="kecamatan" class="form-label">Kecamatan</label>
+                                            <input type="text" name="kecamatan" id="kecamatan"
+                                                class="form-control" value="{{ old('kecamatan', $item->kecamatan) }}"
+                                                required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="kabupaten_kota" class="form-label">Kabupaten / Kota</label>
+                                            <input type="text" name="kabupaten_kota" id="kabupaten_kota"
+                                                class="form-control"
+                                                value="{{ old('kabupaten_kota', $item->kabupaten_kota) }}" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="provinsi" class="form-label">Provinsi</label>
+                                            <input type="text" name="provinsi" id="provinsi"
+                                                class="form-control" value="{{ old('provinsi', $item->provinsi) }}"
+                                                required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="kode_pos" class="form-label">Kode Pos</label>
+                                            <input type="text" name="kode_pos" id="kode_pos"
+                                                class="form-control" value="{{ old('kode_pos', $item->kode_pos) }}"
+                                                required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="tanggal_sk_pendirian" class="form-label">Tanggal SK
+                                                Pendirian</label>
+                                            <input type="date" name="tanggal_sk_pendirian"
+                                                id="tanggal_sk_pendirian" class="form-control"
+                                                value="{{ old('tanggal_sk_pendirian', $item->tanggal_sk_pendirian ? $item->tanggal_sk_pendirian->format('Y-m-d') : '') }}"
+                                                required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="sk_ijin_operasional" class="form-label">SK Ijin
+                                                Operasional</label>
+                                            <input type="text" name="sk_ijin_operasional" id="sk_ijin_operasional"
+                                                class="form-control"
+                                                value="{{ old('sk_ijin_operasional', $item->sk_ijin_operasional) }}"
+                                                required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="tanggal_sk_ijin_operasional" class="form-label">Tanggal SK
+                                                Ijin
+                                                Operasional</label>
+                                            <input type="date" name="tanggal_sk_ijin_operasional"
+                                                id="tanggal_sk_ijin_operasional" class="form-control"
+                                                value="{{ old('tanggal_sk_ijin_operasional', $item->tanggal_sk_ijin_operasional ? $item->tanggal_sk_ijin_operasional->format('Y-m-d') : '') }}"
+                                                required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                        </div>
+                                    </form>
+                                @else
+                                    tidak ada
+                                @endif
                             </div>
                         </div>
                     </div>
+
                 </section>
             </div>
 
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
-                        <p>2024 &copy; UPTD SPF SDN Nangkaan Kec. Bondowoso</p>
+                        <p>2024 &copy; UPTD SPF SDN Nangkaan kec. Bondowoso</p>
                     </div>
                     <div class="float-end">
-                        <p>Crafted by <span class="text-danger"></a></p>
-                        {{-- <p>Crafted with <span class="text-danger"><i class="bi bi-heart-fill icon-mid"></i></span>
-                            by <a href="https://saugi.me">Saugi</a></p> --}}
+                        <p>Crafted by</p>
                     </div>
                 </div>
             </footer>
         </div>
     </div>
+
+
     <script src="{{ asset('js') }}/components/dark.js"></script>
     <script src="{{ asset('extensions') }}/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
 
     <script src="{{ asset('js') }}/app.js"></script>
 
-
-
-    <!-- Need: Apexcharts -->
-    <script src="{{ asset('extensions') }}/apexcharts/apexcharts.min.js"></script>
-    <script src="{{ asset('js') }}/pages/dashboard.js"></script>
 
 </body>
 

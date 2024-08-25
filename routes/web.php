@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AcademicCalendarController;
 use App\Http\Controllers\CurriculaController;
+use App\Http\Controllers\DataSekolahController;
 use App\Http\Controllers\ExtracurricularController;
 use App\Http\Controllers\FacilitiesController;
 use App\Http\Controllers\FaqController;
@@ -76,6 +77,10 @@ Route::put('/admin-kurikulum/{curriculum}', [CurriculaController::class, 'update
 
 Route::get('/admin-sambutan-kepala-sekolah', [PrincipalWelcomeMessageController::class,'index'])->middleware(['auth', 'verified'])->name('admin.sambutan');
 Route::put('/admin-sambutan-kepala-sekolah/{principalWelcomeMessage}', [PrincipalWelcomeMessageController::class, 'update'])->name('principal_welcome_messages.update');
+Route::put('/admin-kurikulum/{curriculum}', [CurriculaController::class, 'update'])->name('curricula.update');
+
+Route::get('/admin-data-sekolah', [DataSekolahController::class,'index'])->middleware(['auth', 'verified'])->name('admin.data_sekolah');
+Route::put('/admin-data-sekolah/{dataSekolah}', [DataSekolahController::class, 'update'])->name('data_sekolah.update');
 
 Route::get('/admin-daftar-guru', [TeacherController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.guru');
 Route::post('/admin-daftar-guru/store', [TeacherController::class, 'store'])->middleware(['auth', 'verified'])->name('teachers.store');
