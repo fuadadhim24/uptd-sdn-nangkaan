@@ -511,7 +511,8 @@
                                         siswa dengan keterampilan dan nilai-nilai penting dalam menghadapi tantangan
                                         masa depan.</p>
 
-                                    <a data-bs-toggle="modal" data-bs-target="#curriculumModal" href="#">Detail →</a>
+                                    <a data-bs-toggle="modal" data-bs-target="#curriculumModal" href="#">Detail
+                                        →</a>
                                 </div>
                             </div>
                             <div class="card animate__animated animate__fadeIn" data-aos="fade-up"
@@ -666,24 +667,18 @@
                 }
                 </script>
                     <div class="swiper-wrapper align-items-center">
-                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/win1.jpg"
-                                    class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/win2.jpg"
-                                    class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/win3.jpg"
-                                    class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/win4.jpg"
-                                    class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/win5.jpg"
-                                    class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                                href="assets\img\landingpage\ui.jpg"><img src="assets/img/landingpage/win6.jpg"
-                                    class="img-fluid" alt=""></a></div>
+                        @forelse($prestasis as $prestasi)
+                            <div class="swiper-slide">
+                                <a class="glightbox" data-gallery="images-gallery"
+                                    href="{{ asset('storage/prestasi/' .$prestasi->photo_path) }}">
+                                    <img src="{{ asset('storage/prestasi/' .$prestasi->photo_path) }}" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        @empty
+                            <div class="swiper-slide">
+                                <p>No images available</p>
+                            </div>
+                        @endforelse
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>

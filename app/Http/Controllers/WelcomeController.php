@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Curricula;
 use App\Models\Faq;
 use App\Models\PpdbInformation;
+use App\Models\Prestasi;
 use App\Models\PrincipalWelcomeMessage;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,9 @@ class WelcomeController extends Controller
         $message = PrincipalWelcomeMessage::latest()->first(); 
         $curriculum = Curricula::latest()->first();
         $faqs = Faq::all();
+        $prestasis = Prestasi::all();
+        // dd($prestasis);
         // dd($faqs);
-        return view('welcome',compact('ppdbInformation','message','faqs','curriculum'));
+        return view('welcome',compact('ppdbInformation','message','faqs','curriculum','prestasis'));
     }
 }
