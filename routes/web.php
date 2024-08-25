@@ -7,6 +7,7 @@ use App\Http\Controllers\FacilitiesController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\KaryaController;
 use App\Http\Controllers\PpdbInformationController;
+use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\PrincipalWelcomeMessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
@@ -41,8 +42,6 @@ Route::post('/admin-daftar-survey/pertanyaan/store', [QuestionController::class,
 Route::get('/admin-hasil-survey', [SurveyController::class, 'showAllSurveyResults'])->middleware(['auth', 'verified'])->name('admin.surveys.result');
 Route::get('/admin-hasil-survey/detail/{surveyId}', [SurveyController::class, 'showSurveyResults'])->middleware(['auth', 'verified'])->name('admin.surveys.result.detail');
 Route::get('/admin-hasil-survey/detail/{surveyId}/data', [SurveyController::class, 'getDataRespondent'])->middleware(['auth', 'verified'])->name('admin.surveys.result.responses');
-
-
 
 
 Route::get('/admin-daftar-survey', [SurveyController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.surveys');
@@ -88,6 +87,13 @@ Route::post('/admin-karya-dan-aktivitas/store', [KaryaController::class, 'store'
 Route::get('/admin-karya-dan-aktivitas/{karya}/edit', [KaryaController::class, 'edit'])->middleware(['auth', 'verified'])->name('karya.edit');
 Route::put('/admin-karya-dan-aktivitas/{karya}', [KaryaController::class, 'update'])->middleware(['auth', 'verified'])->name('karya.update');
 Route::delete('/admin-karya-dan-aktivitas/{karya}', [KaryaController::class, 'destroy'])->middleware(['auth', 'verified'])->name('karya.destroy');
+Route::delete('/admin-daftar-guru/{teacher}', [TeacherController::class, 'destroy'])->middleware(['auth', 'verified'])->name('teachers.destroy');
+
+Route::get('/admin-prestasi', [PrestasiController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.prestasi');
+Route::post('/admin-prestasi/store', [PrestasiController::class, 'store'])->middleware(['auth', 'verified'])->name('prestasi.store');
+Route::get('/admin-prestasi/{prestasi}/edit', [PrestasiController::class, 'edit'])->middleware(['auth', 'verified'])->name('prestasi.edit');
+Route::put('/admin-prestasi/{prestasi}', [PrestasiController::class, 'update'])->middleware(['auth', 'verified'])->name('prestasi.update');
+Route::delete('/admin-prestasi/{prestasi}', [PrestasiController::class, 'destroy'])->middleware(['auth', 'verified'])->name('prestasi.destroy');
 
 Route::get('/admin-ekstrakulikuler', [ExtracurricularController::class,'index'])->middleware(['auth', 'verified'])->name('admin.ekstrakulikuler');
 Route::post('/admin-ekstrakurikuler/store', [ExtracurricularController::class, 'store'])->middleware(['auth', 'verified'])->name('extracurriculars.store');

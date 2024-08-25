@@ -138,6 +138,15 @@
 
                         </li>
 
+                        <li class="sidebar-item  ">
+                            <a href="{{ route('admin.prestasi') }}" class='sidebar-link'>
+                                <i class="bi bi-trophy-fill  "></i>
+                                <span>Prestasi</span>
+                            </a>
+
+
+                        </li>
+
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>
@@ -161,7 +170,8 @@
                                 </li>
 
                                 <li class="submenu-item  ">
-                                    <a href="{{ route('admin.ekstrakulikuler') }}" class="submenu-link">Ekstrakulikuler</a>
+                                    <a href="{{ route('admin.ekstrakulikuler') }}"
+                                        class="submenu-link">Ekstrakulikuler</a>
 
                                 </li>
 
