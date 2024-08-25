@@ -14,6 +14,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -88,6 +89,12 @@ Route::get('/admin-karya-dan-aktivitas/{karya}/edit', [KaryaController::class, '
 Route::put('/admin-karya-dan-aktivitas/{karya}', [KaryaController::class, 'update'])->middleware(['auth', 'verified'])->name('karya.update');
 Route::delete('/admin-karya-dan-aktivitas/{karya}', [KaryaController::class, 'destroy'])->middleware(['auth', 'verified'])->name('karya.destroy');
 Route::delete('/admin-daftar-guru/{teacher}', [TeacherController::class, 'destroy'])->middleware(['auth', 'verified'])->name('teachers.destroy');
+
+Route::get('/admin-visi-misi', [VisiMisiController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.visi_misi');
+Route::post('/admin-visi-misi/store', [VisiMisiController::class, 'store'])->middleware(['auth', 'verified'])->name('visi_misi.store');
+Route::get('/admin-visi-misi/{visiMisi}/edit', [VisiMisiController::class, 'edit'])->middleware(['auth', 'verified'])->name('visi_misi.edit');
+Route::put('/admin-visi-misi/{visiMisi}', [VisiMisiController::class, 'update'])->middleware(['auth', 'verified'])->name('visi_misi.update');
+Route::delete('/admin-visi-misi/{visiMisi}', [VisiMisiController::class, 'destroy'])->middleware(['auth', 'verified'])->name('visi_misi.destroy');
 
 Route::get('/admin-prestasi', [PrestasiController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.prestasi');
 Route::post('/admin-prestasi/store', [PrestasiController::class, 'store'])->middleware(['auth', 'verified'])->name('prestasi.store');

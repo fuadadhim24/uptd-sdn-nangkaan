@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - UPTD SPF SDN Nangkaan Admin Dashboard</title>
+    <title>Daftar Visi dan Misi - UPTD SPF SDN Nangkaan Admin</title>
 
 
 
@@ -15,6 +15,10 @@
 
 
 
+    <link rel="stylesheet" href="{{ asset('extensions') }}/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+
+
+    <link rel="stylesheet" href="{{ asset('css') }}/table-datatable-jquery.css">
     <link rel="stylesheet" href="{{ asset('css') }}/app.css">
     <link rel="stylesheet" href="{{ asset('css') }}/app-dark.css">
     <link rel="stylesheet" href="{{ asset('css') }}/iconly.css">
@@ -71,7 +75,7 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item ">
                             <a href="{{ route('dashboard') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
@@ -129,7 +133,7 @@
 
                         </li>
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item ">
                             <a href="{{ route('admin.karya') }}" class='sidebar-link'>
                                 <i class="bi bi-circle-square  "></i>
                                 <span>Karya dan Aktivitas</span>
@@ -138,16 +142,7 @@
 
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="{{ route('admin.prestasi') }}" class='sidebar-link'>
-                                <i class="bi bi-trophy-fill  "></i>
-                                <span>Prestasi</span>
-                            </a>
-
-
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item has-sub active">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-check"></i>
                                 <span>Tentang</span>
@@ -159,7 +154,7 @@
                                     <a href="{{ route('admin.kurikulum') }}" class="submenu-link">Kurikulum</a>
 
                                 </li>
-                                <li class="submenu-item  ">
+                                <li class="submenu-item ">
                                     <a href="{{ route('admin.guru') }}" class="submenu-link">Daftar Guru</a>
 
                                 </li>
@@ -181,13 +176,8 @@
 
                                 </li>
 
-                                <li class="submenu-item  ">
+                                <li class="submenu-item active ">
                                     <a href="{{ route('admin.visi_misi') }}" class="submenu-link">Visi dan Misi</a>
-
-                                </li>
-
-                                <li class="submenu-item  ">
-                                    <a href="{{ route('admin.sambutan') }}" class="submenu-link">Data Sekolah</a>
 
                                 </li>
 
@@ -199,7 +189,7 @@
                         {{-- <li class="sidebar-item  ">
                             <a href="form-layout.html" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-medical-fill"></i>
-                                <span>Karya, Atletik &amp; Aktivitas</span>
+                                <span>VisiMisi, Atletik &amp; Aktivitas</span>
                             </a>
 
 
@@ -225,203 +215,210 @@
             </header>
 
             <div class="page-heading">
-                <h3>Statistik Lalu Lintas</h3>
-            </div>
-            <div class="page-content">
-                <section class="row">
-                    <div class="col-12 col-lg-9">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Pengunjung Website</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="chart-profile-visit"></div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Daftar Visi dan Misi</h3>
+                            <p class="text-subtitle text-muted">Manajemen informasi tenaga kependidikan.</p>
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-xl-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Riwayat Lalu Lintas</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <div class="d-flex align-items-center">
-                                                    <h5 class="mb-0 ms-3">Juli</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-5">
-                                                <h5 class="mb-0 text-end">862</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-europe"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <div class="d-flex align-items-center">
-                                                    <h5 class="mb-0 ms-3">Juni</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-5">
-                                                <h5 class="mb-0 text-end">375</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-america"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <div class="d-flex align-items-center">
-                                                    <h5 class="mb-0 ms-3">Mei</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-5">
-                                                <h5 class="mb-0 text-end">1025</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-indonesia"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-xl-8">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Tanggapan Terbaru</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-lg">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nama</th>
-                                                        <th>Komentar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img
-                                                                        src="{{ asset('assets/img/admin/page') }}/5.jpg">
-                                                                </div>
-                                                                <p class="font-bold ms-3 mb-0">Si Cantik</p>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Daftar Visi dan Misi
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- Minimal jQuery Datatable start -->
+                <section class="section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                Tabel Daftar Visi dan Misi
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive datatable-minimal">
+                                <table class="table" id="table2">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Kategori</th>
+                                            <th>Deskripsi</th>
+                                            {{-- <th>Biografi</th> --}}
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($visiMisis as $index => $visiMisi)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $visiMisi->type }}</td>
+                                                <td>
+                                                    {{ $visiMisi->description }}
+                                                </td>
+
+                                                {{-- <td>{{ $visiMisi->biography }}</td> --}}
+                                                <td>
+                                                    <!-- Edit and Delete Buttons -->
+                                                    <button type="button" class="btn btn-warning btn-sm"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#editGuruModal-{{ $visiMisi->id }}">
+                                                        Edit
+                                                    </button>
+                                                    <form action="{{ route('visi_misi.destroy', $visiMisi->id) }}"
+                                                        method="POST" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus guru ini?')">
+                                                            Delete
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+
+                                            <!-- Edit Guru Modal -->
+                                            <div class="modal fade" id="editGuruModal-{{ $visiMisi->id }}"
+                                                tabindex="-1"
+                                                aria-labelledby="editGuruModalLabel-{{ $visiMisi->id }}"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <form method="POST"
+                                                            action="{{ route('visi_misi.update', $visiMisi->id) }}"
+                                                            enctype="multipart/form-data">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"
+                                                                    id="editGuruModalLabel-{{ $visiMisi->id }}">Edit
+                                                                    Visi dan Misi</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
                                                             </div>
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            <p class=" mb-0">Congratulations on your graduation!</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img
-                                                                        src="{{ asset('assets/img/admin/page') }}/2.jpg">
+                                                            <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <label for="description">Deskripsi</label>
+                                                                    <input type="text" id="description"
+                                                                        class="form-control" name="description"
+                                                                        value="{{ old('description', $visiMisi->description) }}"
+                                                                        required>
                                                                 </div>
-                                                                <p class="font-bold ms-3 mb-0">Si Ganteng</p>
+                                                                <div class="form-group mt-3">
+                                                                    <label for="type">Tipe</label>
+                                                                    <select id="type" class="form-control"
+                                                                        name="type" required>
+                                                                        <option value="0"
+                                                                            {{ $visiMisi->type == 'Visi' ? 'selected' : '' }}>
+                                                                            Visi</option>
+                                                                        <option value="1"
+                                                                            {{ $visiMisi->type == 'Misi' ? 'selected' : '' }}>
+                                                                            Misi</option>
+                                                                    </select>
+                                                                </div>
+                                                                {{-- <div class="form-group">
+                                                                    <label for="biography">Biografi</label>
+                                                                    <textarea id="biography" class="form-control" name="biography" required>{{ $visiMisi->biography }}</textarea>
+                                                                </div> --}}
                                                             </div>
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            <p class=" mb-0">Wow amazing design! Can you make another
-                                                                tutorial for
-                                                                this design?</p>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Batal</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Simpan</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @empty
+                                            <tr>
+                                                <td colspan="7" class="text-center">Tidak ada data visiMisi dan
+                                                    aktivitas tersedia
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
-                        <div class="card">
-                            <div class="card-body py-4 px-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="avatar avatar-xl">
-                                        <img src="{{ asset('assets/img/admin/page') }}/1.jpg" alt="Face 1">
-                                    </div>
-                                    <div class="ms-3 name">
-                                        <h5 class="font-bold">Admin</h5>
-                                        <h6 class="text-muted mb-0">UPTD SPF SDN Nangkaan</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Responden Terbaru</h4>
-                            </div>
-                            <div class="card-content pb-4">
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="{{ asset('assets/img/admin/page') }}/4.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Hank Schrader</h5>
-                                        <h6 class="text-muted mb-0">08:58 - Hari Ini</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="{{ asset('assets/img/admin/page') }}/5.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Dean Winchester</h5>
-                                        <h6 class="text-muted mb-0">12:22 - Kemarin</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="{{ asset('assets/img/admin/page') }}/1.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">John Dodol</h5>
-                                        <h6 class="text-muted mb-0">03:15 - 07/08/2024</h6>
-                                    </div>
-                                </div>
-                                <div class="px-4">
-                                    <button class='btn btn-block btn-xl btn-outline-primary font-bold mt-3'>Lihat Hasil
-                                        Survey</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Data Guru</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="chart-visitors-profile"></div>
-                            </div>
-                        </div>
-                    </div>
+
                 </section>
+                <!-- Minimal jQuery Datatable end -->
+
+                <!-- Button to trigger modal -->
+                <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
+                    data-bs-target="#lowonganModal">
+                    Tambah Visi dan Misi
+                </button>
+
+                {{-- modal --}}
+                <!-- Modal -->
+                <div class="modal fade" id="lowonganModal" tabindex="-1" aria-labelledby="lowonganModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="POST" action="{{ route('visi_misi.store') }}"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Tambah Visi dan Misi Baru</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="description">Deskripsi</label>
+                                        <input type="text" id="description" class="form-control"
+                                            name="description" required>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="type">Tipe</label>
+                                        <select id="type" class="form-control" name="type" required>
+                                            <option value="0">
+                                                Visi</option>
+                                            <option value="1">
+                                                Misi</option>
+                                        </select>
+                                    </div>
+                                    {{-- <div class="form-group">
+                                        <label for="biography">Biografi</label>
+                                        <textarea id="biography" class="form-control" name="biography" required></textarea>
+                                    </div> --}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
-                        <p>2024 &copy; UPTD SPF SDN Nangkaan Kec. Bondowoso</p>
+                        <p>2024 &copy; UPTD SPF SDN Nangkaan kec. Bondowoso</p>
                     </div>
                     <div class="float-end">
-                        <p>Crafted by <span class="text-danger"></a></p>
-                        {{-- <p>Crafted with <span class="text-danger"><i class="bi bi-heart-fill icon-mid"></i></span>
-                            by <a href="https://saugi.me">Saugi</a></p> --}}
+                        <p>Crafted by</p>
                     </div>
                 </div>
             </footer>
         </div>
     </div>
+
+
     <script src="{{ asset('js') }}/components/dark.js"></script>
     <script src="{{ asset('extensions') }}/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
@@ -429,10 +426,10 @@
     <script src="{{ asset('js') }}/app.js"></script>
 
 
-
-    <!-- Need: Apexcharts -->
-    <script src="{{ asset('extensions') }}/apexcharts/apexcharts.min.js"></script>
-    <script src="{{ asset('js') }}/pages/dashboard.js"></script>
+    <script src="{{ asset('extensions') }}/jquery/jquery.min.js"></script>
+    <script src="{{ asset('extensions') }}/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('extensions') }}/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{{ asset('js') }}/pages/datatables.js"></script>
 
 </body>
 
