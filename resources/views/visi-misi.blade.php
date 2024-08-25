@@ -125,7 +125,7 @@
             </div>
         </div><!-- End Page Title -->
 
-        <section id="visi-misi" class="visi-misi section  animate__animated animate__fadeInUp">
+        <section id="visi-misi" class="visi-misi section animate__animated animate__fadeInUp">
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -136,21 +136,19 @@
 
                     <div class="col-md-6">
                         <div class="details">
-                            <h2><strong class="animate__animated animate__fadeInUp">Visi</strong></h2>
-                            <p>
-                                “Terwujudnya Insan yang Berkarakter, Berprestasi, Berwawasan Lingkungan"
-                            </p>
-                            <h2><strong>Misi</strong></h2>
-                            <p style="text-align: left;">
-                                1. Mengamalkan Ajaran Agama dengan Baik Dari Rumah<br>
-                                2. Meraih Prestasi yang Tinggi Baik dalam Akademik Maupun Non Akademik<br>
-                                3. Meningkatkan Kinerja Guru yang Profesional dengan Melaksanakan Pembelajaran<br>
-                                4. PAIKEM Melalui Pembelajaran Daring, Luring , atau Gabungkan dari Kedduanya<br>
-                                5. Terjalin Kerjasama Sekolah dengan Masyarakat dalam Rangka Memaksimalkan/ Peran Orang
-                                Tua Sebagai Guru Pembelajar Utama Di Rumah.<br>
-                                6. Terciptanya Keamanan, Kebersihan, Ketertiban, Keindahan, Kekeluargaan, Kerindangan
-                                Sekolah.<br>
-                            </p>
+                            @if ($visi)
+                                <h2><strong class="animate__animated animate__fadeInUp">Visi</strong></h2>
+                                <p>{{ $visi->description }}</p>
+                            @endif
+
+                            @if ($misi->isNotEmpty())
+                                <h2><strong>Misi</strong></h2>
+                                <p style="text-align: left;">
+                                    @foreach ($misi as $index => $item)
+                                        {{ $index + 1 }}. {{ $item->description }}<br>
+                                    @endforeach
+                                </p>
+                            @endif
                         </div>
                     </div>
 
@@ -159,9 +157,10 @@
             </div>
 
         </section><!-- /visi-misi Section -->
+
     </main>
 
-    <footer id="footer" class="footer dark-background">
+    <footer id="footer" class="footer dark-background mt-4">
 
         <div class="footer-top">
             <div class="container">
@@ -239,11 +238,6 @@
         </div>
 
     </footer>
-
-
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('vendor') }}/purecounter/purecounter_vanilla.js"></script>

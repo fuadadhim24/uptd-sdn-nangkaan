@@ -24,7 +24,7 @@ Route::get('/fasilitas', [FacilitiesController::class,'lPIndex'])->name('fasilit
 Route::get('/guru', [TeacherController::class, 'lPIndex'])->name('guru');
 Route::get('/karya-dan-aktivitas', [KaryaController::class, 'lPIndex'])->name('karya');
 Route::get('/kepala-sekolah', [PrincipalWelcomeMessageController::class, 'lPIndex'])->name('kepala-sekolah');
-Route::get('/visi-misi', function () {return view('visi-misi');})->name('visi-misi');
+Route::get('/visi-misi', [VisiMisiController::class, 'lPIndex'])->name('visi-misi');
 Route::get('/akademik', [AcademicCalendarController::class, 'lPIndex'])->name('akademik');
 Route::get('/survey', [SurveyController::class, 'lPIndex'])->name('survey');
 Route::post('/survey/{survey}', [ResponseController::class, 'surveyBegin'])->name('survey.begin');

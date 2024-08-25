@@ -65,4 +65,12 @@ class VisiMisiController extends Controller
         $visiMisi->delete();
         return redirect()->route('admin.visi_misi')->with('success', 'Data berhasil dihapus.');
     }
+    public function lPIndex(){
+        $visiMisis = VisiMisi::all();
+
+        $visi = $visiMisis->where('type', 'Visi')->first();
+        $misi = $visiMisis->where('type', 'Misi');
+
+        return view('visi-misi', compact('visi', 'misi'));
+    }
 }
