@@ -179,58 +179,69 @@
                             <h3>Identitas Sekolah</h3>
                             <table class="table table-bordered">
                                 <tbody>
-                                    <tr class="highlight-row">
-                                        <td>Nama Sekolah</td>
-                                        <td>SDN Nangkaan Bondowoso</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Status Sekolah</td>
-                                        <td>Negeri</td>
-                                    </tr>
-                                    <tr>
-                                        <td>NSS</td>
-                                        <td>101052201023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>NPSN</td>
-                                        <td>20521686</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Alamat Sekolah</td>
-                                        <td>Jln. Brigpol Sudarlan NO. 457</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Desa / Kelurahan</td>
-                                        <td>Nangkaan</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kecamatan</td>
-                                        <td>Bondowoso</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kabupaten / Kota</td>
-                                        <td>Bondowoso</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Provinsi</td>
-                                        <td>Jawa Timur</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kode Pos</td>
-                                        <td>68215</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tanggal SK Pendirian</td>
-                                        <td>17 Agustus 1976</td>
-                                    </tr>
-                                    <tr>
-                                        <td>SK Ijin Operasional</td>
-                                        <td>Perbup. No. 34 Tahun 2018</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tanggal SK Ijin Operasional</td>
-                                        <td>16 April 2018</td>
-                                    </tr>
+                                    @if ($data->isNotEmpty())
+                                        @php
+                                            $item = $data->first();
+                                        @endphp
+                                        <tr class="highlight-row">
+                                            <td>Nama Sekolah</td>
+                                            <td>{{ $item->nama_sekolah }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Status Sekolah</td>
+                                            <td>{{ $item->status_sekolah }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NSS</td>
+                                            <td>{{ $item->nss }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NPSN</td>
+                                            <td>{{ $item->npsn }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alamat Sekolah</td>
+                                            <td>{{ $item->alamat_sekolah }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Desa / Kelurahan</td>
+                                            <td>{{ $item->desa_kelurahan }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kecamatan</td>
+                                            <td>{{ $item->kecamatan }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kabupaten / Kota</td>
+                                            <td>{{ $item->kabupaten_kota }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Provinsi</td>
+                                            <td>{{ $item->provinsi }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kode Pos</td>
+                                            <td>{{ $item->kode_pos }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tanggal SK Pendirian</td>
+                                            <td>{{ $item->tanggal_sk_pendirian->format('d F Y') }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SK Ijin Operasional</td>
+                                            <td>{{ $item->sk_ijin_operasional }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tanggal SK Ijin Operasional</td>
+                                            <td>{{ $item->tanggal_sk_ijin_operasional->format('d F Y') }}</td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td colspan="2">No data available</td>
+                                        </tr>
+                                    @endif
+
+
                                 </tbody>
                             </table>
                         </div>
