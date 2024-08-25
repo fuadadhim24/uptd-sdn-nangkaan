@@ -168,10 +168,18 @@
       font-weight: 700;
     }
     
+    
     #hero p {
       width: 80%;
       animation-delay: 0.4s;
-      margin: 0 auto 0 auto;
+      /* margin: 0 auto 0 auto; */
+      color: #fff;
+    }
+
+    #hero a {
+      width: 80%;
+      animation-delay: 0.4s;
+      /* margin: 0 auto 0 auto; */
       color: #fff;
     }
     

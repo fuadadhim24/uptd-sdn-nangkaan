@@ -138,8 +138,7 @@
                             <div class="carousel-container">
                                 <div class="carousel-content">
                                     <div class="row animate__animated animate__fadeInUp justify-content-center">
-                                        <div class="horizontal-line animate__animated animate__fadeInUp"
-                                            style="max-width: 90%;"></div>
+                                        <div class="horizontal-line animate__animated animate__fadeInUp"></div>
                                         <div class="col-lg-4">
                                             <h2>Temukan Bakat Anak <span>Anda</span></h2>
                                         </div>
