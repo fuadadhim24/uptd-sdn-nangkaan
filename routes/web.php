@@ -18,6 +18,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\VisiMisiController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 Route::get('/', [WelcomeController::class,'lPIndex'])->name('/');
 Route::get('/ekstrakulikuler', [ExtracurricularController::class, 'lPIndex'])->name('ekstrakulikuler');
@@ -33,7 +34,7 @@ Route::post('/survey/{survey}/submit', [ResponseController::class, 'surveyBeginS
 
 
 // admin
-Route::get('/admin-dashboard', function () {return view('admin.dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/admin-dashboard', function () {return Redirect::route('admin.surveys');})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/admin-daftar-survey/{survey}/pertanyaan', [QuestionController::class,'index'])->middleware(['auth', 'verified'])->name('admin.question');
 Route::put('/admin-daftar-survey/pertanyaan/{question}', [QuestionController::class, 'update'])->middleware(['auth', 'verified'])->name('admin.questions.update');

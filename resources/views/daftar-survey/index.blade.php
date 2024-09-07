@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css') }}/survey.css">
 
+    <link href="{{asset('assets/img/logo-dikdasmen.png') }}" rel="icon">
+    <link href="{{asset('assets/img/logo-dikdasmen.png') }}" rel="apple-touch-icon">
+    
     <link rel="stylesheet" href="{{ asset('css') }}/app.css">
     <link rel="stylesheet" href="{{ asset('css') }}/app-dark.css">
     <link rel="stylesheet" href="{{ asset('css') }}/iconly.css">

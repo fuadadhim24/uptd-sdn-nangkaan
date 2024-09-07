@@ -8,8 +8,8 @@
     <title>UPTD SPF SDN Nangkaan Kec. Bondowoso | Menumbuhkan Potensi, Mewujudkan Mimpi</title>
 
     <!-- Favicons -->
-    <link href="{{ asset('assets') }}/img/favicon.png" rel="icon">
-    <link href="{{ asset('assets') }}/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{asset('assets/img/logo-dikdasmen.png') }}" rel="icon">
+    <link href="{{asset('assets/img/logo-dikdasmen.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
